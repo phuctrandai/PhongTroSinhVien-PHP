@@ -1,11 +1,10 @@
 <?php
-include 'BaiDang.php';
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-function getBaiDang() {
+include'./Model/BaiDang.php';
+class BaiDangDao{
+    function __construct() {
+        
+    }
+    function getBaiDang() {
     $connect= mysqli_connect('localhost', 'root', '', 'PhongTroSinhVien');
             mysqli_set_charset($connect,'utf8');  
             $rs=array();
@@ -16,12 +15,14 @@ function getBaiDang() {
             if($num>0)
             {
                 while($row= mysqli_fetch_array($querry)){
-                    $rs[$i]= new BaiDang($row[''],$row[''],$row[''],$row['']);
-                    $rs[$i]= new Book($row['Id'], $row['Title'], $row['Author'], $row['Price'], $row['Year'], $row['Url'],$row['Id_Category']);
+                    $rs[$i]= new BaiDang($row['HoTen'],$row['TieuDe'],$row['ThoiGianDang'],$row['DuongDan']);
                     $i++;
                 }
             }
             mysqli_close($connect);
             return $rs; 
 }
+
+}
+
 

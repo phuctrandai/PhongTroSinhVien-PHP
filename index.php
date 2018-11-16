@@ -1,4 +1,5 @@
-
+<?php include'./Dao/BaiDangDao.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,6 +22,8 @@
 </head>
 
 <body>
+    <?php $listBaiDang= BaiDangDao::getBaiDang();
+    ?>
     <!-- Preloader -->
     <div class="preloader d-flex align-items-center justify-content-center">
         <div class="lds-ellipsis">
@@ -306,6 +309,7 @@
 
                             <div class="tab-pane fade show active" id="nav-1" role="tabpanel" aria-labelledby="nav1">
                                 <div class="row">
+                                <?php foreach ($listBaiDang as $key=> $value){ ?>
                                     <!-- Single News Area -->
                                     <div class="col-12 col-sm-6">
                                         <div class="single-blog-post style-2 mb-5">
@@ -317,12 +321,12 @@
                                             <!-- Blog Content -->
                                             <div class="blog-content">
                                                 <span class="post-date">June 20, 2018</span>
-                                                <a href="#" class="post-title">Elon Musk: Tesla worker admitted to sabotage</a>
-                                                <a href="#" class="post-author">By Michael Smith</a>
+                                                <a href="#" class="post-title"><?php echo $value->TieuDe ?> </a>
+                                                <a href="#" class="post-author"><?php echo $value->HoTen ?></a>
                                             </div>
                                         </div>
                                     </div>
-
+                                <?php }?>       
                                     <!-- Single News Area -->
                                     <div class="col-12 col-sm-6">
                                         <div class="single-blog-post style-2 mb-5">
