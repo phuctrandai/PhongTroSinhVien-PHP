@@ -27,7 +27,9 @@ $listBaiDang = unserialize($_SESSION['listBaiDang']);
 </head>
 
 <body>
-    <?php include_once './header.php'; ?>
+    <?php include_once './header.php'; 
+        $i=0;
+    ?>
 
     <!-- ##### Intro News Area Start ##### -->
     <section class="intro-news-area section-padding-100-0 mb-70">
@@ -56,8 +58,12 @@ $listBaiDang = unserialize($_SESSION['listBaiDang']);
                                 <div class="row">
                                 <?php
                                  /* @var $baiDang BaiDang*/
-                                foreach ($listBaiDang as $key => $baiDang) {?>
+                                foreach ($listBaiDang as $key => $baiDang) {
+                                    if($i<2){
+                                    ?>
+                                    
                                     <!-- Single News Area -->
+                                    
                                     <div class="col-12 col-sm-6">
                                         <div class="single-blog-post style-2 mb-5">
                                             <!-- Blog Thumbnail -->
@@ -73,22 +79,9 @@ $listBaiDang = unserialize($_SESSION['listBaiDang']);
                                             </div>
                                         </div>
                                     </div>
-                                <?php }?>
+                                    <?php  } else{ ?>
                                     <!-- Single News Area -->
-                                    <div class="col-12 col-sm-6">
-                                        <div class="single-blog-post d-flex style-4 mb-30">
-                                            <!-- Blog Thumbnail -->
-                                            <div class="blog-thumbnail">
-                                                <a href="#"><img src="img/bg-img/16.jpg" alt=""></a>
-                                            </div>
-
-                                            <!-- Blog Content -->
-                                            <div class="blog-content">
-                                                <span class="post-date">June 20, 2018</span>
-                                                <a href="#" class="post-title">Nearly a quarter have no emergency savings</a>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    
 
                                     <!-- Single News Area -->
                                     <div class="col-12 col-sm-6">
@@ -100,209 +93,14 @@ $listBaiDang = unserialize($_SESSION['listBaiDang']);
 
                                             <!-- Blog Content -->
                                             <div class="blog-content">
-                                                <span class="post-date">June 20, 2018</span>
-                                                <a href="#" class="post-title">Nearly a quarter have no emergency savings</a>
+                                                <span class="post-date"><?php echo($baiDang->ThoiGiagDang);?></span>
+                                                <a href="#" class="post-title"><?php echo($baiDang->TieuDe); ?></a>
                                             </div>
                                         </div>
                                     </div>
+                                <?php } $i=$i +1 ; } ?>
 
-                                    <!-- Single News Area -->
-                                    <div class="col-12 col-sm-6">
-                                        <div class="single-blog-post d-flex style-4 mb-30">
-                                            <!-- Blog Thumbnail -->
-                                            <div class="blog-thumbnail">
-                                                <a href="#"><img src="img/bg-img/18.jpg" alt=""></a>
-                                            </div>
-
-                                            <!-- Blog Content -->
-                                            <div class="blog-content">
-                                                <span class="post-date">June 20, 2018</span>
-                                                <a href="#" class="post-title">Top bitcoin exchange says over $30 million stolen</a>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Single News Area -->
-                                    <div class="col-12 col-sm-6">
-                                        <div class="single-blog-post d-flex style-4 mb-30">
-                                            <!-- Blog Thumbnail -->
-                                            <div class="blog-thumbnail">
-                                                <a href="#"><img src="img/bg-img/19.jpg" alt=""></a>
-                                            </div>
-
-                                            <!-- Blog Content -->
-                                            <div class="blog-content">
-                                                <span class="post-date">June 20, 2018</span>
-                                                <a href="#" class="post-title">Top bitcoin exchange says over $30 million stolen</a>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Single News Area -->
-                                    <div class="col-12 col-sm-6">
-                                        <div class="single-blog-post d-flex style-4 mb-30">
-                                            <!-- Blog Thumbnail -->
-                                            <div class="blog-thumbnail">
-                                                <a href="#"><img src="img/bg-img/20.jpg" alt=""></a>
-                                            </div>
-
-                                            <!-- Blog Content -->
-                                            <div class="blog-content">
-                                                <span class="post-date">June 20, 2018</span>
-                                                <a href="#" class="post-title">Dow falls 287 points as trade war fears escalate</a>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Single News Area -->
-                                    <div class="col-12 col-sm-6">
-                                        <div class="single-blog-post d-flex style-4 mb-30">
-                                            <!-- Blog Thumbnail -->
-                                            <div class="blog-thumbnail">
-                                                <a href="#"><img src="img/bg-img/21.jpg" alt=""></a>
-                                            </div>
-
-                                            <!-- Blog Content -->
-                                            <div class="blog-content">
-                                                <span class="post-date">June 20, 2018</span>
-                                                <a href="#" class="post-title">Dow falls 287 points as trade war fears escalate</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="tab-pane fade" id="nav-2" role="tabpanel" aria-labelledby="nav2">
-                                <div class="row">
-                                    <!-- Single News Area -->
-                                    <div class="col-12 col-sm-6">
-                                        <div class="single-blog-post style-2 mb-5">
-                                            <!-- Blog Thumbnail -->
-                                            <div class="blog-thumbnail">
-                                                <a href="#"><img src="img/bg-img/4.jpg" alt=""></a>
-                                            </div>
-
-                                            <!-- Blog Content -->
-                                            <div class="blog-content">
-                                                <span class="post-date">June 20, 2018</span>
-                                                <a href="#" class="post-title">Elon Musk: Tesla worker admitted to sabotage</a>
-                                                <a href="#" class="post-author">By Michael Smith</a>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Single News Area -->
-                                    <div class="col-12 col-sm-6">
-                                        <div class="single-blog-post style-2 mb-5">
-                                            <!-- Blog Thumbnail -->
-                                            <div class="blog-thumbnail">
-                                                <a href="#"><img src="img/bg-img/5.jpg" alt=""></a>
-                                            </div>
-
-                                            <!-- Blog Content -->
-                                            <div class="blog-content">
-                                                <span class="post-date">June 20, 2018</span>
-                                                <a href="#" class="post-title">Rachel Sm ith breaks down while discussing border crisis</a>
-                                                <a href="#" class="post-author">By Michael Smith</a>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Single News Area -->
-                                    <div class="col-12 col-sm-6">
-                                        <div class="single-blog-post d-flex style-4 mb-30">
-                                            <!-- Blog Thumbnail -->
-                                            <div class="blog-thumbnail">
-                                                <a href="#"><img src="img/bg-img/16.jpg" alt=""></a>
-                                            </div>
-
-                                            <!-- Blog Content -->
-                                            <div class="blog-content">
-                                                <span class="post-date">June 20, 2018</span>
-                                                <a href="#" class="post-title">Nearly a quarter have no emergency savings</a>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Single News Area -->
-                                    <div class="col-12 col-sm-6">
-                                        <div class="single-blog-post d-flex style-4 mb-30">
-                                            <!-- Blog Thumbnail -->
-                                            <div class="blog-thumbnail">
-                                                <a href="#"><img src="img/bg-img/17.jpg" alt=""></a>
-                                            </div>
-
-                                            <!-- Blog Content -->
-                                            <div class="blog-content">
-                                                <span class="post-date">June 20, 2018</span>
-                                                <a href="#" class="post-title">Nearly a quarter have no emergency savings</a>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Single News Area -->
-                                    <div class="col-12 col-sm-6">
-                                        <div class="single-blog-post d-flex style-4 mb-30">
-                                            <!-- Blog Thumbnail -->
-                                            <div class="blog-thumbnail">
-                                                <a href="#"><img src="img/bg-img/18.jpg" alt=""></a>
-                                            </div>
-
-                                            <!-- Blog Content -->
-                                            <div class="blog-content">
-                                                <span class="post-date">June 20, 2018</span>
-                                                <a href="#" class="post-title">Top bitcoin exchange says over $30 million stolen</a>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Single News Area -->
-                                    <div class="col-12 col-sm-6">
-                                        <div class="single-blog-post d-flex style-4 mb-30">
-                                            <!-- Blog Thumbnail -->
-                                            <div class="blog-thumbnail">
-                                                <a href="#"><img src="img/bg-img/19.jpg" alt=""></a>
-                                            </div>
-
-                                            <!-- Blog Content -->
-                                            <div class="blog-content">
-                                                <span class="post-date">June 20, 2018</span>
-                                                <a href="#" class="post-title">Top bitcoin exchange says over $30 million stolen</a>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Single News Area -->
-                                    <div class="col-12 col-sm-6">
-                                        <div class="single-blog-post d-flex style-4 mb-30">
-                                            <!-- Blog Thumbnail -->
-                                            <div class="blog-thumbnail">
-                                                <a href="#"><img src="img/bg-img/20.jpg" alt=""></a>
-                                            </div>
-
-                                            <!-- Blog Content -->
-                                            <div class="blog-content">
-                                                <span class="post-date">June 20, 2018</span>
-                                                <a href="#" class="post-title">Dow falls 287 points as trade war fears escalate</a>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Single News Area -->
-                                    <div class="col-12 col-sm-6">
-                                        <div class="single-blog-post d-flex style-4 mb-30">
-                                            <!-- Blog Thumbnail -->
-                                            <div class="blog-thumbnail">
-                                                <a href="#"><img src="img/bg-img/21.jpg" alt=""></a>
-                                            </div>
-
-                                            <!-- Blog Content -->
-                                            <div class="blog-content">
-                                                <span class="post-date">June 20, 2018</span>
-                                                <a href="#" class="post-title">Dow falls 287 points as trade war fears escalate</a>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    
                                 </div>
                             </div>
 
