@@ -12,22 +12,13 @@
  * @author tam
  */
 class BaiDang {
-    var $MaBaiDang;
+    var $HoTen;
     var $TieuDe;
     var $ThoiGiagDang;
-    var $MoTa;
-    var $TenTaiKhoan;
+    var $HinhAnh;
     
-    function __construct($MaBaiDang, $TieuDe, $ThoiGiagDang, $MoTa, $TenTaiKhoan) {
-        $this->MaBaiDang = $MaBaiDang;
-        $this->TieuDe = $TieuDe;
-        $this->ThoiGiagDang = $ThoiGiagDang;
-        $this->MoTa = $MoTa;
-        $this->TenTaiKhoan = $TenTaiKhoan;
-    }
-    
-    function getMaBaiDang() {
-        return $this->MaBaiDang;
+    function getHoTen() {
+        return $this->HoTen;
     }
 
     function getTieuDe() {
@@ -38,16 +29,12 @@ class BaiDang {
         return $this->ThoiGiagDang;
     }
 
-    function getMoTa() {
-        return $this->MoTa;
+    function getHinhAnh() {
+        return $this->HinhAnh;
     }
 
-    function getTenTaiKhoan() {
-        return $this->TenTaiKhoan;
-    }
-
-    function setMaBaiDang($MaBaiDang) {
-        $this->MaBaiDang = $MaBaiDang;
+    function setHoTen($HoTen) {
+        $this->HoTen = $HoTen;
     }
 
     function setTieuDe($TieuDe) {
@@ -58,13 +45,18 @@ class BaiDang {
         $this->ThoiGiagDang = $ThoiGiagDang;
     }
 
-    function setMoTa($MoTa) {
-        $this->MoTa = $MoTa;
+    function setHinhAnh($HinhAnh) {
+        $this->HinhAnh = $HinhAnh;
     }
 
-    function setTenTaiKhoan($TenTaiKhoan) {
-        $this->TenTaiKhoan = $TenTaiKhoan;
+    function __construct($HoTen, $TieuDe, $ThoiGiagDang, $HinhAnh) {
+        $this->HoTen = $HoTen;
+        $this->TieuDe = $TieuDe;
+        $this->ThoiGiagDang = $ThoiGiagDang;
+        $this->HinhAnh = $HinhAnh;
     }
+    
+
 
 
 
