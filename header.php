@@ -39,7 +39,7 @@
                                     </li>
                                     <li>
                                         <a href="#">
-                                            Đăng ký
+                                            Đăng nhập
                                         </a>
                                     </li>
                                 </ul>
