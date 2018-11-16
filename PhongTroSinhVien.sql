@@ -2,10 +2,10 @@
 -- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Nov 15, 2018 at 04:38 PM
--- Server version: 10.1.36-MariaDB
--- PHP Version: 7.2.10
+-- Máy chủ: localhost
+-- Thời gian đã tạo: Th10 16, 2018 lúc 03:34 AM
+-- Phiên bản máy phục vụ: 10.1.36-MariaDB
+-- Phiên bản PHP: 7.2.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,13 +19,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `PhongTroSinhVien`
+-- Cơ sở dữ liệu: `PhongTroSinhVien`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `BaiDang`
+-- Cấu trúc bảng cho bảng `BaiDang`
 --
 
 CREATE TABLE `BaiDang` (
@@ -36,10 +36,18 @@ CREATE TABLE `BaiDang` (
   `TenTaiKhoan` varchar(50) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Đang đổ dữ liệu cho bảng `BaiDang`
+--
+
+INSERT INTO `BaiDang` (`MaBaiDang`, `TieuDe`, `ThoiGianDang`, `MoTa`, `TenTaiKhoan`) VALUES
+(1, 'Phòng trọ cho thuê', '2018-11-16', 'Phòng trọ cho sinh viên thuê diện tích rộng, thoáng mát, đầy đủ tiện nghi...', 'phuc'),
+(2, 'Cần thuê phòng trọ giá rẻ', '2018-11-16', 'Cần thuê phòng giá rẻ từ 400k-500k/tháng', 'quang');
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `DanhSachMoiTruong`
+-- Cấu trúc bảng cho bảng `DanhSachMoiTruong`
 --
 
 CREATE TABLE `DanhSachMoiTruong` (
@@ -47,10 +55,18 @@ CREATE TABLE `DanhSachMoiTruong` (
   `MaPhong` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Đang đổ dữ liệu cho bảng `DanhSachMoiTruong`
+--
+
+INSERT INTO `DanhSachMoiTruong` (`MaMoiTruong`, `MaPhong`) VALUES
+(1, 1),
+(3, 2);
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `DanhSachTienNghi`
+-- Cấu trúc bảng cho bảng `DanhSachTienNghi`
 --
 
 CREATE TABLE `DanhSachTienNghi` (
@@ -58,10 +74,18 @@ CREATE TABLE `DanhSachTienNghi` (
   `MaPhong` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Đang đổ dữ liệu cho bảng `DanhSachTienNghi`
+--
+
+INSERT INTO `DanhSachTienNghi` (`MaTienNghi`, `MaPhong`) VALUES
+(1, 2),
+(2, 1);
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `HinhAnh`
+-- Cấu trúc bảng cho bảng `HinhAnh`
 --
 
 CREATE TABLE `HinhAnh` (
@@ -70,10 +94,18 @@ CREATE TABLE `HinhAnh` (
   `MaBaiDang` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Đang đổ dữ liệu cho bảng `HinhAnh`
+--
+
+INSERT INTO `HinhAnh` (`MaHinhAnh`, `DuongDan`, `MaBaiDang`) VALUES
+(1, 'img/', 1),
+(2, 'img/', 2);
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `KhuVuc`
+-- Cấu trúc bảng cho bảng `KhuVuc`
 --
 
 CREATE TABLE `KhuVuc` (
@@ -81,10 +113,28 @@ CREATE TABLE `KhuVuc` (
   `TenKhuVuc` varchar(50) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Đang đổ dữ liệu cho bảng `KhuVuc`
+--
+
+INSERT INTO `KhuVuc` (`MaKhuVuc`, `TenKhuVuc`) VALUES
+(1, 'Bến xe phía nam'),
+(2, 'Bệnh viện trung ương'),
+(3, 'Đại học khoa học'),
+(4, 'Ga'),
+(5, 'Đại học sư phạm'),
+(6, 'Chợ An Cựu'),
+(7, 'Chợ Vĩ Dạ'),
+(8, 'Chợ Đông Ba'),
+(9, 'Siêu thị Big C'),
+(10, 'Đại nội Huế'),
+(11, 'Đại học nông lâm'),
+(12, 'Đại học kinh tế');
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `LoaiPhong`
+-- Cấu trúc bảng cho bảng `LoaiPhong`
 --
 
 CREATE TABLE `LoaiPhong` (
@@ -92,10 +142,18 @@ CREATE TABLE `LoaiPhong` (
   `TenLoaiPhong` varchar(50) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Đang đổ dữ liệu cho bảng `LoaiPhong`
+--
+
+INSERT INTO `LoaiPhong` (`MaLoaiPhong`, `TenLoaiPhong`) VALUES
+(1, 'Căn hộ'),
+(2, 'Phòng trọ');
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `LoaiTaiKhoan`
+-- Cấu trúc bảng cho bảng `LoaiTaiKhoan`
 --
 
 CREATE TABLE `LoaiTaiKhoan` (
@@ -103,10 +161,18 @@ CREATE TABLE `LoaiTaiKhoan` (
   `TenLoaiTaiKhoan` varchar(50) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Đang đổ dữ liệu cho bảng `LoaiTaiKhoan`
+--
+
+INSERT INTO `LoaiTaiKhoan` (`MaLoaiTaiKhoan`, `TenLoaiTaiKhoan`) VALUES
+(1, 'Chủ trọ'),
+(2, 'Người dùng');
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `MoiTruong`
+-- Cấu trúc bảng cho bảng `MoiTruong`
 --
 
 CREATE TABLE `MoiTruong` (
@@ -114,10 +180,19 @@ CREATE TABLE `MoiTruong` (
   `TenMoiTruong` varchar(50) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Đang đổ dữ liệu cho bảng `MoiTruong`
+--
+
+INSERT INTO `MoiTruong` (`MaMoiTruong`, `TenMoiTruong`) VALUES
+(1, 'Chợ'),
+(2, 'Siêu thị'),
+(3, 'Trường học');
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `PhongTro`
+-- Cấu trúc bảng cho bảng `PhongTro`
 --
 
 CREATE TABLE `PhongTro` (
@@ -134,10 +209,18 @@ CREATE TABLE `PhongTro` (
   `TenTaiKhoan` varchar(50) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Đang đổ dữ liệu cho bảng `PhongTro`
+--
+
+INSERT INTO `PhongTro` (`MaPhong`, `SoLuongPhong`, `SoPhongTrong`, `SoNguoiToiDa`, `GiaPhong`, `DienTich`, `ChoTuQuan`, `MaLoaiPhong`, `MaKhuVuc`, `MaQuanHuyen`, `TenTaiKhoan`) VALUES
+(1, 10, 9, 3, 3500000, 30, 1, 1, 1, 1, 'phuc'),
+(2, 5, 5, 2, 450, 10, 0, 2, 3, 4, 'quang');
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `QuanHuyen`
+-- Cấu trúc bảng cho bảng `QuanHuyen`
 --
 
 CREATE TABLE `QuanHuyen` (
@@ -145,10 +228,24 @@ CREATE TABLE `QuanHuyen` (
   `TenQuanHuyen` varchar(50) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Đang đổ dữ liệu cho bảng `QuanHuyen`
+--
+
+INSERT INTO `QuanHuyen` (`MaQuanHuyen`, `TenQuanHuyen`) VALUES
+(1, 'An Cựu'),
+(2, 'Vĩnh Ninh'),
+(3, 'Phước Vĩnh'),
+(4, 'Phú Nhuận'),
+(5, 'Phú Hội'),
+(6, 'Thuận Thành'),
+(7, 'Vĩ Dạ'),
+(8, 'Thủy Xuân');
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `TaiKhoan`
+-- Cấu trúc bảng cho bảng `TaiKhoan`
 --
 
 CREATE TABLE `TaiKhoan` (
@@ -157,10 +254,18 @@ CREATE TABLE `TaiKhoan` (
   `MaLoaiTaiKhoan` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Đang đổ dữ liệu cho bảng `TaiKhoan`
+--
+
+INSERT INTO `TaiKhoan` (`TenTaiKhoan`, `MatKhau`, `MaLoaiTaiKhoan`) VALUES
+('phuc', '123', 1),
+('quang', '123', 2);
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ThongTinTaiKhoan`
+-- Cấu trúc bảng cho bảng `ThongTinTaiKhoan`
 --
 
 CREATE TABLE `ThongTinTaiKhoan` (
@@ -169,10 +274,18 @@ CREATE TABLE `ThongTinTaiKhoan` (
   `GioiTinh` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Đang đổ dữ liệu cho bảng `ThongTinTaiKhoan`
+--
+
+INSERT INTO `ThongTinTaiKhoan` (`TenTaiKhoan`, `HoTen`, `GioiTinh`) VALUES
+('phuc', 'Trần Đại Phúc', 1),
+('quang', 'Lê Đình Quang', 1);
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `TienNghi`
+-- Cấu trúc bảng cho bảng `TienNghi`
 --
 
 CREATE TABLE `TienNghi` (
@@ -181,63 +294,73 @@ CREATE TABLE `TienNghi` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Indexes for dumped tables
+-- Đang đổ dữ liệu cho bảng `TienNghi`
+--
+
+INSERT INTO `TienNghi` (`MaTienNghi`, `TenTienNghi`) VALUES
+(1, 'Wifi'),
+(2, 'Vệ sinh trong'),
+(3, 'Điều hòa'),
+(4, 'Giường nệm');
+
+--
+-- Chỉ mục cho các bảng đã đổ
 --
 
 --
--- Indexes for table `BaiDang`
+-- Chỉ mục cho bảng `BaiDang`
 --
 ALTER TABLE `BaiDang`
   ADD PRIMARY KEY (`MaBaiDang`),
   ADD KEY `FOREIGN` (`TenTaiKhoan`);
 
 --
--- Indexes for table `DanhSachMoiTruong`
+-- Chỉ mục cho bảng `DanhSachMoiTruong`
 --
 ALTER TABLE `DanhSachMoiTruong`
   ADD KEY `FOREIGN` (`MaMoiTruong`,`MaPhong`),
   ADD KEY `MaPhong` (`MaPhong`);
 
 --
--- Indexes for table `DanhSachTienNghi`
+-- Chỉ mục cho bảng `DanhSachTienNghi`
 --
 ALTER TABLE `DanhSachTienNghi`
   ADD KEY `FOREIGN` (`MaTienNghi`,`MaPhong`),
   ADD KEY `MaPhong` (`MaPhong`);
 
 --
--- Indexes for table `HinhAnh`
+-- Chỉ mục cho bảng `HinhAnh`
 --
 ALTER TABLE `HinhAnh`
   ADD PRIMARY KEY (`MaHinhAnh`),
   ADD KEY `FOREIGN` (`MaBaiDang`);
 
 --
--- Indexes for table `KhuVuc`
+-- Chỉ mục cho bảng `KhuVuc`
 --
 ALTER TABLE `KhuVuc`
   ADD PRIMARY KEY (`MaKhuVuc`);
 
 --
--- Indexes for table `LoaiPhong`
+-- Chỉ mục cho bảng `LoaiPhong`
 --
 ALTER TABLE `LoaiPhong`
   ADD PRIMARY KEY (`MaLoaiPhong`);
 
 --
--- Indexes for table `LoaiTaiKhoan`
+-- Chỉ mục cho bảng `LoaiTaiKhoan`
 --
 ALTER TABLE `LoaiTaiKhoan`
   ADD PRIMARY KEY (`MaLoaiTaiKhoan`);
 
 --
--- Indexes for table `MoiTruong`
+-- Chỉ mục cho bảng `MoiTruong`
 --
 ALTER TABLE `MoiTruong`
   ADD PRIMARY KEY (`MaMoiTruong`);
 
 --
--- Indexes for table `PhongTro`
+-- Chỉ mục cho bảng `PhongTro`
 --
 ALTER TABLE `PhongTro`
   ADD PRIMARY KEY (`MaPhong`),
@@ -247,120 +370,120 @@ ALTER TABLE `PhongTro`
   ADD KEY `MaQuanHuyen` (`MaQuanHuyen`);
 
 --
--- Indexes for table `QuanHuyen`
+-- Chỉ mục cho bảng `QuanHuyen`
 --
 ALTER TABLE `QuanHuyen`
   ADD PRIMARY KEY (`MaQuanHuyen`);
 
 --
--- Indexes for table `TaiKhoan`
+-- Chỉ mục cho bảng `TaiKhoan`
 --
 ALTER TABLE `TaiKhoan`
   ADD PRIMARY KEY (`TenTaiKhoan`),
   ADD KEY `FOREIGN` (`MaLoaiTaiKhoan`);
 
 --
--- Indexes for table `ThongTinTaiKhoan`
+-- Chỉ mục cho bảng `ThongTinTaiKhoan`
 --
 ALTER TABLE `ThongTinTaiKhoan`
   ADD KEY `FOREIGN` (`TenTaiKhoan`);
 
 --
--- Indexes for table `TienNghi`
+-- Chỉ mục cho bảng `TienNghi`
 --
 ALTER TABLE `TienNghi`
   ADD PRIMARY KEY (`MaTienNghi`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT cho các bảng đã đổ
 --
 
 --
--- AUTO_INCREMENT for table `BaiDang`
+-- AUTO_INCREMENT cho bảng `BaiDang`
 --
 ALTER TABLE `BaiDang`
-  MODIFY `MaBaiDang` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `MaBaiDang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `HinhAnh`
+-- AUTO_INCREMENT cho bảng `HinhAnh`
 --
 ALTER TABLE `HinhAnh`
-  MODIFY `MaHinhAnh` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `MaHinhAnh` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `KhuVuc`
+-- AUTO_INCREMENT cho bảng `KhuVuc`
 --
 ALTER TABLE `KhuVuc`
-  MODIFY `MaKhuVuc` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `MaKhuVuc` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
--- AUTO_INCREMENT for table `LoaiPhong`
+-- AUTO_INCREMENT cho bảng `LoaiPhong`
 --
 ALTER TABLE `LoaiPhong`
-  MODIFY `MaLoaiPhong` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `MaLoaiPhong` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `LoaiTaiKhoan`
+-- AUTO_INCREMENT cho bảng `LoaiTaiKhoan`
 --
 ALTER TABLE `LoaiTaiKhoan`
-  MODIFY `MaLoaiTaiKhoan` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `MaLoaiTaiKhoan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `MoiTruong`
+-- AUTO_INCREMENT cho bảng `MoiTruong`
 --
 ALTER TABLE `MoiTruong`
-  MODIFY `MaMoiTruong` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `MaMoiTruong` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `PhongTro`
+-- AUTO_INCREMENT cho bảng `PhongTro`
 --
 ALTER TABLE `PhongTro`
-  MODIFY `MaPhong` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `MaPhong` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `QuanHuyen`
+-- AUTO_INCREMENT cho bảng `QuanHuyen`
 --
 ALTER TABLE `QuanHuyen`
-  MODIFY `MaQuanHuyen` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `MaQuanHuyen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT for table `TienNghi`
+-- AUTO_INCREMENT cho bảng `TienNghi`
 --
 ALTER TABLE `TienNghi`
-  MODIFY `MaTienNghi` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `MaTienNghi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- Constraints for dumped tables
+-- Các ràng buộc cho các bảng đã đổ
 --
 
 --
--- Constraints for table `BaiDang`
+-- Các ràng buộc cho bảng `BaiDang`
 --
 ALTER TABLE `BaiDang`
   ADD CONSTRAINT `BaiDang_ibfk_1` FOREIGN KEY (`TenTaiKhoan`) REFERENCES `TaiKhoan` (`TenTaiKhoan`);
 
 --
--- Constraints for table `DanhSachMoiTruong`
+-- Các ràng buộc cho bảng `DanhSachMoiTruong`
 --
 ALTER TABLE `DanhSachMoiTruong`
   ADD CONSTRAINT `DanhSachMoiTruong_ibfk_1` FOREIGN KEY (`MaMoiTruong`) REFERENCES `MoiTruong` (`MaMoiTruong`),
   ADD CONSTRAINT `DanhSachMoiTruong_ibfk_2` FOREIGN KEY (`MaPhong`) REFERENCES `PhongTro` (`MaPhong`);
 
 --
--- Constraints for table `DanhSachTienNghi`
+-- Các ràng buộc cho bảng `DanhSachTienNghi`
 --
 ALTER TABLE `DanhSachTienNghi`
   ADD CONSTRAINT `DanhSachTienNghi_ibfk_1` FOREIGN KEY (`MaPhong`) REFERENCES `PhongTro` (`MaPhong`),
   ADD CONSTRAINT `DanhSachTienNghi_ibfk_2` FOREIGN KEY (`MaTienNghi`) REFERENCES `TienNghi` (`MaTienNghi`);
 
 --
--- Constraints for table `HinhAnh`
+-- Các ràng buộc cho bảng `HinhAnh`
 --
 ALTER TABLE `HinhAnh`
   ADD CONSTRAINT `HinhAnh_ibfk_1` FOREIGN KEY (`MaBaiDang`) REFERENCES `BaiDang` (`MaBaiDang`);
 
 --
--- Constraints for table `PhongTro`
+-- Các ràng buộc cho bảng `PhongTro`
 --
 ALTER TABLE `PhongTro`
   ADD CONSTRAINT `PhongTro_ibfk_1` FOREIGN KEY (`TenTaiKhoan`) REFERENCES `TaiKhoan` (`TenTaiKhoan`),
@@ -369,16 +492,78 @@ ALTER TABLE `PhongTro`
   ADD CONSTRAINT `PhongTro_ibfk_4` FOREIGN KEY (`MaQuanHuyen`) REFERENCES `QuanHuyen` (`MaQuanHuyen`);
 
 --
--- Constraints for table `TaiKhoan`
+-- Các ràng buộc cho bảng `TaiKhoan`
 --
 ALTER TABLE `TaiKhoan`
   ADD CONSTRAINT `TaiKhoan_ibfk_1` FOREIGN KEY (`MaLoaiTaiKhoan`) REFERENCES `LoaiTaiKhoan` (`MaLoaiTaiKhoan`);
 
 --
--- Constraints for table `ThongTinTaiKhoan`
+-- Các ràng buộc cho bảng `ThongTinTaiKhoan`
 --
 ALTER TABLE `ThongTinTaiKhoan`
   ADD CONSTRAINT `ThongTinTaiKhoan_ibfk_1` FOREIGN KEY (`TenTaiKhoan`) REFERENCES `TaiKhoan` (`TenTaiKhoan`);
+
+
+--
+-- Siêu dữ liệu
+--
+USE `phpmyadmin`;
+
+--
+-- Siêu dữ liệu cho bảng BaiDang
+--
+
+--
+-- Siêu dữ liệu cho bảng DanhSachMoiTruong
+--
+
+--
+-- Siêu dữ liệu cho bảng DanhSachTienNghi
+--
+
+--
+-- Siêu dữ liệu cho bảng HinhAnh
+--
+
+--
+-- Siêu dữ liệu cho bảng KhuVuc
+--
+
+--
+-- Siêu dữ liệu cho bảng LoaiPhong
+--
+
+--
+-- Siêu dữ liệu cho bảng LoaiTaiKhoan
+--
+
+--
+-- Siêu dữ liệu cho bảng MoiTruong
+--
+
+--
+-- Siêu dữ liệu cho bảng PhongTro
+--
+
+--
+-- Siêu dữ liệu cho bảng QuanHuyen
+--
+
+--
+-- Siêu dữ liệu cho bảng TaiKhoan
+--
+
+--
+-- Siêu dữ liệu cho bảng ThongTinTaiKhoan
+--
+
+--
+-- Siêu dữ liệu cho bảng TienNghi
+--
+
+--
+-- Siêu dữ liệu cho cơ sở dữ liệu PhongTroSinhVien
+--
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
