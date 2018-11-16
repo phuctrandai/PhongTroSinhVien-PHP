@@ -1,5 +1,5 @@
 <?php
-include'./Model/BaiDang.php';
+include'../Model/BaiDang.php';
 class BaiDangDao{
     function __construct() {
         
