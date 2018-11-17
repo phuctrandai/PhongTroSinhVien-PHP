@@ -3,6 +3,7 @@ include './Dao/TienNghiDao.php';
 include './Dao/QuanHuyenDao.php';
 include './Dao/KhuVucDao.php';
 include './Dao/MoiTruongDao.php';
+include './Dao/LoaiPhongDao.php';
 
 $tienNghiDao = new TienNghiDao();
 $listTienNghi = $tienNghiDao->getTienNghi();
@@ -15,6 +16,9 @@ $listKhuVuc = $khuVucDao->getKhuVuc();
 
 $moiTruongDao = new MoiTruongDao();
 $listMoiTruong = $moiTruongDao->getMoiTruong();
+
+$loaiPhongDao = new LoaiPhongDao();
+$listLoaiPhong = $loaiPhongDao->getLoaiPhong();
 ?>
 <!DOCTYPE html>
 
@@ -54,8 +58,11 @@ $listMoiTruong = $moiTruongDao->getMoiTruong();
                         <div class="form-group">
                             <label for="loaiPhong">Loại phòng</label>
                             <select name="loaiPhong" class="form-control">
-                                <option>Phòng trọ</option>
-                                <option>Nhà nguyên căn</option>
+                                <?php foreach ($listLoaiPhong as $loaiPhong) /* @var $loaiPhong LoaiPhong*/ { ?>
+                                <option value="<?php echo($loaiPhong->MaLoaiPhong); ?>">
+                                    <?php echo($loaiPhong->TenLoaiPhong); ?>
+                                </option>                                    
+                                <?php } ?>
                             </select>
                         </div>
                     </div>
