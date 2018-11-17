@@ -1,3 +1,9 @@
+<?php
+include './Dao/TienNghiDao.php';
+
+$tienNghiDao = new TienNghiDao();
+$listTienNghi = $tienNghiDao->getTienNghi();
+?>
 <!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.
@@ -115,39 +121,32 @@ and open the template in the editor.
                             <label for="tienNghi">Tiện nghi</label>
                             <div class="card card-body">
                                 <div class="row">
-                                    <div class="col-lg-4">
-                                        <label class="my-container">One
-                                            <input type="checkbox" checked="checked">
-                                            <span class="my-checkmark"></span>
-                                        </label>
-
-                                        <label class="my-container">Two
-                                            <input type="checkbox">
-                                            <span class="my-checkmark"></span>
-                                        </label>
-
-                                        <label class="my-container">Three
-                                            <input type="checkbox">
-                                            <span class="my-checkmark"></span>
-                                        </label>
-                                    </div>
-                                    
-                                    <div class="col-lg-4">
-                                        <label class="my-container">One
-                                            <input type="checkbox" checked="checked">
-                                            <span class="my-checkmark"></span>
-                                        </label>
-
-                                        <label class="my-container">Two
-                                            <input type="checkbox">
-                                            <span class="my-checkmark"></span>
-                                        </label>
-
-                                        <label class="my-container">Three
-                                            <input type="checkbox">
-                                            <span class="my-checkmark"></span>
-                                        </label>
-                                    </div>
+                                    <?php 
+                                    $listTienNghiCount = count($listTienNghi);
+                                    for ($iTienNghi = 0 ; $iTienNghi < $listTienNghiCount ; ) { ?>
+                                        <div class="col-lg-4">
+                                            <?php if($iTienNghi < $listTienNghiCount) { ?>
+                                            <label class="my-container"><?php echo($listTienNghi[$iTienNghi]->TenTienNghi); $iTienNghi++;?>
+                                                <input type="checkbox" checked="checked" value="">
+                                                <span class="my-checkmark"></span>
+                                            </label>
+                                            <?php } ?>
+                                            
+                                            <?php if($iTienNghi < $listTienNghiCount) { ?>                                            
+                                            <label class="my-container"><?php echo($listTienNghi[$iTienNghi]->TenTienNghi); $iTienNghi++;?>
+                                                <input type="checkbox">
+                                                <span class="my-checkmark"></span>
+                                            </label>
+                                            <?php } ?>
+                                            
+                                            <?php if($iTienNghi < $listTienNghiCount) { ?>                                            
+                                            <label class="my-container"><?php echo($listTienNghi[$iTienNghi]->TenTienNghi); $iTienNghi++;?>
+                                                <input type="checkbox">
+                                                <span class="my-checkmark"></span>
+                                            </label>
+                                            <?php } ?>
+                                        </div>
+                                    <?php } ?>
                                 </div>
                             </div>
                         </div>
