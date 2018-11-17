@@ -1,5 +1,5 @@
 <?php
-include'../Model/BaiDang.php';
+include './Model/BaiDang.php';
 class BaiDangDao{
     function __construct() {
         
@@ -21,7 +21,7 @@ class BaiDangDao{
             }
             mysqli_close($connect);
             return $rs; 
-}
+    }
 
 }
 

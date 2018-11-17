@@ -423,13 +423,13 @@ img {
     .newsbox-main-menu {
         position: relative;
         width: 100%;
-        height: 125px;
+        height: 80px;
         padding: 0 5%;
         @media #{$breakpoint-xs} {
             height: 90px;
         }
         .classy-navbar {
-            height: 125px;
+            height: 80px;
             padding: 0;
             @media #{$breakpoint-xs} {
                 height: 90px;
