@@ -14,22 +14,7 @@
 class TienNghi {
     var $MaTienNghi;
     var $TenTienNghi;
-    function getMaTienNghi() {
-        return $this->MaTienNghi;
-    }
-
-    function getTenTienNghi() {
-        return $this->TenTienNghi;
-    }
-
-    function setMaTienNghi($MaTienNghi) {
-        $this->MaTienNghi = $MaTienNghi;
-    }
-
-    function setTenTienNghi($TenTienNghi) {
-        $this->TenTienNghi = $TenTienNghi;
-    }
-
+    
     function __construct($MaTienNghi, $TenTienNghi) {
         $this->MaTienNghi = $MaTienNghi;
         $this->TenTienNghi = $TenTienNghi;

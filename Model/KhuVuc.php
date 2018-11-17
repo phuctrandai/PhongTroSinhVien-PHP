@@ -14,22 +14,6 @@
 class KhuVuc {
     var $MaKhuVuc;
     var $TenKhuVuc;
-    function getMaKhuVuc() {
-        return $this->MaKhuVuc;
-    }
-
-    function getTenKhuVuc() {
-        return $this->TenKhuVuc;
-    }
-
-    function setMaKhuVuc($MaKhuVuc) {
-        $this->MaKhuVuc = $MaKhuVuc;
-    }
-
-    function setTenKhuVuc($TenKhuVuc) {
-        $this->TenKhuVuc = $TenKhuVuc;
-    }
-
     function __construct($MaKhuVuc, $TenKhuVuc) {
         $this->MaKhuVuc = $MaKhuVuc;
         $this->TenKhuVuc = $TenKhuVuc;
