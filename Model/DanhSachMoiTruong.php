@@ -15,22 +15,6 @@ class DanhSachMoiTruong {
     var $MaMoiTruong;
     var $MaPhong;
     
-    function getMaMoiTruong() {
-        return $this->MaMoiTruong;
-    }
-
-    function getMaPhong() {
-        return $this->MaPhong;
-    }
-
-    function setMaMoiTruong($MaMoiTruong) {
-        $this->MaMoiTruong = $MaMoiTruong;
-    }
-
-    function setMaPhong($MaPhong) {
-        $this->MaPhong = $MaPhong;
-    }
-
     function __construct($MaMoiTruong, $MaPhong) {
         $this->MaMoiTruong = $MaMoiTruong;
         $this->MaPhong = $MaPhong;

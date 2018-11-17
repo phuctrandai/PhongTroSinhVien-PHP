@@ -17,38 +17,6 @@ class BaiDang {
     var $ThoiGiagDang;
     var $HinhAnh;
     
-    function getHoTen() {
-        return $this->HoTen;
-    }
-
-    function getTieuDe() {
-        return $this->TieuDe;
-    }
-
-    function getThoiGiagDang() {
-        return $this->ThoiGiagDang;
-    }
-
-    function getHinhAnh() {
-        return $this->HinhAnh;
-    }
-
-    function setHoTen($HoTen) {
-        $this->HoTen = $HoTen;
-    }
-
-    function setTieuDe($TieuDe) {
-        $this->TieuDe = $TieuDe;
-    }
-
-    function setThoiGiagDang($ThoiGiagDang) {
-        $this->ThoiGiagDang = $ThoiGiagDang;
-    }
-
-    function setHinhAnh($HinhAnh) {
-        $this->HinhAnh = $HinhAnh;
-    }
-
     function __construct($HoTen, $TieuDe, $ThoiGiagDang, $HinhAnh) {
         $this->HoTen = $HoTen;
         $this->TieuDe = $TieuDe;
