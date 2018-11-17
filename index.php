@@ -1,8 +1,9 @@
 <?php session_start(); 
 
- include_once './Model/BaiDang.php';
+ include './Dao/BaiDangDao.php';
 
-$listBaiDang = unserialize($_SESSION['listBaiDang']);
+$baiDangDao = new BaiDangDao();
+$listBaiDang = $baiDangDao->getBaiDang();
 
 ?>
 <!DOCTYPE html>
@@ -23,13 +24,12 @@ $listBaiDang = unserialize($_SESSION['listBaiDang']);
 
     <!-- Stylesheet -->
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/my-style.css">
 
 </head>
 
 <body>
-    <?php include_once './header.php'; 
-        $i=0;
-    ?>
+    <?php include_once './header.php'; ?>
 
     <!-- ##### Intro News Area Start ##### -->
     <section class="intro-news-area section-padding-100-0 mb-70">
@@ -57,6 +57,7 @@ $listBaiDang = unserialize($_SESSION['listBaiDang']);
                             <div class="tab-pane fade show active" id="nav-1" role="tabpanel" aria-labelledby="nav1">
                                 <div class="row">
                                 <?php
+                                $i=0;
                                  /* @var $baiDang BaiDang*/
                                 foreach ($listBaiDang as $key => $baiDang) {
                                     if($i<2){
@@ -383,7 +384,7 @@ $listBaiDang = unserialize($_SESSION['listBaiDang']);
                         <!-- Newsletter Widget -->
                         <div class="single-widget-area newsletter-widget mb-30">
                             <h4>Chưa có tài khoản ?</h4>
-                            <a href="#" class="btn newsbox-btn w-100">Đăng ký ngay</a>
+                            <a href="sign-up.php" class="btn newsbox-btn w-100">Đăng ký ngay</a>
                             <p class="mt-30">Đăng ký để đăng bài và xem nhiều hơn</p>
                         </div>
                     </div>
@@ -524,6 +525,8 @@ $listBaiDang = unserialize($_SESSION['listBaiDang']);
     <script src="js/plugins/plugins.js"></script>
     <!-- Active js -->
     <script src="js/active.js"></script>
+    <!-- My js -->
+    <script src="js/my-script.js"></script>
 </body>
 
 </html>

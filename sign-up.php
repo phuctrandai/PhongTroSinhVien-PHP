@@ -23,9 +23,9 @@ and open the template in the editor.
     </head>
     <body>
         
-    <?php include_once './header.php'; ?>
+        <?php include_once './header.php'; ?>
 
-        <div class="w-50 ml-auto mr-auto">
+        <div class="w-50 ml-auto mr-auto mb-100 mt-50">
             <form class="form" action="Controller/TaiKhoanController.php" method="POST">
                 <input type="hidden" name="command" value="sign-up">
                 <div class="form-group">
@@ -74,7 +74,7 @@ and open the template in the editor.
             </form>
         </div>
         
-    <?php include_once './footer.php'; ?>
+        <?php include_once './footer.php'; ?>
     
         
     <!-- ##### All Javascript Script ##### -->

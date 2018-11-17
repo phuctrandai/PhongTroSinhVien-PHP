@@ -24,5 +24,5 @@ function getBaiDang() {
     $listBaiDang = $baiDangDao->getBaiDang();
 
     $_SESSION['listBaiDang'] = serialize($listBaiDang);
-//    var_dump($_SESSION['listCategory']);
+//    var_dump($_SESSION['listBaiDang']);
 }
