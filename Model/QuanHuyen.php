@@ -3,11 +3,11 @@
 class QuanHuyen {
     //put your code here
     var $MaQuanHuyen;
-    var $TenQuanHUyen;
+    var $TenQuanHuyen;
     
-    function __construct($MaQuanHuyen, $TenQuanHUyen) {
+    function __construct($MaQuanHuyen, $TenQuanHuyen) {
         $this->MaQuanHuyen = $MaQuanHuyen;
-        $this->TenQuanHUyen = $TenQuanHUyen;
+        $this->TenQuanHuyen = $TenQuanHuyen;
     }
     
     function getMaQuanHuyen() {
