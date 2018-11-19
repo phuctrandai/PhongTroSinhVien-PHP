@@ -25,11 +25,12 @@ $listBaiDang = $baiDangDao->getBaiDang();
     <!-- Stylesheet -->
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="css/my-style.css">
-
 </head>
 
 <body>
     <?php include_once './header.php'; ?>
+    
+    <?php include_once './search.php'; ?>
 
     <!-- ##### Intro News Area Start ##### -->
     <section class="intro-news-area section-padding-100-0 mb-70">

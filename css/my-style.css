@@ -75,3 +75,57 @@ and open the template in the editor.
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
 }
+
+/* Search menu */
+#bg-search {
+    width: 100%; 
+    height: 450px; 
+    background: url(../img/bg-img/10.jpg) no-repeat center; 
+    background-size: cover; position: relative
+}
+#menu-search {
+    width: 100%; 
+    height: 200px; 
+    margin: 200px auto; 
+    position: absolute;
+    z-index: 2;
+}
+#form-search {
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+}
+.my-select {
+    height: calc(2.25rem + 2px);
+    padding: .375rem .75rem;
+    line-height: 1.5;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #fff;
+    transition: border-color .5s ease-in-out;
+}
+.my-item {
+    cursor: pointer;
+    width: 100%;
+}
+.my-item:not(:last-child) {
+    border-right: solid 2px #000;
+}
+.item-left {
+    border-radius: .25rem 0 0 .25rem;
+}
+.item-center {
+    
+}
+.item-right {
+    border-radius: 0 .25rem .25rem 0;
+}
+
+@media (max-width: 768px) {
+    #bg-search {
+        height: 350px;
+    }
+    #menu-search {
+        margin: 0 auto;
+    }
+}
