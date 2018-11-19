@@ -32,7 +32,7 @@ $listLoaiPhong = $loaiPhongDao->getLoaiPhong();
                             <table class="w-100">
                                 <tr>
                                     <td>
-                                        <a class="" data-toggle="collapse" href="#collapse1" style="font-weight: normal">
+                                        <a class="" data-toggle="collapse" href="#collapse1" style="font-weight: normal; font-size: 0.9rem;">
                                             Tìm nâng cao &nabla;
                                         </a>
                                     </td>
