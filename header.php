@@ -29,7 +29,7 @@
                         <div class="classynav">
                             <ul>
                                 <li>
-                                    <a href="post.php" class="btn btn-danger text-light">Đăng tin</a>
+                                    <a href="post.php">Đăng tin</a>
                                 </li>
                                 <li>
                                     <a href="#">Tin tức</a>
@@ -45,7 +45,6 @@
                             </ul>
                         </div>
                         <!-- Nav End -->
-
                     </div>
                 </nav>
             </div>
