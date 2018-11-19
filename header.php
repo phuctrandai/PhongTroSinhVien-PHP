@@ -45,10 +45,53 @@
                             </ul>
                         </div>
                         <!-- Nav End -->
-
                     </div>
                 </nav>
             </div>
+        </div>
+    </div>
+    
+    <div id="bg-search">
+        <div id="menu-search">
+            <form action="action" id="form-search">
+                <nav class="navbar navbar-expand-sm" id="nav-search">
+                    <!-- Links -->
+                    <ul class="navbar-nav" style="width: 100%;">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbardrop1" data-toggle="dropdown" style="color: #000">
+                                Quận/huyện
+                            </a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="#">Link 1</a>
+                                <a class="dropdown-item" href="#">Link 2</a>
+                                <a class="dropdown-item" href="#">Link 3</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown" style="color: #000">
+                                Khu vực
+                            </a>
+                            <div class="dropdown-menu" id="2">
+                                <a class="dropdown-item" href="#">Link 1</a>
+                                <a class="dropdown-item" href="#">Link 2</a>
+                                <a class="dropdown-item" href="#">Link 3</a>
+                            </div>
+                        </li>
+
+                        <!-- Dropdown -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown" style="color: #000">
+                                Giá thuê
+                            </a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="#">Link 1</a>
+                                <a class="dropdown-item" href="#">Link 2</a>
+                                <a class="dropdown-item" href="#">Link 3</a>
+                            </div>
+                        </li>
+                    </ul>
+                </nav>
+            </form>
         </div>
     </div>
 </header>
