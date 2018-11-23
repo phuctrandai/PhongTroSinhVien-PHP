@@ -14,15 +14,19 @@ function doPost() {
 }
 
 function doGet() {
-    getBaiDang();
+    if(isset($_REQUEST["single-post"])) {
+        xemBaiDang($_REQUEST["single-post"]);
+        return;
+    }
+    
     //
     header("Location: ../index.php");
 }
 
-function getBaiDang() {
+function xemBaiDang($maBaiDang) {
     $baiDangDao = new BaiDangDao();
-    $listBaiDang = $baiDangDao->getBaiDang();
-
-    $_SESSION['listBaiDang'] = serialize($listBaiDang);
-//    var_dump($_SESSION['listBaiDang']);
+    $baiDangDao->capNhatLuotXem((int)$maBaiDang);
+    
+    $maPhong = $_REQUEST['phong-tro'];
+    header("Location: ../single-post.php?id={$maPhong}");
 }

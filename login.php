@@ -24,7 +24,7 @@ and open the template in the editor.
     <body>
         <?php include_once './header.php'; ?>
 
-        <div class="card ml-auto mr-auto mb-100 mt-50" style="width: 350px">
+        <div class="card ml-auto mr-auto mb-100 mt-50" style="width: 450px">
             <form class="form" action="Controller/TaiKhoanController.php" method="POST">
                 <input type="hidden" name="command" value="login">
                 <div class="form-group card-header">
