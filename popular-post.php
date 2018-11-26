@@ -24,7 +24,9 @@
             <div class="single-blog-post style-2 mb-5">
                 <!-- Blog Thumbnail -->
                 <div class="blog-thumbnail">
-                    <a href="#"><img src="img/bg-img/7.jpg" alt=""></a>
+                    <a href="#">
+                        <img src="img/bg-img/7.jpg" alt="">
+                    </a>
                 </div>
 
                 <!-- Blog Content -->

@@ -6,32 +6,31 @@
  * and open the template in the editor.
  */
 
-include '.Model/PhongTro.php';
+include './Model/PhongTro.php';
 
 class PhongTroDao {
     public function __construct() {
     }
     
-    public function GetThongTin($maPhong) {
+    public function getThongTin($maPhong) {
         $connect = mysqli_connect('localhost', 'root', '', 'PhongTroSinhVien');
         mysqli_set_charset($connect, 'utf8');
         
-        $sql = "SELECT * FROM PhongTro WHERE MaPhong = {$maPhong}";
-        $result = $this->connection->query($sql);
+        $sql = "SELECT *, KhuVuc.TenKhuVuc, QuanHuyen.TenQuanHuyen, LoaiPhong.TenLoaiPhong FROM PhongTro JOIN KhuVuc ON PhongTro.MaKhuVuc = KhuVuc.MaKhuVuc JOIN QuanHuyen ON QuanHuyen.MaQuanHuyen = PhongTro.MaQuanHuyen JOIN LoaiPhong ON LoaiPhong.MaLoaiPhong = PhongTro.MaLoaiPhong WHERE PhongTro.MaPhong = {$maPhong}";
+        $result = $connect->query($sql);
         if ($result->num_rows > 0) {
-            $p = new PhongTro();
-            while ($row = $result->fetch_assoc()) {
-                $p->MaPhong = $row['MaPhong'];
-                $p->ChoTuQuan = $row['ChoTuQuan'];
-                $p->DienTich = $row['DienTich'];
-                $p->GiaPhong = $row['GiaPhong'];
-                $p->MaKhuVuc = $row['MaKhuVuc'];
-                $p->MaLoaiPhong = $row['MaLoaiPhong'];
-                $p->MaQuanHuyen = $row['MaQuanHuyen'];
-                $p->SoLuongPhong = $row['SoLuongPhong'];
-                $p->SoNguoiToiDa = $row['SoNguoiToiDa'];
-                $p->SoPhongTrong = $row['SoPhongTrong'];
-                $p->TenTaiKhoan = $row['TenTaiKhong'];
+            while ($row = mysqli_fetch_array($result)) {
+                $p = new PhongTro($row['MaPhong'], 
+                        $row['SoLuongPhong'], 
+                        $row['SoPhongTrong'], 
+                        $row['SoNguoiToiDa'], 
+                        $row['GiaPhong'],
+                        $row['DienTich'],
+                        $row['ChoTuQuan'],
+                        $row['TenLoaiPhong'],
+                        $row['TenKhuVuc'],
+                        $row['TenQuanHuyen'],
+                        $row['TenTaiKhoan']);
                 return $p;
             }
             $result->close();

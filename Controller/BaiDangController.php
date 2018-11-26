@@ -14,7 +14,17 @@ function doPost() {
 }
 
 function doGet() {
-    if(isset($_REQUEST["single-post"])) {
+    $command = $_REQUEST['command'];
+    
+    if($command == 'post') {
+        if(isset($_SESSION['TaiKhoan'])) {
+            header("Location: ../post.php");
+        } else {
+            header("Location: ../login.php");
+        }
+        return;
+    }
+    else if(isset($_REQUEST["single-post"])) {
         xemBaiDang($_REQUEST["single-post"]);
         return;
     }
@@ -28,5 +38,8 @@ function xemBaiDang($maBaiDang) {
     $baiDangDao->capNhatLuotXem((int)$maBaiDang);
     
     $maPhong = $_REQUEST['phong-tro'];
-    header("Location: ../single-post.php?id={$maPhong}");
+    
+    $_SESSION['maBaiDang'] = $maBaiDang;
+    $_SESSION['maPhong'] = $maPhong;
+    header("Location: ../single-post.php");
 }

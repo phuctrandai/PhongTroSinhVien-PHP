@@ -1,4 +1,34 @@
 <!DOCTYPE html>
+<?php
+session_start();
+
+require_once './Dao/BaiDangDao.php';
+require_once './Dao/PhongTroDao.php';
+require_once './Dao/TienNghiDao.php';
+require_once './Dao/MoiTruongDao.php';
+
+$phongTroDao = new PhongTroDao();
+$baiDangDao = new BaiDangDao();
+$tienNghiDao = new TienNghiDao();
+$moiTruongDao = new MoiTruongDao();
+
+$maPhong = $_SESSION['maPhong'];
+$maBaiDang = $_SESSION['maBaiDang'];
+
+
+$listTienNghi = $tienNghiDao->getDanhSachTheoPhong($maPhong);
+$listMoiTruong = $moiTruongDao->getDanhSachTheoPhong($maPhong);
+
+
+/* @var $phongTro PhongTro*/
+$phongTro = $phongTroDao->getThongTin($maPhong);
+
+/* @var $baiDang BaiDang*/
+$baiDang = $baiDangDao->getThongTin($maBaiDang);
+
+$choTuQuan = $phongTro->ChoTuQuan == 1 ? ' - tự quản' : '';
+
+?>
 <html>
     <head>
         <meta charset="UTF-8">
@@ -28,10 +58,11 @@
                     <!-- Post Details Content Area -->
                     <div class="col-12 col-lg-8">
                         <div class="post-details-content mb-100">
-                            <h3 class="text-dark">Tieu de</h3>
-                            <p><span class="text-danger">Hue</span>
+                            <h3 class="text-dark"><?php echo $baiDang->TieuDe;?></h3>
+                            <p><span class="text-danger"><?php echo($phongTro->TenQuanHuyen);?></span>
                                 <br>
-                                15/8/2018</p>
+                                <?php echo $baiDang->ThoiGiagDang;?>
+                            </p>
 
                             <!-- Hinh anh slide show -->
                             <div id="demo" class="carousel slide mb-30" data-ride="carousel">
@@ -64,74 +95,65 @@
                                     <span class="carousel-control-next-icon"></span>
                                 </a>
                             </div>
-
+                            <hr>
                             <!-- Thong tin chi tiet -->
-                            <h5 class="mb-30">Thong tin chi tiet</h5>
-                            <table class="table table-bordered">
+                            <h5 class="mb-30 mt-30">Thông tin chi tiết</h5>
+                            <table class="mb-30 table table-bordered">
                                 <tbody>
                                     <tr>
-                                        <td class="bg-light">Dia chi</td>
+                                        <td class="bg-light">Địa chỉ</td>
                                         <td colspan="3">15 - Hue</td>
                                     </tr>
                                     <tr>
-                                        <td class="bg-light">Hinh thuc</td>
-                                        <td>Nha tro - tu quan</td>
-                                        <td class="bg-light">So phong</td>
-                                        <td>1 phong</td>
+                                        <td class="bg-light">Hình thức</td>
+                                        <td><?php echo($phongTro->TenLoaiPhong);?> <?php echo($choTuQuan);?></td>
+                                        <td class="bg-light">Số lượng phòng</td>
+                                        <td><?php echo($phongTro->SoLuongPhong);?> phòng</td>
                                     </tr>
                                     <tr>
-                                        <td class="bg-light">Gia thue</td>
-                                        <td>500,000 VND</td>
-                                        <td class="bg-light">Phong trong</td>
-                                        <td>1 phong</td>
+                                        <td class="bg-light">Giá thuê</td>
+                                        <td><?php echo($phongTro->GiaPhong);?> VND</td>
+                                        <td class="bg-light">Phòng trống</td>
+                                        <td><?php echo($phongTro->SoPhongTrong);?> phòng</td>
                                     </tr>
                                     <tr>
-                                        <td class="bg-light">Dien tich</td>
-                                        <td>50 m2</td>
-                                        <td class="bg-light">O toi da</td>
-                                        <td>2 nguoi</td>
+                                        <td class="bg-light">Diện tích</td>
+                                        <td><?php echo($phongTro->DienTich);?> m2</td>
+                                        <td class="bg-light">Ở tối đa</td>
+                                        <td><?php echo($phongTro->SoNguoiToiDa);?> người</td>
                                     </tr>
                                 </tbody>
                             </table>
-
+                            <hr>
                             <!-- Tien nghi -->
-                            <h5 class="mb-30">Tien nghi</h5>
-                            <table class="table table-borderless">
-                                <tbody>
-                                    <tr>
-                                        <td>John</td>
-                                        <td>Doe</td>
-                                        <td>john@example.com</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Mary</td>
-                                        <td>Moe</td>
-                                        <td>mary@example.com</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-
+                            <h5 class="mb-30 mt-30">Tiện nghi</h5>
+                            <div class="">
+                                <div class="row">
+                                <?php
+                                foreach ($listTienNghi as $tienNghi) { ?>
+                                    <div class="col-4 mb-30">
+                                        <?php echo($tienNghi->TenTienNghi); ?>
+                                    </div>
+                                <?php } ?>
+                                </div>
+                            </div>
+                            <hr>
                             <!-- Moi truong xung quanh -->
-                            <h5 class="mb-30">Moi truong xung quanh</h5>
-                            <table class="table table-borderless">
-                                <tbody>
-                                    <tr>
-                                        <td>John</td>
-                                        <td>Doe</td>
-                                        <td>john@example.com</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Mary</td>
-                                        <td>Moe</td>
-                                        <td>mary@example.com</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-
+                            <h5 class="mb-30 mt-30">Môi trường xung quanh</h5>
+                            <div class="">
+                                <div class="row">
+                                <?php
+                                foreach ($listMoiTruong as $moiTruong) { ?>
+                                    <div class="col-4 mb-30">
+                                        <?php echo($moiTruong->TenMoiTruong); ?>
+                                    </div>
+                                <?php } ?>
+                                </div>
+                            </div>
+                            <hr>
                             <!-- Vi tri -->
-                            <h1>My First Google Map</h1>
-
-                            <div id="googleMap" style="width:100%;height:400px;"></div>
+                            <h5>Vị trí</h5>
+                            <div id="googleMap" style="width:100%; height:400px;"></div>
                         </div>
                     </div>
 

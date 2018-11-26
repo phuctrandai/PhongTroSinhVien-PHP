@@ -83,5 +83,23 @@ class BaiDangDao {
         $stmt->execute();
         $stmt->close();
     }
+    
+    function getThongTin($maBaiDang) {
+        $connect = mysqli_connect('localhost', 'root', '', 'PhongTroSinhVien');
+        mysqli_set_charset($connect, 'utf8');
+        
+        $sql = "SELECT * FROM ViewBaiDang WHERE MaBaiDang = {$maBaiDang}";
 
+        $result = $connect->query($sql);
+        if ($result->num_rows > 0) {
+            while ($row = mysqli_fetch_array($result)) {
+                $rs = new BaiDang($row['HoTen'], $row['TieuDe'], $row['ThoiGianDang'], $row['DuongDan']);
+                $rs->MaBaiDang = $row['MaBaiDang'];
+                $rs->MaPhong = $row['MaPhong'];
+                return $rs;
+            }
+            $result->close();
+        }
+        return null;
+    }
 }

@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 include './Dao/TienNghiDao.php';
 include './Dao/QuanHuyenDao.php';
 include './Dao/KhuVucDao.php';

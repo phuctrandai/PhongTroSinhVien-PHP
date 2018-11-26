@@ -1,4 +1,14 @@
+<?php
+require_once './Model/TaiKhoan.php';
 
+    $taiKhoan = NULL;
+    $loaiTaiKhoan = -1;
+
+    if(isset($_SESSION['TaiKhoan'])) {
+        $taiKhoan = unserialize($_SESSION['TaiKhoan']);
+        $loaiTaiKhoan = $taiKhoan->LoaiTaiKhoan;
+    }
+?>
 
 <!-- ##### Header Area Start ##### -->
 <header class="header-area">
@@ -27,9 +37,11 @@
 
                         <!-- Nav Start -->
                         <div class="classynav">
-                            <ul>
+                            <ul>                                
+                                <!-- Chua dang nhap -->
+                                <?php if($loaiTaiKhoan == -1) {?>
                                 <li>
-                                    <a href="post.php">Đăng tin</a>
+                                    <a href="Controller/BaiDangController.php?command=post">Đăng tin</a>
                                 </li>
                                 <li>
                                     <a href="#">Tin tức</a>
@@ -38,10 +50,39 @@
                                     <a href="sign-up.php">Đăng ký</a>
                                 </li>
                                 <li>
-                                    <a href="login.php">
-                                        Đăng nhập
-                                    </a>
+                                    <a href="login.php">Đăng nhập</a>
                                 </li>
+                                
+                                <!-- Danh nhap voi vai tro chu tro -->
+                                <?php } else if($loaiTaiKhoan == 1) {?>
+                                <li>
+                                    <a href="Controller/BaiDangController.php?command=post">Đăng tin</a>
+                                </li>
+                                <li>
+                                    <a href="#">Tin tức</a>
+                                </li>
+                                <li>
+                                    <a href="">Quản lý bản tin</a>
+                                </li>
+                                <li>
+                                    <a href="">Tài khoản</a>
+                                </li>
+                                <li>
+                                    <a href="Controller/TaiKhoanController.php?command=logout">Đăng xuất</a>
+                                </li>
+                                
+                                <!-- Dang nhap voi vai tro nguoi tim tro -->
+                                <?php } else if($loaiTaiKhoan == 2) {?>
+                                <li>
+                                    <a href="#">Tin tức</a>
+                                </li>
+                                <li>
+                                    <a href="">Tài khoản</a>
+                                </li>
+                                <li>
+                                    <a href="Controller/TaiKhoanController.php?command=logout">Đăng xuất</a>
+                                </li>
+                                <?php } ?>
                             </ul>
                         </div>
                         <!-- Nav End -->

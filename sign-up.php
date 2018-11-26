@@ -21,7 +21,7 @@
 
         <?php include_once './header.php'; ?>
 
-        <div class="card w-50 ml-auto mr-auto mb-100 mt-50" style="max-width: 450px">
+        <div class="card w-75 ml-auto mr-auto mb-100 mt-50" style="max-width: 450px">
             <form class="form" action="Controller/TaiKhoanController.php" method="POST">
                 <input type="hidden" name="command" value="sign-up">
                 <div class="form-group card-header">

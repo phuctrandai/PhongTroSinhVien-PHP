@@ -18,7 +18,6 @@
             <h4>Tin mới nhất</h4>
 
             <?php
-            include './Dao/BaiDangDao.php';
 
             $baiDangDao = new BaiDangDao();
             $listMoiNhat = $baiDangDao->topMoiNhat();
@@ -33,9 +32,8 @@
                 <div class="single-blog-post d-flex style-4 mb-30">
                     <!-- Blog Thumbnail -->
                     <div class="blog-thumbnail">
-                        <a href="Controller/BaiDangController.php?single-post=
-                           <?php echo($listMoiNhat[$index]->MaBaiDang); ?>">
-                            <img src="img/bg-img/19.jpg" 
+                        <a href="Controller/BaiDangController.php?single-post=<?php echo($listMoiNhat[$index]->MaBaiDang); ?>&phong-tro=<?php echo($listMoiNhat[$index]->MaPhong); ?>">
+                            <img src="<?php echo($listMoiNhat[$index]->HinhAnh); ?>" 
                                  alt="<?php echo($listMoiNhat[$index]->TieuDe); ?>">
                         </a>
                     </div>
@@ -43,7 +41,7 @@
                     <!-- Blog Content -->
                     <div class="blog-content">
                         <span class="post-date"><?php echo($listMoiNhat[$index]->ThoiGiagDang); ?></span>
-                        <a href="Controller/BaiDangController.php?single-post=<?php echo($listMoiNhat[$index]->MaBaiDang); ?>"
+                        <a href="Controller/BaiDangController.php?single-post=<?php echo($listMoiNhat[$index]->MaBaiDang); ?>&phong-tro=<?php echo($listMoiNhat[$index]->MaPhong); ?>"
                            class="post-title">
                                <?php echo($listMoiNhat[$index]->TieuDe); ?>
                         </a>
@@ -64,8 +62,9 @@
                     <!-- Blog Thumbnail -->
                     <div class="blog-thumbnail">
                         <a href="Controller/BaiDangController.php?single-post=
-                           <?php echo($listMoiNhat[$index]->MaBaiDang); ?>">
-                            <img src="img/bg-img/14.jpg" 
+                           <?php echo($listMoiNhat[$index]->MaBaiDang); ?>
+                           &phong-tro=<?php echo($listMoiNhat[$index]->MaPhong); ?>">
+                            <img src="<?php echo($listMoiNhat[$index]->HinhAnh); ?>" 
                                  alt="<?php echo($listMoiNhat[$index]->TieuDe); ?>">
                         </a>
                     </div>
@@ -74,7 +73,8 @@
                     <div class="blog-content">
                         <span class="post-date">June 20, 2018</span>
                         <a href="Controller/BaiDangController.php?single-post=
-                            <?php echo($listMoiNhat[$index]->MaBaiDang); ?>"
+                            <?php echo($listMoiNhat[$index]->MaBaiDang); ?>
+                           &phong-tro=<?php echo($listMoiNhat[$index]->MaPhong); ?>"
                            class="post-title">
                                <?php echo($listMoiNhat[$index]->TieuDe); ?>
                         </a>

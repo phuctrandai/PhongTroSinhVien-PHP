@@ -1,7 +1,10 @@
 <?php
 session_start();
 
-include './Dao/BaiDangDao.php';
+require_once './Dao/BaiDangDao.php';
+require_once './Dao/TienNghiDao.php';
+require_once './Dao/MoiTruongDao.php';
+
 
 $baiDangDao = new BaiDangDao();
 $listMoiNhat = $baiDangDao->topMoiNhat();
@@ -44,12 +47,12 @@ $listTrongThang = $baiDangDao->tinTrongThang();
 
                             <!-- Intro News Filter -->
                             <div class="intro-news-filter d-flex justify-content-between" style="height: 45px; padding: 5px 10px;">
-                                <h3 class="text-danger">Các lựa chọn</h3>
+                                <h3 class="text-danger text-choice">Các lựa chọn</h3>
                                 <nav>
                                     <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                                        <a class="nav-item nav-link active" id="nav1" data-toggle="tab" href="#nav-1" role="tab" aria-controls="nav-1" aria-selected="true">Mới nhất</a>
-                                        <a class="nav-item nav-link" id="nav2" data-toggle="tab" href="#nav-2" role="tab" aria-controls="nav-2" aria-selected="false">Phổ biến</a>
-                                        <a class="nav-item nav-link" id="nav3" data-toggle="tab" href="#nav-3" role="tab" aria-controls="nav-3" aria-selected="false">Giá rẻ</a>
+                                        <a class="choice-link nav-item nav-link active" id="nav1" data-toggle="tab" href="#nav-1" role="tab" aria-controls="nav-1" aria-selected="true">Mới nhất</a>
+                                        <a class="choice-link nav-item nav-link" id="nav2" data-toggle="tab" href="#nav-2" role="tab" aria-controls="nav-2" aria-selected="false">Phổ biến</a>
+                                        <a class="choice-link nav-item nav-link" id="nav3" data-toggle="tab" href="#nav-3" role="tab" aria-controls="nav-3" aria-selected="false">Giá rẻ</a>
                                     </div>
                                 </nav>
                             </div>
