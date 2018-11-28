@@ -94,9 +94,9 @@ $listLoaiPhong = $loaiPhongDao->getLoaiPhong();
                     </div>
                     <div class="col-lg-4">
                         <div class="form-group">
-                            <label for="soPhongTronh">Số phòng trống</label>
+                            <label for="soPhongTrong">Số phòng trống</label>
                             <input type="number" class="form-control" 
-                                   name="soPhongTronh" id="soPhongTronh" 
+                                   name="soPhongTrong" id="soPhongTronh" 
                                    value="1" min="1">
                         </div>
                     </div>
@@ -171,6 +171,7 @@ $listLoaiPhong = $loaiPhongDao->getLoaiPhong();
                             </select>
                         </div>
                     </div>
+                    
                     <!-- Tien nghi -->
                     <div class="col-12">
                         <div class="form-group">
@@ -179,7 +180,6 @@ $listLoaiPhong = $loaiPhongDao->getLoaiPhong();
                                 <div class="row">
                                     <?php
                                     $listTienNghiCount = count($listTienNghi);
-                                    
                                     for ($i_TienNghi = 0; $i_TienNghi < $listTienNghiCount;) { ?>
                                         
                                     <div class="col-lg-4">
@@ -188,21 +188,21 @@ $listLoaiPhong = $loaiPhongDao->getLoaiPhong();
                                                 
                                         <label class="my-container">
                                             <?php 
-                                            echo($listTienNghi[$i_TienNghi]->TenTienNghi);
-                                            $i_TienNghi++;
+                                                echo($listTienNghi[$i_TienNghi]->TenTienNghi);
+                                                $i_TienNghi++;
                                             ?>
                                             <input type="checkbox" 
                                                    value="<?php echo($listTienNghi[$i_TienNghi]->MaTienNghi); ?>"
                                                    name="<?php echo($listTienNghi[$i_TienNghi]->TenTienNghi); ?>">
                                             <span class="my-checkmark"></span>
                                         </label>
-                                            <?php } ?>
+                                        <?php } ?>
                                         
                                         <?php if ($i_TienNghi < $listTienNghiCount) { ?>                                            
                                         <label class="my-container">
                                             <?php 
-                                            echo($listTienNghi[$i_TienNghi]->TenTienNghi);
-                                            $i_TienNghi++;
+                                                echo($listTienNghi[$i_TienNghi]->TenTienNghi);
+                                                $i_TienNghi++;
                                             ?>
                                             <input type="checkbox" 
                                                    value="<?php echo($listTienNghi[$i_TienNghi]->MaTienNghi); ?>"

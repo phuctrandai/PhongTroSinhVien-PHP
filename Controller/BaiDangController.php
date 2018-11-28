@@ -2,6 +2,7 @@
 session_start();
 
 require_once '../Dao/BaiDangDao.php';
+require_once '../Dao/PhongTroDao.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     doPost();
@@ -17,7 +18,7 @@ function doGet() {
     $command = $_REQUEST['command'];
     
     if($command == 'post') {
-        if(isset($_SESSION['TaiKhoan'])) {
+        if(isset($_SESSION['TenTaiKhoan'])) {
             header("Location: ../Webcontent/post.php");
         } else {
             $_SESSION['prevCommand'] = 'post';
@@ -50,12 +51,34 @@ function xemBaiDang($maBaiDang) {
 }
 
 function luuBaiDang() {
-    /*@var $TaiKhoan TaiKhoan*/
+    
     $TenTaiKhoan = $_SESSION['TenTaiKhoan'];
     $TieuDe = $_REQUEST['tieuDe'];
     $MoTa = $_REQUEST['moTa'];
     $ThoiGianDang = date("Y-m-d");
     
     $baiDangDao = new BaiDangDao();
-    $baiDangDao->luuBaiDang($TieuDe, $ThoiGianDang, $MoTa, $TenTaiKhoan);
+    $result = $baiDangDao->luuBaiDang($TieuDe, $ThoiGianDang, $MoTa, $TenTaiKhoan);
+    if($result) {
+        luuPhongTro($TenTaiKhoan);
+    }
+}
+
+function luuPhongTro($TenTaiKhoan) {
+    $SoLuongPhong = $_REQUEST['soLuongPhong'];
+    $SoPhongTrong = $_REQUEST['soPhongTrong'];
+    $SoNguoiToiDa = $_REQUEST['soNguoiToiDa'];
+    $GiaPhong = $_REQUEST['giaPhong'];
+    $DienTich = $_REQUEST['dienTich'];
+    $ChoTuQuan = $_REQUEST['choTuQuan'];
+    $MaLoaiPhong = $_REQUEST['loaiPhong'];
+    $MaKhuVuc = $_REQUEST['khuVuc'];
+    $MaQuanHuyen = $_REQUEST['quanHuyen'];
+    
+    $phongTroDao = new PhongTroDao();
+    $phongTroDao->luuThongTin(
+            $SoLuongPhong, $SoPhongTrong, $SoNguoiToiDa, 
+            $GiaPhong, $DienTich, $ChoTuQuan, 
+            $MaLoaiPhong, $MaKhuVuc, $MaQuanHuyen, 
+            $TenTaiKhoan);
 }

@@ -2,10 +2,10 @@
 <?php
 session_start();
 
-require_once './Dao/BaiDangDao.php';
-require_once './Dao/PhongTroDao.php';
-require_once './Dao/TienNghiDao.php';
-require_once './Dao/MoiTruongDao.php';
+require_once '../Dao/BaiDangDao.php';
+require_once '../Dao/PhongTroDao.php';
+require_once '../Dao/TienNghiDao.php';
+require_once '../Dao/MoiTruongDao.php';
 
 $phongTroDao = new PhongTroDao();
 $baiDangDao = new BaiDangDao();
@@ -191,5 +191,6 @@ $choTuQuan = $phongTro->ChoTuQuan == 1 ? ' - tự quản' : '';
         </script>
 
         <script src="https://maps.googleapis.com/maps/api/js?key=1&callback=myMap"></script>
+        <script src="js/single-post.js"></script>
     </body>
 </html>

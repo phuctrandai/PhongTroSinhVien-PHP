@@ -105,20 +105,20 @@ class BaiDangDao {
     }
 
     function luuBaiDang($TieuDe, $ThoiGianDang, $MoTa, $TenTaiKhoan) {
-        /*@var $link mysqli*/
         $link = mysqli_connect('localhost', 'root', '', 'PhongTroSinhVien');
         mysqli_set_charset($link, 'utf8');
         
         $sql = "INSERT INTO `BaiDang`(`TieuDe`, `ThoiGianDang`, `MoTa`, `LuotXem`, `TenTaiKhoan`) "
                 . "VALUES (?, '{$ThoiGianDang}', ?, 0, '{$TenTaiKhoan}')";
-        /*@var $stmt mysqli_stmt*/
         $stmt = $link->prepare($sql);
         $stmt->bind_param("ss", $TieuDe, $MoTa);
-        $stmt->execute();
+        $result = $stmt->execute();
+        
         $stmt->close();
         mysqli_close($link);
-        echo 'Luu hoan tat';
-        return 0;
+                
+        echo 'Luu bai dang hoan tat';
+        return $result;
     }
 
 }

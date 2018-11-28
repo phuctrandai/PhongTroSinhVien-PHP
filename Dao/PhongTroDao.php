@@ -6,7 +6,7 @@
  * and open the template in the editor.
  */
 
-require_once './Model/PhongTro.php';
+require_once '../Model/PhongTro.php';
 
 class PhongTroDao {
     public function __construct() {
@@ -33,5 +33,29 @@ class PhongTroDao {
                 return $p;
             } $result->close();
         } return null;
+    }
+    
+    public function luuThongTin($SoLuongPhong, $SoPhongTrong, $SoNguoiToiDa, $GiaPhong, 
+        $DienTich, $ChoTuQuan, $MaLoaiPhong, $MaKhuVuc, $MaQuanHuyen, $TenTaiKhoan) {
+        
+        $connect = mysqli_connect('localhost', 'root', '', 'PhongTroSinhVien');
+        mysqli_set_charset($connect, 'utf8');
+        
+        $sql = "INSERT INTO `PhongTro`"
+                . "(`SoLuongPhong`, `SoPhongTrong`, "
+                . "`SoNguoiToiDa`, `GiaPhong`, "
+                . "`DienTich`, `ChoTuQuan`, "
+                . "`MaLoaiPhong`, `MaKhuVuc`, "
+                . "`MaQuanHuyen`, `TenTaiKhoan`) "
+                . "VALUES("
+                . "{$SoLuongPhong}, {$SoPhongTrong},"
+                . "{$SoNguoiToiDa}, {$GiaPhong},"
+                . "{$DienTich}, {$ChoTuQuan},"
+                . "{$MaLoaiPhong}, {$MaKhuVuc},"
+                . "{$MaQuanHuyen}, '{$TenTaiKhoan}')";
+        $stmt = $connect->prepare($sql);
+        $stmt->execute();
+        $stmt->close();
+        $connect->close();
     }
 }
