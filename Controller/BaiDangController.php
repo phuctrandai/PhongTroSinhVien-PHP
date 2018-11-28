@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-require_once './Dao/BaiDangDao.php';
+require_once '../Dao/BaiDangDao.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     doPost();
@@ -18,11 +18,11 @@ function doGet() {
     
     if($command == 'post') {
         if(isset($_SESSION['TaiKhoan'])) {
-            header("Location: ../post.php");
+            header("Location: ../Webcontent/post.php");
         } else {
             $_SESSION['prevCommand'] = 'post';
             $_SESSION['yeuCauDangBai'] = true;
-            header("Location: ../login.php");
+            header("Location: ../Webcontent/login.php");
         }
         return;
     }
@@ -34,9 +34,8 @@ function doGet() {
         xemBaiDang($_REQUEST["single-post"]);
         return;
     }
-    
     //
-    header("Location: ../index.php");
+    header("Location: ../Webcontent/index.php");
 }
 
 function xemBaiDang($maBaiDang) {
@@ -47,7 +46,7 @@ function xemBaiDang($maBaiDang) {
     
     $_SESSION['maBaiDang'] = $maBaiDang;
     $_SESSION['maPhong'] = $maPhong;
-    header("Location: ../single-post.php");
+    header("Location: ../Webcontent/single-post.php");
 }
 
 function luuBaiDang() {

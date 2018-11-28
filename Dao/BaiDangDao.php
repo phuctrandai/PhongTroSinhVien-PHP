@@ -1,6 +1,6 @@
 <?php
 
-require_once './Model/BaiDang.php';
+include_once '../Model/BaiDang.php';
 
 class BaiDangDao {
 

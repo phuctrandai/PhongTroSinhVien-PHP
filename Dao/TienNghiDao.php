@@ -1,6 +1,6 @@
 <?php
 
-include './Model/TienNghi.php';
+require_once '../Model/TienNghi.php';
 
 class TienNghiDao {
 

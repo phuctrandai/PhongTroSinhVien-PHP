@@ -6,7 +6,7 @@
  * and open the template in the editor.
  */
 
-include './Model/PhongTro.php';
+require_once './Model/PhongTro.php';
 
 class PhongTroDao {
     public function __construct() {

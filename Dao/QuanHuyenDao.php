@@ -1,6 +1,6 @@
 <?php
 
-include './Model/QuanHuyen.php';
+require_once '../Model/QuanHuyen.php';
 
 class QuanHuyenDao {
     public function __construct() { }

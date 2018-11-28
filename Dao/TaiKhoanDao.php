@@ -1,5 +1,7 @@
 <?php
+
 require_once '../Model/TaiKhoan.php';
+
 class TaiKhoanDao {
     //put your code here
     function AddTaiKhoan($TenTaiKhoan, $MatKhau, $MaLoaiTaiKhoan, $HoTen, $GioiTinh){

@@ -1,9 +1,9 @@
 <?php
 session_start();
 
-require_once './Dao/BaiDangDao.php';
-require_once './Dao/TienNghiDao.php';
-require_once './Dao/MoiTruongDao.php';
+require_once '../Dao/BaiDangDao.php';
+require_once '../Dao/TienNghiDao.php';
+require_once '../Dao/MoiTruongDao.php';
 
 
 $baiDangDao = new BaiDangDao();

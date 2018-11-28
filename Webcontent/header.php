@@ -1,5 +1,5 @@
 <?php
-require_once './Model/TaiKhoan.php';
+require_once '../Model/TaiKhoan.php';
 
     $taiKhoan = NULL;
     $loaiTaiKhoan = -1;
@@ -41,7 +41,7 @@ require_once './Model/TaiKhoan.php';
                                 <!-- Chua dang nhap -->
                                 <?php if($loaiTaiKhoan == -1) {?>
                                 <li>
-                                    <a href="Controller/BaiDangController.php?command=post">Đăng tin</a>
+                                    <a href="../Controller/BaiDangController.php?command=post">Đăng tin</a>
                                 </li>
                                 <li>
                                     <a href="#">Tin tức</a>
@@ -56,7 +56,7 @@ require_once './Model/TaiKhoan.php';
                                 <!-- Danh nhap voi vai tro chu tro -->
                                 <?php } else if($loaiTaiKhoan == 1) {?>
                                 <li>
-                                    <a href="Controller/BaiDangController.php?command=post">Đăng tin</a>
+                                    <a href="../Controller/BaiDangController.php?command=post">Đăng tin</a>
                                 </li>
                                 <li>
                                     <a href="#">Tin tức</a>
@@ -68,7 +68,7 @@ require_once './Model/TaiKhoan.php';
                                     <a href="">Tài khoản</a>
                                 </li>
                                 <li>
-                                    <a href="Controller/TaiKhoanController.php?command=logout">Đăng xuất</a>
+                                    <a href="../Controller/TaiKhoanController.php?command=logout">Đăng xuất</a>
                                 </li>
                                 
                                 <!-- Dang nhap voi vai tro nguoi tim tro -->
@@ -80,7 +80,7 @@ require_once './Model/TaiKhoan.php';
                                     <a href="">Tài khoản</a>
                                 </li>
                                 <li>
-                                    <a href="Controller/TaiKhoanController.php?command=logout">Đăng xuất</a>
+                                    <a href="../Controller/TaiKhoanController.php?command=logout">Đăng xuất</a>
                                 </li>
                                 <?php } ?>
                             </ul>

@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once './Dao/TaiKhoanDao.php';
+require_once '../Dao/TaiKhoanDao.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     doPost();
@@ -34,29 +34,28 @@ function doGet() {
         $taiKhoan = $taiKhoanDao->GetTaiKhoan($TenTaiKhoan, $MatKhau, $MaLoaiTaiKhoan);
         if($taiKhoan == null) {
             $_SESSION['LoginFail'] = 1;
-            header("Location: ../login.php");
+            header("Location: ../Webcontent/login.php");
             return;
         }
         $_SESSION['TenTaiKhoan'] = $taiKhoan->TenTaiKhoan;
         $_SESSION['LoaiTaiKhoan'] = $taiKhoan->LoaiTaiKhoan;
-        dieuHuong();
-        return;
+        if(isset($_SESSION['prevCommand'])) {
+            dieuHuong();
+            return;
+        }
     }
     else if($command == 'logout') {
         $_SESSION = array();
     }
-    header("Location: ../index.php");
+    header("Location: ../Webcontent/index.php");
 }
 
-function dieuHuong() {
-    if(isset($_SESSION['prevCommand'])) {
-        
-        switch ($_SESSION['prevCommand']) {
-        case 'post':
-            header("Location: ../post.php");
-            break;
-        default:
-            break;
-        }
+function dieuHuong() {    
+    switch ($_SESSION['prevCommand']) {
+    case 'post':
+        header("Location: ../Webcontent/post.php");
+        break;
+    default:
+        break;
     }
 }

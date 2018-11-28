@@ -1,6 +1,6 @@
 <?php
 
-require_once './Model/MoiTruong.php';
+require_once '../Model/MoiTruong.php';
 
 class MoiTruongDao {
     public function __construct() { }

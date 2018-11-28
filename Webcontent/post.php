@@ -1,11 +1,11 @@
 <?php
 session_start();
 
-include './Dao/TienNghiDao.php';
-include './Dao/QuanHuyenDao.php';
-include './Dao/KhuVucDao.php';
-include './Dao/MoiTruongDao.php';
-include './Dao/LoaiPhongDao.php';
+require_once '../Dao/TienNghiDao.php';
+require_once '../Dao/QuanHuyenDao.php';
+require_once '../Dao/KhuVucDao.php';
+require_once '../Dao/MoiTruongDao.php';
+require_once '../Dao/LoaiPhongDao.php';
 
 $tienNghiDao = new TienNghiDao();
 $listTienNghi = $tienNghiDao->getTienNghi();
@@ -47,7 +47,7 @@ $listLoaiPhong = $loaiPhongDao->getLoaiPhong();
 
         <div class="w-75 ml-auto mr-auto mb-100">
             <h4 class="mb-30 mt-30">Đăng tin mới</h4>
-            <form action="Controller/BaiDangController.php" method="post" class="form">
+            <form action="../Controller/BaiDangController.php" method="post" class="form">
                 <input type="hidden" name="command" value="submitPost">
                 <div class="row">
                     <div class="col-12">
