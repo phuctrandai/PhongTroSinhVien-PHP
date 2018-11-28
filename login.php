@@ -24,7 +24,13 @@
             <form class="form" action="Controller/TaiKhoanController.php" method="POST">
                 <input type="hidden" name="command" value="login">
                 <div class="form-group card-header">
-                    <h4 class="text-center">Đăng nhập</h4>
+                    <?php if(isset($_SESSION['yeuCauDangBai']) && $_SESSION['yeuCauDangBai'] == true) { ?>
+                        <h4 class="text-center">Đăng nhập để đăng tin</h4>
+                    <?php 
+                        $_SESSION['yeuCauDangBai'] = false;
+                    } else { ?>
+                        <h4 class="text-center">Đăng nhập</h4>
+                    <?php } ?>
                 </div>
                 <div class="card-body">
                     <div class="form-group">

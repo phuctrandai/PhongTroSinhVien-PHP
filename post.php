@@ -47,23 +47,38 @@ $listLoaiPhong = $loaiPhongDao->getLoaiPhong();
 
         <div class="w-75 ml-auto mr-auto mb-100">
             <h4 class="mb-30 mt-30">Đăng tin mới</h4>
-            <form action="#" method="post" class="form">
+            <form action="Controller/BaiDangController.php" method="post" class="form">
+                <input type="hidden" name="command" value="submitPost">
                 <div class="row">
                     <div class="col-12">
                         <div class="form-group">
-                            <label for="tieuDe">Tiêu đề<sub><span style="color: red; font-size: 24px">*</span></sub></label>
-                            <input type="text" class="form-control" id="tieuDe" placeholder="Tiêu đề bài đăng..." required="">
+                            <label for="tieuDe">
+                                Tiêu đề
+                                <sub>
+                                    <span style="color: red; font-size: 24px">
+                                        *
+                                    </span>
+                                </sub>
+                            </label>
+                            <input type="text" class="form-control" 
+                                   id="tieuDe" name="tieuDe"
+                                   placeholder="Tiêu đề bài đăng..." required>
                         </div>
                     </div>
 
                     <div class="col-lg-4">
                         <div class="form-group">
-                            <label for="loaiPhong">Loại phòng</label>
+                            <label for="loaiPhong">
+                                Loại phòng
+                            </label>
                             <select name="loaiPhong" class="form-control">
-                                <?php foreach ($listLoaiPhong as $loaiPhong) /* @var $loaiPhong LoaiPhong*/ { ?>
-                                <option value="<?php echo($loaiPhong->MaLoaiPhong); ?>">
-                                    <?php echo($loaiPhong->TenLoaiPhong); ?>
-                                </option>                                    
+                                <?php
+                                foreach ($listLoaiPhong as $loaiPhong)
+                                /* @var $loaiPhong LoaiPhong */ {
+                                    ?>
+                                    <option value="<?php echo($loaiPhong->MaLoaiPhong); ?>">
+                                        <?php echo($loaiPhong->TenLoaiPhong); ?>
+                                    </option>                                    
                                 <?php } ?>
                             </select>
                         </div>
@@ -72,34 +87,46 @@ $listLoaiPhong = $loaiPhongDao->getLoaiPhong();
                     <div class="col-lg-4">
                         <div class="form-group">
                             <label for="soLuongPhong">Số lượng phòng</label>
-                            <input type="number" class="form-control" name="soLuongPhong" id="soLuongPhong" value="1" min="1">
+                            <input type="number" class="form-control" 
+                                   name="soLuongPhong" id="soLuongPhong" 
+                                   value="1" min="1">
                         </div>
                     </div>
                     <div class="col-lg-4">
                         <div class="form-group">
                             <label for="soPhongTronh">Số phòng trống</label>
-                            <input type="number" class="form-control" name="soPhongTronh" id="soPhongTronh" value="1" min="1">
+                            <input type="number" class="form-control" 
+                                   name="soPhongTronh" id="soPhongTronh" 
+                                   value="1" min="1">
                         </div>
                     </div>
 
                     <div class="col-lg-4">
                         <div class="form-group">
                             <label for="giaPhong">Giá phòng (VND)</label>
-                            <input type="number" class="form-control" name="giaPhong" id="giaPhong" value="10000" min="10000">
+                            <input type="number" class="form-control" 
+                                   name="giaPhong" id="giaPhong" 
+                                   value="10000" min="10000">
                         </div>
                     </div>
 
                     <div class="col-lg-4">
                         <div class="form-group">
-                            <label for="dienTich">Diện tích (m<sup>2</sup>)</label>
-                            <input type="number" class="form-control" name="dienTich" id="dienTich" value="1" min="1">
+                            <label for="dienTich">
+                                Diện tích (m<sup>2</sup>)
+                            </label>
+                            <input type="number" class="form-control" 
+                                   name="dienTich" id="dienTich" 
+                                   value="1" min="1">
                         </div>
                     </div>
 
                     <div class="col-lg-4">
                         <div class="form-group">
                             <label for="soNguoiToiDa">Số người tối đa</label>
-                            <input type="number" class="form-control" name="soNguoiToiDa" id="soNguoiToiDa" value="1" min="1">
+                            <input type="number" class="form-control" 
+                                   name="soNguoiToiDa" id="soNguoiToiDa" 
+                                   value="1" min="1">
                         </div>
                     </div>
 
@@ -117,10 +144,13 @@ $listLoaiPhong = $loaiPhongDao->getLoaiPhong();
                         <div class="form-group">
                             <label for="quanHuyen">Quận/Huyện</label>
                             <select name="quanHuyen" class="form-control">
-                                <?php foreach ($listQuanHuyen as $quanHuyen) /* @var $quanHuyen QuanHuyen*/ { ?>
-                                <option value="<?php echo($quanHuyen->MaQuanHuyen); ?>">
-                                    <?php echo($quanHuyen->TenQuanHuyen); ?>
-                                </option>                                    
+                                <?php
+                                foreach ($listQuanHuyen as $quanHuyen)
+                                /* @var $quanHuyen QuanHuyen */ {
+                                    ?>
+                                    <option value="<?php echo($quanHuyen->MaQuanHuyen); ?>">
+                                        <?php echo($quanHuyen->TenQuanHuyen); ?>
+                                    </option>                                    
                                 <?php } ?>
                             </select>
                         </div>
@@ -130,10 +160,13 @@ $listLoaiPhong = $loaiPhongDao->getLoaiPhong();
                         <div class="form-group">
                             <label for="khuVuc">Khu vực</label>
                             <select name="khuVuc" class="form-control">
-                                <?php foreach ($listKhuVuc as $khuVuc) /* @var $khuVuc KhuVuc*/ { ?>
-                                <option value="<?php echo($khuVuc->MaKhuVuc); ?>">
-                                    <?php echo($khuVuc->TenKhuVuc); ?>
-                                </option>                                    
+                                <?php
+                                foreach ($listKhuVuc as $khuVuc)
+                                /* @var $khuVuc KhuVuc */ {
+                                    ?>
+                                    <option value="<?php echo($khuVuc->MaKhuVuc); ?>">
+                                        <?php echo($khuVuc->TenKhuVuc); ?>
+                                    </option>                                    
                                 <?php } ?>
                             </select>
                         </div>
@@ -144,32 +177,51 @@ $listLoaiPhong = $loaiPhongDao->getLoaiPhong();
                             <label for="tienNghi">Tiện nghi</label>
                             <div class="card card-body">
                                 <div class="row">
-                                    <?php 
+                                    <?php
                                     $listTienNghiCount = count($listTienNghi);
-                                    for ($i_TienNghi = 0 ; $i_TienNghi < $listTienNghiCount ; ) { ?>
-                                        <div class="col-lg-4">
-                                            <?php if($i_TienNghi < $listTienNghiCount) { ?>
-                                            <label class="my-container"><?php echo($listTienNghi[$i_TienNghi]->TenTienNghi); $i_TienNghi++;?>
-                                                <input type="checkbox" value="<?php echo($listTienNghi[$i_TienNghi]->MaTienNghi); ?>"
-                                                       name="<?php echo($listTienNghi[$i_TienNghi]->TenTienNghi); ?>">
-                                                <span class="my-checkmark"></span>
-                                            </label>
-                                            <?php } ?>
+                                    
+                                    for ($i_TienNghi = 0; $i_TienNghi < $listTienNghiCount;) { ?>
+                                        
+                                    <div class="col-lg-4">
                                             
-                                            <?php if($i_TienNghi < $listTienNghiCount) { ?>                                            
-                                            <label class="my-container"><?php echo($listTienNghi[$i_TienNghi]->TenTienNghi); $i_TienNghi++;?>
-                                                <input type="checkbox" value="<?php echo($listTienNghi[$i_TienNghi]->MaTienNghi); ?>"
-                                                       name="<?php echo($listTienNghi[$i_TienNghi]->TenTienNghi); ?>">
-                                                <span class="my-checkmark"></span>
-                                            </label>
+                                        <?php if ($i_TienNghi < $listTienNghiCount) { ?>
+                                                
+                                        <label class="my-container">
+                                            <?php 
+                                            echo($listTienNghi[$i_TienNghi]->TenTienNghi);
+                                            $i_TienNghi++;
+                                            ?>
+                                            <input type="checkbox" 
+                                                   value="<?php echo($listTienNghi[$i_TienNghi]->MaTienNghi); ?>"
+                                                   name="<?php echo($listTienNghi[$i_TienNghi]->TenTienNghi); ?>">
+                                            <span class="my-checkmark"></span>
+                                        </label>
                                             <?php } ?>
-                                            
-                                            <?php if($i_TienNghi < $listTienNghiCount) { ?>                                            
-                                            <label class="my-container"><?php echo($listTienNghi[$i_TienNghi]->TenTienNghi); $i_TienNghi++;?>
-                                                <input type="checkbox" value="<?php echo($listTienNghi[$i_TienNghi]->MaTienNghi); ?>"
-                                                       name="<?php echo($listTienNghi[$i_TienNghi]->TenTienNghi); ?>">
-                                                <span class="my-checkmark"></span>
-                                            </label>
+                                        
+                                        <?php if ($i_TienNghi < $listTienNghiCount) { ?>                                            
+                                        <label class="my-container">
+                                            <?php 
+                                            echo($listTienNghi[$i_TienNghi]->TenTienNghi);
+                                            $i_TienNghi++;
+                                            ?>
+                                            <input type="checkbox" 
+                                                   value="<?php echo($listTienNghi[$i_TienNghi]->MaTienNghi); ?>"
+                                                   name="<?php echo($listTienNghi[$i_TienNghi]->TenTienNghi); ?>">
+                                            <span class="my-checkmark"></span>
+                                        </label>
+                                            <?php } ?>
+
+                                        <?php if ($i_TienNghi < $listTienNghiCount) { ?>                                            
+                                        <label class="my-container">
+                                            <?php
+                                            echo($listTienNghi[$i_TienNghi]->TenTienNghi);
+                                            $i_TienNghi++;
+                                            ?>
+                                            <input type="checkbox" 
+                                                   value="<?php echo($listTienNghi[$i_TienNghi]->MaTienNghi); ?>"
+                                                   name="<?php echo($listTienNghi[$i_TienNghi]->TenTienNghi); ?>">
+                                            <span class="my-checkmark"></span>
+                                        </label>
                                             <?php } ?>
                                         </div>
                                     <?php } ?>
@@ -183,35 +235,53 @@ $listLoaiPhong = $loaiPhongDao->getLoaiPhong();
                             <label for="moiTruong">Môi trường xung quanh</label>
                             <div class="card card-body">
                                 <div class="row">
-                                    <?php 
+                                    <?php
                                     $listMoiTruongCount = count($listMoiTruong);
-                                    for ($i_MoiTruong = 0 ; $i_MoiTruong < $listMoiTruongCount ; ) { ?>
-                                        <div class="col-lg-4">
-                                            <?php if($i_MoiTruong < $listMoiTruongCount) { ?>
-                                            <label class="my-container"><?php echo($listMoiTruong[$i_MoiTruong]->TenMoiTruong); $i_MoiTruong++;?>
-                                                <input type="checkbox" value="<?php echo($listMoiTruong[$i_MoiTruong]->MaMoiTruong); ?>"
-                                                       name="<?php echo($listMoiTruong[$i_MoiTruong]->TenMoiTruong); ?>">
-                                                <span class="my-checkmark"></span>
-                                            </label>
-                                            <?php } ?>
-                                            
-                                            <?php if($i_MoiTruong < $listMoiTruongCount) { ?>                                            
-                                            <label class="my-container"><?php echo($listMoiTruong[$i_MoiTruong]->TenMoiTruong); $i_MoiTruong++;?>
-                                                <input type="checkbox" value="<?php echo($listMoiTruong[$i_MoiTruong]->MaMoiTruong); ?>"
-                                                       name="<?php echo($listMoiTruong[$i_MoiTruong]->TenMoiTruong); ?>">
-                                                <span class="my-checkmark"></span>
-                                            </label>
-                                            <?php } ?>
-                                            
-                                            <?php if($i_MoiTruong < $listMoiTruongCount) { ?>                                            
-                                            <label class="my-container"><?php echo($listMoiTruong[$i_MoiTruong]->TenMoiTruong); $i_TienNghi++;?>
-                                                <input type="checkbox" value="<?php echo($listMoiTruong[$i_MoiTruong]->MaMoiTruong); ?>"
-                                                       name="<?php echo($listMoiTruong[$i_MoiTruong]->TenMoiTruong); ?>">
-                                                <span class="my-checkmark"></span>
-                                            </label>
-                                            <?php } ?>
-                                        </div>
+                                    for ($i_MoiTruong = 0; $i_MoiTruong < $listMoiTruongCount;) { ?>
+                                        
+                                    <div class="col-lg-4">
+                                        
+                                    <?php if ($i_MoiTruong < $listMoiTruongCount) { ?>
+                                                
+                                        <label class="my-container">
+                                            <?php
+                                            echo($listMoiTruong[$i_MoiTruong]->TenMoiTruong);
+                                            $i_MoiTruong++;
+                                            ?>
+                                            <input type="checkbox" 
+                                                   value="<?php echo($listMoiTruong[$i_MoiTruong]->MaMoiTruong); ?>"
+                                                   name="<?php echo($listMoiTruong[$i_MoiTruong]->TenMoiTruong); ?>">
+                                            <span class="my-checkmark"></span>
+                                        </label>
                                     <?php } ?>
+
+                                    <?php if ($i_MoiTruong < $listMoiTruongCount) { ?>                                            
+                                        <label class="my-container">
+                                            <?php
+                                            echo($listMoiTruong[$i_MoiTruong]->TenMoiTruong);
+                                            $i_MoiTruong++;
+                                            ?>
+                                            <input type="checkbox" 
+                                                   value="<?php echo($listMoiTruong[$i_MoiTruong]->MaMoiTruong); ?>"
+                                                   name="<?php echo($listMoiTruong[$i_MoiTruong]->TenMoiTruong); ?>">
+                                            <span class="my-checkmark"></span>
+                                        </label>
+                                    <?php } ?>
+
+                                    <?php if ($i_MoiTruong < $listMoiTruongCount) { ?>                                            
+                                        <label class="my-container">
+                                            <?php
+                                            echo($listMoiTruong[$i_MoiTruong]->TenMoiTruong);
+                                            $i_TienNghi++;
+                                            ?>
+                                            <input type="checkbox" 
+                                                   value="<?php echo($listMoiTruong[$i_MoiTruong]->MaMoiTruong); ?>"
+                                                   name="<?php echo($listMoiTruong[$i_MoiTruong]->TenMoiTruong); ?>">
+                                            <span class="my-checkmark"></span>
+                                        </label>
+                                    <?php } ?>
+                                    </div>
+                                <?php } ?>
                                 </div>
                             </div>
                         </div>
@@ -230,7 +300,7 @@ $listLoaiPhong = $loaiPhongDao->getLoaiPhong();
             </form>
         </div>
 
-        <?php include_once './footer.php'; ?>
+<?php include_once './footer.php'; ?>
 
         <!-- ##### All Javascript Script ##### -->
         <!-- jQuery-2.2.4 js -->

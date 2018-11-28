@@ -15,7 +15,6 @@ class PhongTroDao {
     public function getThongTin($maPhong) {
         $connect = mysqli_connect('localhost', 'root', '', 'PhongTroSinhVien');
         mysqli_set_charset($connect, 'utf8');
-        
         $sql = "SELECT *, KhuVuc.TenKhuVuc, QuanHuyen.TenQuanHuyen, LoaiPhong.TenLoaiPhong FROM PhongTro JOIN KhuVuc ON PhongTro.MaKhuVuc = KhuVuc.MaKhuVuc JOIN QuanHuyen ON QuanHuyen.MaQuanHuyen = PhongTro.MaQuanHuyen JOIN LoaiPhong ON LoaiPhong.MaLoaiPhong = PhongTro.MaLoaiPhong WHERE PhongTro.MaPhong = {$maPhong}";
         $result = $connect->query($sql);
         if ($result->num_rows > 0) {
@@ -32,9 +31,7 @@ class PhongTroDao {
                         $row['TenQuanHuyen'],
                         $row['TenTaiKhoan']);
                 return $p;
-            }
-            $result->close();
-        }
-        return null;
+            } $result->close();
+        } return null;
     }
 }

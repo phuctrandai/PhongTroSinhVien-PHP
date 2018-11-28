@@ -4,9 +4,9 @@ require_once './Model/TaiKhoan.php';
     $taiKhoan = NULL;
     $loaiTaiKhoan = -1;
 
-    if(isset($_SESSION['TaiKhoan'])) {
-        $taiKhoan = unserialize($_SESSION['TaiKhoan']);
-        $loaiTaiKhoan = $taiKhoan->LoaiTaiKhoan;
+    if(isset($_SESSION['TenTaiKhoan'])) {
+        $tenTaiKhoan = $_SESSION['TenTaiKhoan'];
+        $loaiTaiKhoan = $_SESSION['LoaiTaiKhoan'];
     }
 ?>
 

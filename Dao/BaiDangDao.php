@@ -1,6 +1,6 @@
 <?php
 
-include_once './Model/BaiDang.php';
+require_once './Model/BaiDang.php';
 
 class BaiDangDao {
 
@@ -14,16 +14,16 @@ class BaiDangDao {
         $rs = array();
         $i = 0;
         $sql = "SELECT * FROM ViewBaiDang ORDER BY ViewBaiDang.ThoiGianDang DESC LIMIT 8";
-        $querry = mysqli_query($connect, $sql);
-        $num = mysqli_num_rows($querry);
+        $result = mysqli_query($connect, $sql);
+        $num = mysqli_num_rows($result);
         if ($num > 0) {
-            while ($row = mysqli_fetch_array($querry)) {
+            while ($row = mysqli_fetch_array($result)) {
                 $rs[$i] = new BaiDang($row['HoTen'], $row['TieuDe'], $row['ThoiGianDang'], $row['DuongDan']);
                 $rs[$i]->MaBaiDang = $row['MaBaiDang'];
                 $rs[$i]->MaPhong = $row['MaPhong'];
                 $i++;
             }
-        }
+        } $result->close();
         mysqli_close($connect);
         return $rs;
     }
@@ -46,7 +46,7 @@ class BaiDangDao {
                 $list[$i]->MaPhong = $row['MaPhong'];
                 $i++;
             }
-        }
+        } $result->close();
         mysqli_close($connect);
         return $list;
     }
@@ -59,16 +59,16 @@ class BaiDangDao {
         $i = 0;
         $sql = "SELECT * FROM ViewBaiDang WHERE MONTH(ViewBaiDang.ThoiGianDang) = MONTH(CURRENT_DATE) LIMIT 6";
 
-        $querry = mysqli_query($connect, $sql);
-        $num = mysqli_num_rows($querry);
+        $result = mysqli_query($connect, $sql);
+        $num = mysqli_num_rows($result);
         if ($num > 0) {
-            while ($row = mysqli_fetch_array($querry)) {
+            while ($row = mysqli_fetch_array($result)) {
                 $rs[$i] = new BaiDang($row['HoTen'], $row['TieuDe'], $row['ThoiGianDang'], $row['DuongDan']);
                 $rs[$i]->MaBaiDang = $row['MaBaiDang'];
                 $rs[$i]->MaPhong = $row['MaPhong'];
                 $i++;
             }
-        }
+        } $result->close();
         mysqli_close($connect);
         return $rs;
     }
@@ -82,12 +82,13 @@ class BaiDangDao {
         $stmt->bind_param("i", $maBaiDang);
         $stmt->execute();
         $stmt->close();
+        mysqli_close($connect);
     }
-    
+
     function getThongTin($maBaiDang) {
         $connect = mysqli_connect('localhost', 'root', '', 'PhongTroSinhVien');
         mysqli_set_charset($connect, 'utf8');
-        
+
         $sql = "SELECT * FROM ViewBaiDang WHERE MaBaiDang = {$maBaiDang}";
 
         $result = $connect->query($sql);
@@ -99,7 +100,25 @@ class BaiDangDao {
                 return $rs;
             }
             $result->close();
-        }
+        } mysqli_close($connect);
         return null;
     }
+
+    function luuBaiDang($TieuDe, $ThoiGianDang, $MoTa, $TenTaiKhoan) {
+        /*@var $link mysqli*/
+        $link = mysqli_connect('localhost', 'root', '', 'PhongTroSinhVien');
+        mysqli_set_charset($link, 'utf8');
+        
+        $sql = "INSERT INTO `BaiDang`(`TieuDe`, `ThoiGianDang`, `MoTa`, `LuotXem`, `TenTaiKhoan`) "
+                . "VALUES (?, '{$ThoiGianDang}', ?, 0, '{$TenTaiKhoan}')";
+        /*@var $stmt mysqli_stmt*/
+        $stmt = $link->prepare($sql);
+        $stmt->bind_param("ss", $TieuDe, $MoTa);
+        $stmt->execute();
+        $stmt->close();
+        mysqli_close($link);
+        echo 'Luu hoan tat';
+        return 0;
+    }
+
 }
