@@ -10,21 +10,6 @@ class QuanHuyen {
         $this->TenQuanHuyen = $TenQuanHuyen;
     }
     
-    function getMaQuanHuyen() {
-        return $this->MaQuanHuyen;
-    }
-
-    function getTenQuanHUyen() {
-        return $this->TenQuanHUyen;
-    }
-
-    function setMaQuanHuyen($MaQuanHuyen) {
-        $this->MaQuanHuyen = $MaQuanHuyen;
-    }
-
-    function setTenQuanHUyen($TenQuanHUyen) {
-        $this->TenQuanHUyen = $TenQuanHUyen;
-    }
 
 
 

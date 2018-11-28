@@ -14,22 +14,7 @@
 class MoiTruong {
     var $MaMoiTruong;
     var $TenMoiTruong;
-    function getMaMoiTruong() {
-        return $this->MaMoiTruong;
-    }
-
-    function getTenMoiTruong() {
-        return $this->TenMoiTruong;
-    }
-
-    function setMaMoiTruong($MaMoiTruong) {
-        $this->MaMoiTruong = $MaMoiTruong;
-    }
-
-    function setTenMoiTruong($TenMoiTruong) {
-        $this->TenMoiTruong = $TenMoiTruong;
-    }
-
+    
     function __construct($MaMoiTruong, $TenMoiTruong) {
         $this->MaMoiTruong = $MaMoiTruong;
         $this->TenMoiTruong = $TenMoiTruong;

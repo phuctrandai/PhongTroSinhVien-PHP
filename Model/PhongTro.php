@@ -14,6 +14,7 @@ class PhongTro{
     
     function __construct($MaPhong, $SoLuongPhong, $SoPhongTrong, $SoNguoiToiDa, $GiaPhong, 
             $DienTich, $ChoTuQuan, $TenLoaiPhong, $TenKhuVuc, $TenQuanHuyen, $TenTaiKhoan) {
+
         $this->MaPhong = $MaPhong;
         $this->SoLuongPhong = $SoLuongPhong;
         $this->SoPhongTrong = $SoPhongTrong;
