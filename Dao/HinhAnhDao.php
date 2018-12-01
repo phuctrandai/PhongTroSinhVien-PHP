@@ -1,5 +1,6 @@
 <?php
 
+
 require_once '../Model/HinhAnh.php';
 
 class HinhAnhDao {
@@ -41,6 +42,17 @@ class HinhAnhDao {
         $result->close();
         mysqli_close($connect);
         return $rs;
+    }
+
+    public function luuHinhAnh($DuongDan, $MaBaiDang) {
+        $link = mysqli_connect('localhost', 'root', '', 'PhongTroSinhVien');
+        mysqli_set_charset($link, 'utf8');
+        
+        $sql = NSERT INTO `HinhAnh`(`DuongDan`, `MaBaiDang`) VALUES(?,?)';
+        $stmt = $link->prepare($sql);
+        $stmt->bind_param("ss", $DuongDan, $MaBaiDang);
+        $stmt->execute();
+        $link->close();
     }
 
 }
