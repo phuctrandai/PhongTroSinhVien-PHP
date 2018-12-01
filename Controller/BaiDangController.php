@@ -14,15 +14,48 @@ function doPost() {
 }
 
 function doGet() {
-    getBaiDang();
+    $command = $_REQUEST['command'];
+    
+    if($command == 'post') {
+        if(isset($_SESSION['TaiKhoan'])) {
+            header("Location: ../Webcontent/post.php");
+        } else {
+            $_SESSION['prevCommand'] = 'post';
+            $_SESSION['yeuCauDangBai'] = true;
+            header("Location: ../Webcontent/login.php");
+        }
+        return;
+    }
+    else if($command == 'submitPost') {
+        luuBaiDang();
+        return;
+    }
+    else if(isset($_REQUEST["single-post"])) {
+        xemBaiDang($_REQUEST["single-post"]);
+        return;
+    }
     //
-    header("Location: ../index.php");
+    header("Location: ../Webcontent/index.php");
 }
 
-function getBaiDang() {
+function xemBaiDang($maBaiDang) {
     $baiDangDao = new BaiDangDao();
-    $listBaiDang = $baiDangDao->getBaiDang();
+    $baiDangDao->capNhatLuotXem((int)$maBaiDang);
+    
+    $maPhong = $_REQUEST['phong-tro'];
+    
+    $_SESSION['maBaiDang'] = $maBaiDang;
+    $_SESSION['maPhong'] = $maPhong;
+    header("Location: ../Webcontent/single-post.php");
+}
 
-    $_SESSION['listBaiDang'] = serialize($listBaiDang);
-//    var_dump($_SESSION['listBaiDang']);
+function luuBaiDang() {
+    /*@var $TaiKhoan TaiKhoan*/
+    $TenTaiKhoan = $_SESSION['TenTaiKhoan'];
+    $TieuDe = $_REQUEST['tieuDe'];
+    $MoTa = $_REQUEST['moTa'];
+    $ThoiGianDang = date("Y-m-d");
+    
+    $baiDangDao = new BaiDangDao();
+    $baiDangDao->luuBaiDang($TieuDe, $ThoiGianDang, $MoTa, $TenTaiKhoan);
 }

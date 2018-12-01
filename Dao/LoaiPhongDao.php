@@ -1,6 +1,6 @@
 <?php
 
-include './Model/LoaiPhong.php';
+require_once '../Model/LoaiPhong.php';
 
 class LoaiPhongDao {
     public function __construct() { }

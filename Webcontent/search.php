@@ -1,9 +1,7 @@
 <?php
-include './Dao/TienNghiDao.php';
-include './Dao/QuanHuyenDao.php';
-include './Dao/KhuVucDao.php';
-include './Dao/MoiTruongDao.php';
-include './Dao/LoaiPhongDao.php';
+require_once '../Dao/QuanHuyenDao.php';
+require_once '../Dao/KhuVucDao.php';
+require_once '../Dao/LoaiPhongDao.php';
 
 $tienNghiDao = new TienNghiDao();
 $listTienNghi = $tienNghiDao->getTienNghi();

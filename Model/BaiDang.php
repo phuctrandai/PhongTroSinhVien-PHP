@@ -16,6 +16,9 @@ class BaiDang {
     var $TieuDe;
     var $ThoiGiagDang;
     var $HinhAnh;
+    var $GiaPhong;
+    var $MaBaiDang;
+    var $MaPhong;
     
     function __construct($HoTen, $TieuDe, $ThoiGiagDang, $HinhAnh) {
         $this->HoTen = $HoTen;
@@ -23,9 +26,4 @@ class BaiDang {
         $this->ThoiGiagDang = $ThoiGiagDang;
         $this->HinhAnh = $HinhAnh;
     }
-    
-
-
-
-
 }

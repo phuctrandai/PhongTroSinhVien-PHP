@@ -1,9 +1,5 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
+<?php session_start(); ?>
 <html>
     <head>
         <meta charset="UTF-8">
@@ -24,11 +20,17 @@ and open the template in the editor.
     <body>
         <?php include_once './header.php'; ?>
 
-        <div class="card ml-auto mr-auto mb-100 mt-50" style="width: 350px">
-            <form class="form" action="Controller/TaiKhoanController.php" method="POST">
+        <div class="card ml-auto mr-auto mb-100 mt-50 w-75" style="max-width: 450px">
+            <form class="form" action="../Controller/TaiKhoanController.php" method="POST">
                 <input type="hidden" name="command" value="login">
                 <div class="form-group card-header">
-                    <h4 class="text-center">Đăng nhập</h4>
+                    <?php if(isset($_SESSION['yeuCauDangBai']) && $_SESSION['yeuCauDangBai'] == true) { ?>
+                        <h4 class="text-center">Đăng nhập để đăng tin</h4>
+                    <?php 
+                        $_SESSION['yeuCauDangBai'] = false;
+                    } else { ?>
+                        <h4 class="text-center">Đăng nhập</h4>
+                    <?php } ?>
                 </div>
                 <div class="card-body">
                     <div class="form-group">
@@ -39,12 +41,15 @@ and open the template in the editor.
                         <label for="matKhau">Mật khẩu:</label>
                         <input type="password" class="form-control" id="matKhau" name="matKhau" required>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group mb-0">
                         <label for="loaiTaiKhoan">Loại tài khoản:</label>
                         <select class="form-control" name="loaiTaiKhoan">
                             <option value="1">Chủ trọ</option>
                             <option value="2">Người dùng</option>
                         </select>
+                        <?php if(isset($_SESSION['LoginFail']) && $_SESSION['LoginFail'] == 1) { ?>
+                        <label class="text-danger mt-3">Tên tài khoản hoặc mật khẩu không đúng!</label>
+                        <?php } ?>
                     </div>
                 </div>
                 <div class="card-footer">
@@ -52,8 +57,8 @@ and open the template in the editor.
                 </div>
             </form>
             <div class="card-footer text-center">
-                <a class="" href="#">Quên mật khẩu ?</a>
-                <a class="" href="sign-up.php"> - Đăng ký ngay</a>
+                <a href="#">Quên mật khẩu ?</a>
+                <a href="sign-up.php"> - Đăng ký ngay</a>
             </div>
         </div>
         

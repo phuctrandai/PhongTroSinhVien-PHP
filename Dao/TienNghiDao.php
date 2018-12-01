@@ -1,6 +1,6 @@
 <?php
 
-include './Model/TienNghi.php';
+require_once '../Model/TienNghi.php';
 
 class TienNghiDao {
 
@@ -25,6 +25,29 @@ class TienNghiDao {
             }
         }
         mysqli_close($connect);
+        return $rs;
+    }
+    
+    function getDanhSachTheoPhong($maPhong) {
+        $sql = "SELECT TienNghi.* FROM DanhSachTienNghi "
+                . "JOIN TienNghi ON DanhSachTienNghi.MaTienNghi = TienNghi.MaTienNghi "
+                . "WHERE DanhSachTienNghi.MaPhong = {$maPhong}";
+        
+        $connect = mysqli_connect('localhost', 'root', '', 'PhongTroSinhVien');
+        mysqli_set_charset($connect, 'utf8');
+        
+        $rs = array();
+        $i = 0;
+        
+        $querry = mysqli_query($connect, $sql);
+        $num = mysqli_num_rows($querry);
+        if ($num > 0) {
+            while ($row = mysqli_fetch_array($querry)) {
+                $rs[$i] = new TienNghi($row['MaTienNghi'], $row['TenTienNghi']);
+                $i++;
+            }
+        }
+        $querry->close();
         return $rs;
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-include './Model/KhuVuc.php';
+require_once '../Model/KhuVuc.php';
 
 class KhuVucDao {
     public function __construct() { }

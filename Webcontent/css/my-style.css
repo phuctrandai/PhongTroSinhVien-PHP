@@ -7,6 +7,11 @@ and open the template in the editor.
     Created on : Nov 17, 2018, 10:20:54 AM
     Author     : phuc
 */
+
+body {
+    font-family: "Roboto", sans-serif !important;
+}
+
 /* Customize the label (the container) */
 .my-container {
     display: block;
@@ -140,4 +145,14 @@ and open the template in the editor.
   .carousel-inner img {
       width: 100%;
       height: 100%;
+  }
+  
+  @media (max-width: 568px) {
+      .text-choice {
+        font-size: 0.7rem !important;
+        margin-top: 8px !important;
+      }
+      .choice-link {
+          font-size: 0.5rem !important;
+      }
   }
