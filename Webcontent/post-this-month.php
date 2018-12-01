@@ -18,7 +18,7 @@
                 <div class="single-blog-post style-2 mb-5">
                     <!-- Blog Thumbnail -->
                     <div class="blog-thumbnail">
-                        <a href="../Controller/BaiDangController.php?single-post=<?php echo($baiDang->MaBaiDang); ?>">
+                        <a href="../Controller/BaiDangController.php?single-post=<?php echo($baiDang->MaBaiDang); ?>&phong-tro=<?php echo($baiDang->MaPhong); ?>">
                             <img src="img/bg-img/4.jpg" alt="">
                         </a>
                     </div>
@@ -26,7 +26,7 @@
                     <!-- Blog Content -->
                     <div class="blog-content">
                         <span class="post-date"><?php echo($baiDang->ThoiGiagDang); ?></span>
-                        <a href="../Controller/BaiDangController.php?single-post=<?php echo($baiDang->MaBaiDang); ?>"
+                        <a href="../Controller/BaiDangController.php?single-post=<?php echo($baiDang->MaBaiDang); ?>&phong-tro=<?php echo($baiDang->MaPhong); ?>"
                            class="post-title"><?php echo($baiDang->TieuDe); ?></a>
                         <a href="#" class="post-author"><?php echo($baiDang->HoTen); ?></a>
                     </div>
