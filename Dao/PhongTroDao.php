@@ -15,7 +15,7 @@ class PhongTroDao {
     public function getThongTin($maPhong) {
         $connect = mysqli_connect('localhost', 'root', '', 'PhongTroSinhVien');
         mysqli_set_charset($connect, 'utf8');
-        $sql = "SELECT *, KhuVuc.TenKhuVuc, QuanHuyen.TenQuanHuyen, LoaiPhong.TenLoaiPhong "
+        $sql = "SELECT PhongTro.*, KhuVuc.TenKhuVuc, QuanHuyen.TenQuanHuyen, LoaiPhong.TenLoaiPhong "
                 . "FROM PhongTro "
                 . "JOIN KhuVuc ON PhongTro.MaKhuVuc = KhuVuc.MaKhuVuc "
                 . "JOIN QuanHuyen ON QuanHuyen.MaQuanHuyen = PhongTro.MaQuanHuyen "
