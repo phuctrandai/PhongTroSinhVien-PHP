@@ -10,10 +10,10 @@ class PhongTro{
     var $TenLoaiPhong;
     var $TenKhuVuc;
     var $TenQuanHuyen;
-    var $TenTaiKhoan;
+    var $MaBaiDang;
     
     function __construct($MaPhong, $SoLuongPhong, $SoPhongTrong, $SoNguoiToiDa, $GiaPhong, 
-            $DienTich, $ChoTuQuan, $TenLoaiPhong, $TenKhuVuc, $TenQuanHuyen, $TenTaiKhoan) {
+            $DienTich, $ChoTuQuan, $TenLoaiPhong, $TenKhuVuc, $TenQuanHuyen, $MaBaiDang) {
         $this->MaPhong = $MaPhong;
         $this->SoLuongPhong = $SoLuongPhong;
         $this->SoPhongTrong = $SoPhongTrong;
@@ -24,7 +24,7 @@ class PhongTro{
         $this->TenLoaiPhong = $TenLoaiPhong;
         $this->TenKhuVuc = $TenKhuVuc;
         $this->TenQuanHuyen = $TenQuanHuyen;
-        $this->TenTaiKhoan = $TenTaiKhoan;
+        $this->MaBaiDang = $MaBaiDang;
     }
 
 

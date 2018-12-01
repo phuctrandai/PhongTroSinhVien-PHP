@@ -47,7 +47,10 @@ $listLoaiPhong = $loaiPhongDao->getLoaiPhong();
 
         <div class="w-75 ml-auto mr-auto mb-100">
             <h4 class="mb-30 mt-30">Đăng tin mới</h4>
-            <form action="../Controller/BaiDangController.php" method="post" class="form">
+            <form action="../Controller/BaiDangController.php" 
+                  method="post" 
+                  class="form"
+                  enctype="multipart/form-data">
                 <input type="hidden" name="command" value="submitPost">
                 <div class="row">
                     <div class="col-12">
@@ -106,7 +109,8 @@ $listLoaiPhong = $loaiPhongDao->getLoaiPhong();
                             <label for="giaPhong">Giá phòng (VND)</label>
                             <input type="number" class="form-control" 
                                    name="giaPhong" id="giaPhong" 
-                                   value="10000" min="10000">
+                                   value="10000" min="10000"
+                                   step="10000">
                         </div>
                     </div>
 
@@ -189,40 +193,37 @@ $listLoaiPhong = $loaiPhongDao->getLoaiPhong();
                                         <label class="my-container">
                                             <?php 
                                                 echo($listTienNghi[$i_TienNghi]->TenTienNghi);
-                                                $i_TienNghi++;
                                             ?>
                                             <input type="checkbox" 
                                                    value="<?php echo($listTienNghi[$i_TienNghi]->MaTienNghi); ?>"
-                                                   name="<?php echo($listTienNghi[$i_TienNghi]->TenTienNghi); ?>">
+                                                   name="tienNghiList[]">
                                             <span class="my-checkmark"></span>
                                         </label>
-                                        <?php } ?>
+                                        <?php $i_TienNghi++; } ?>
                                         
                                         <?php if ($i_TienNghi < $listTienNghiCount) { ?>                                            
                                         <label class="my-container">
                                             <?php 
                                                 echo($listTienNghi[$i_TienNghi]->TenTienNghi);
-                                                $i_TienNghi++;
                                             ?>
                                             <input type="checkbox" 
                                                    value="<?php echo($listTienNghi[$i_TienNghi]->MaTienNghi); ?>"
-                                                   name="<?php echo($listTienNghi[$i_TienNghi]->TenTienNghi); ?>">
+                                                   name="tienNghiList[]">
                                             <span class="my-checkmark"></span>
                                         </label>
-                                            <?php } ?>
+                                        <?php $i_TienNghi++; } ?>
 
                                         <?php if ($i_TienNghi < $listTienNghiCount) { ?>                                            
                                         <label class="my-container">
                                             <?php
-                                            echo($listTienNghi[$i_TienNghi]->TenTienNghi);
-                                            $i_TienNghi++;
+                                                echo($listTienNghi[$i_TienNghi]->TenTienNghi);
                                             ?>
                                             <input type="checkbox" 
                                                    value="<?php echo($listTienNghi[$i_TienNghi]->MaTienNghi); ?>"
-                                                   name="<?php echo($listTienNghi[$i_TienNghi]->TenTienNghi); ?>">
+                                                   name="tienNghiList[]">
                                             <span class="my-checkmark"></span>
                                         </label>
-                                            <?php } ?>
+                                        <?php $i_TienNghi++; } ?>
                                         </div>
                                     <?php } ?>
                                 </div>
@@ -245,41 +246,38 @@ $listLoaiPhong = $loaiPhongDao->getLoaiPhong();
                                                 
                                         <label class="my-container">
                                             <?php
-                                            echo($listMoiTruong[$i_MoiTruong]->TenMoiTruong);
-                                            $i_MoiTruong++;
+                                                echo($listMoiTruong[$i_MoiTruong]->TenMoiTruong);
                                             ?>
                                             <input type="checkbox" 
                                                    value="<?php echo($listMoiTruong[$i_MoiTruong]->MaMoiTruong); ?>"
-                                                   name="<?php echo($listMoiTruong[$i_MoiTruong]->TenMoiTruong); ?>">
+                                                   name="moiTruongList[]">
                                             <span class="my-checkmark"></span>
                                         </label>
-                                    <?php } ?>
+                                    <?php $i_MoiTruong++; } ?>
 
                                     <?php if ($i_MoiTruong < $listMoiTruongCount) { ?>                                            
                                         <label class="my-container">
                                             <?php
                                             echo($listMoiTruong[$i_MoiTruong]->TenMoiTruong);
-                                            $i_MoiTruong++;
                                             ?>
                                             <input type="checkbox" 
                                                    value="<?php echo($listMoiTruong[$i_MoiTruong]->MaMoiTruong); ?>"
-                                                   name="<?php echo($listMoiTruong[$i_MoiTruong]->TenMoiTruong); ?>">
+                                                   name="moiTruongList[]">
                                             <span class="my-checkmark"></span>
                                         </label>
-                                    <?php } ?>
+                                    <?php $i_MoiTruong++; } ?>
 
                                     <?php if ($i_MoiTruong < $listMoiTruongCount) { ?>                                            
                                         <label class="my-container">
                                             <?php
                                             echo($listMoiTruong[$i_MoiTruong]->TenMoiTruong);
-                                            $i_TienNghi++;
                                             ?>
                                             <input type="checkbox" 
                                                    value="<?php echo($listMoiTruong[$i_MoiTruong]->MaMoiTruong); ?>"
-                                                   name="<?php echo($listMoiTruong[$i_MoiTruong]->TenMoiTruong); ?>">
+                                                   name="moiTruongList[]">
                                             <span class="my-checkmark"></span>
                                         </label>
-                                    <?php } ?>
+                                    <?php $i_MoiTruong++; } ?>
                                     </div>
                                 <?php } ?>
                                 </div>
@@ -292,7 +290,25 @@ $listLoaiPhong = $loaiPhongDao->getLoaiPhong();
                             <textarea name="moTa" class="form-control" id="moTa" cols="50" rows="10" placeholder="Mô tả"></textarea>
                         </div>
                     </div>
-
+                    
+                    <!-- Upload image -->
+                    <div class="col-12">
+                        <div class="form-group custom-file">
+                            <input id="fileUpload" type="file" multiple
+                                   enctype="multipart/form-data"
+                                   accept="image/*" name="hinhAnh[]"
+                                   class="custom-file-input"/>
+                            
+                            <label class="custom-file-label" 
+                                   for="fileUpload">
+                                Tải ảnh lên...
+                            </label>
+                            <br />
+                        </div>
+                    </div>
+                    
+                    <div id="image-holder" class="col-12 mt-3"></div>
+                    
                     <div class="col-12">
                         <button class="btn newsbox-btn mt-30" type="submit">Đăng bài</button>
                     </div>
@@ -313,5 +329,7 @@ $listLoaiPhong = $loaiPhongDao->getLoaiPhong();
         <script src="js/plugins/plugins.js"></script>
         <!-- Active js -->
         <script src="js/active.js"></script>
+        <!-- Upload hinh anh len -->
+        <script src="js/upload-image.js"></script>
     </body>
 </html>

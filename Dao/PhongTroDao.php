@@ -15,7 +15,12 @@ class PhongTroDao {
     public function getThongTin($maPhong) {
         $connect = mysqli_connect('localhost', 'root', '', 'PhongTroSinhVien');
         mysqli_set_charset($connect, 'utf8');
-        $sql = "SELECT *, KhuVuc.TenKhuVuc, QuanHuyen.TenQuanHuyen, LoaiPhong.TenLoaiPhong FROM PhongTro JOIN KhuVuc ON PhongTro.MaKhuVuc = KhuVuc.MaKhuVuc JOIN QuanHuyen ON QuanHuyen.MaQuanHuyen = PhongTro.MaQuanHuyen JOIN LoaiPhong ON LoaiPhong.MaLoaiPhong = PhongTro.MaLoaiPhong WHERE PhongTro.MaPhong = {$maPhong}";
+        $sql = "SELECT *, KhuVuc.TenKhuVuc, QuanHuyen.TenQuanHuyen, LoaiPhong.TenLoaiPhong "
+                . "FROM PhongTro "
+                . "JOIN KhuVuc ON PhongTro.MaKhuVuc = KhuVuc.MaKhuVuc "
+                . "JOIN QuanHuyen ON QuanHuyen.MaQuanHuyen = PhongTro.MaQuanHuyen "
+                . "JOIN LoaiPhong ON LoaiPhong.MaLoaiPhong = PhongTro.MaLoaiPhong "
+                . "WHERE PhongTro.MaPhong = {$maPhong}";
         $result = $connect->query($sql);
         if ($result->num_rows > 0) {
             while ($row = mysqli_fetch_array($result)) {
@@ -29,14 +34,14 @@ class PhongTroDao {
                         $row['TenLoaiPhong'],
                         $row['TenKhuVuc'],
                         $row['TenQuanHuyen'],
-                        $row['TenTaiKhoan']);
+                        $row['MaBaiDang']);
                 return $p;
             } $result->close();
         } return null;
     }
     
     public function luuThongTin($SoLuongPhong, $SoPhongTrong, $SoNguoiToiDa, $GiaPhong, 
-        $DienTich, $ChoTuQuan, $MaLoaiPhong, $MaKhuVuc, $MaQuanHuyen, $TenTaiKhoan) {
+        $DienTich, $ChoTuQuan, $MaLoaiPhong, $MaKhuVuc, $MaQuanHuyen, $MaBaiDang) {
         
         $connect = mysqli_connect('localhost', 'root', '', 'PhongTroSinhVien');
         mysqli_set_charset($connect, 'utf8');
@@ -46,16 +51,35 @@ class PhongTroDao {
                 . "`SoNguoiToiDa`, `GiaPhong`, "
                 . "`DienTich`, `ChoTuQuan`, "
                 . "`MaLoaiPhong`, `MaKhuVuc`, "
-                . "`MaQuanHuyen`, `TenTaiKhoan`) "
+                . "`MaQuanHuyen`, `MaBaiDang`) "
                 . "VALUES("
                 . "{$SoLuongPhong}, {$SoPhongTrong},"
                 . "{$SoNguoiToiDa}, {$GiaPhong},"
                 . "{$DienTich}, {$ChoTuQuan},"
                 . "{$MaLoaiPhong}, {$MaKhuVuc},"
-                . "{$MaQuanHuyen}, '{$TenTaiKhoan}')";
+                . "{$MaQuanHuyen}, '{$MaBaiDang}')";
         $stmt = $connect->prepare($sql);
-        $stmt->execute();
+        $result = $stmt->execute();
         $stmt->close();
         $connect->close();
+        return $result;
+    }
+    
+    public function getMaPhong($MaBaiDang){
+        /* @var $stmt mysqli_stmt*/
+        /* @var $result mysqli_result*/
+        $connect = mysqli_connect('localhost', 'root', '', 'PhongTroSinhVien');
+        mysqli_set_charset($connect, 'utf8');
+        
+        $sql = "SELECT PhongTro.MaPhong FROM `PhongTro` WHERE MaBaiDang = {$MaBaiDang}";
+        $stmt = $connect->prepare($sql);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        if($result->num_rows > 0) {
+            return $result->fetch_row()[0];
+        }
+        $stmt->close();
+        $connect->close();
+        return $result;
     }
 }

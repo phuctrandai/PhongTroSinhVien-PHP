@@ -15,11 +15,6 @@ $moiTruongDao = new MoiTruongDao();
 $maPhong = $_SESSION['maPhong'];
 $maBaiDang = $_SESSION['maBaiDang'];
 
-
-$listTienNghi = $tienNghiDao->getDanhSachTheoPhong($maPhong);
-$listMoiTruong = $moiTruongDao->getDanhSachTheoPhong($maPhong);
-
-
 /* @var $phongTro PhongTro*/
 $phongTro = $phongTroDao->getThongTin($maPhong);
 
@@ -112,13 +107,18 @@ $choTuQuan = $phongTro->ChoTuQuan == 1 ? ' - tự quản' : '';
                                     </tr>
                                     <tr>
                                         <td class="bg-light">Giá thuê</td>
-                                        <td><?php echo($phongTro->GiaPhong);?> VND</td>
+                                        <td>
+                                            <?php 
+                                            setlocale(LC_MONETARY, "vie");
+                                            echo(money_format("%.0n", $phongTro->GiaPhong));
+                                            ?>
+                                        </td>
                                         <td class="bg-light">Phòng trống</td>
                                         <td><?php echo($phongTro->SoPhongTrong);?> phòng</td>
                                     </tr>
                                     <tr>
                                         <td class="bg-light">Diện tích</td>
-                                        <td><?php echo($phongTro->DienTich);?> m2</td>
+                                        <td><?php echo($phongTro->DienTich);?> m<sup>2</sup></td>
                                         <td class="bg-light">Ở tối đa</td>
                                         <td><?php echo($phongTro->SoNguoiToiDa);?> người</td>
                                     </tr>
@@ -130,6 +130,7 @@ $choTuQuan = $phongTro->ChoTuQuan == 1 ? ' - tự quản' : '';
                             <div class="">
                                 <div class="row">
                                 <?php
+                                $listTienNghi = $tienNghiDao->getDanhSachTheoPhong($maPhong);
                                 foreach ($listTienNghi as $tienNghi) { ?>
                                     <div class="col-4 mb-30">
                                         <?php echo($tienNghi->TenTienNghi); ?>
@@ -143,6 +144,7 @@ $choTuQuan = $phongTro->ChoTuQuan == 1 ? ' - tự quản' : '';
                             <div class="">
                                 <div class="row">
                                 <?php
+                                $listMoiTruong = $moiTruongDao->getDanhSachTheoPhong($maPhong);
                                 foreach ($listMoiTruong as $moiTruong) { ?>
                                     <div class="col-4 mb-30">
                                         <?php echo($moiTruong->TenMoiTruong); ?>

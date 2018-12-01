@@ -34,7 +34,15 @@ class BaiDangDao {
 
         $list = array();
         $i = 0;
-        $sql = "SELECT ViewBaiDang.MaPhong, ViewBaiDang.MaBaiDang, ViewBaiDang.HoTen, ViewBaiDang.TieuDe, ViewBaiDang.ThoiGianDang, ViewBaiDang.DuongDan, PhongTro.GiaPhong FROM ViewBaiDang JOIN PhongTro ON ViewBaiDang.TenTaiKhoan = PhongTro.TenTaiKhoan ORDER BY PhongTro.GiaPhong";
+        $sql = "SELECT ViewBaiDang.MaPhong, "
+                . "ViewBaiDang.MaBaiDang, "
+                . "ViewBaiDang.HoTen, "
+                . "ViewBaiDang.TieuDe, "
+                . "ViewBaiDang.ThoiGianDang, "
+                . "ViewBaiDang.DuongDan, "
+                . "ViewBaiDang.GiaPhong "
+                . "FROM ViewBaiDang "
+                . "ORDER BY ViewBaiDang.GiaPhong";
 
         $result = mysqli_query($connect, $sql);
         $num = mysqli_num_rows($result);
@@ -57,7 +65,8 @@ class BaiDangDao {
 
         $rs = array();
         $i = 0;
-        $sql = "SELECT * FROM ViewBaiDang WHERE MONTH(ViewBaiDang.ThoiGianDang) = MONTH(CURRENT_DATE) LIMIT 6";
+        $sql = "SELECT * FROM ViewBaiDang "
+                . "WHERE MONTH(ViewBaiDang.ThoiGianDang) = MONTH(CURRENT_DATE) LIMIT 6";
 
         $result = mysqli_query($connect, $sql);
         $num = mysqli_num_rows($result);
@@ -116,9 +125,24 @@ class BaiDangDao {
         
         $stmt->close();
         mysqli_close($link);
-                
-        echo 'Luu bai dang hoan tat';
         return $result;
     }
-
+    
+    function getMaxMaBaiDang($TenTaiKhoan) {
+        /* @var $stmt mysqli_stmt*/
+        /* @var $result mysqli_result*/
+        $connect = mysqli_connect('localhost', 'root', '', 'PhongTroSinhVien');
+        mysqli_set_charset($connect, 'utf8');
+        
+        $sql = "SELECT MAX(BaiDang.MaBaiDang) FROM BaiDang WHERE TenTaiKhoan = '{$TenTaiKhoan}'";
+        $stmt = $connect->prepare($sql);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        if($result->num_rows > 0) {
+            return $result->fetch_row()[0];
+        }
+        $stmt->close();
+        $connect->close();
+        return $result;
+    }
 }
