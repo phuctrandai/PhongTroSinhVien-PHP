@@ -1,10 +1,12 @@
 <?php
+
 session_start();
 
 require_once '../Dao/BaiDangDao.php';
 require_once '../Dao/PhongTroDao.php';
 require_once '../Dao/TienNghiDao.php';
 require_once '../Dao/MoiTruongDao.php';
+require_once '../Dao/HinhAnhDao.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     doPost();
@@ -18,9 +20,9 @@ function doPost() {
 
 function doGet() {
     $command = $_REQUEST['command'];
-    
-    if($command == 'post') {
-        if(isset($_SESSION['TenTaiKhoan'])) {
+
+    if ($command == 'post') {
+        if (isset($_SESSION['TenTaiKhoan'])) {
             header("Location: ../Webcontent/post.php");
         } else {
             $_SESSION['prevCommand'] = 'post';
@@ -28,12 +30,10 @@ function doGet() {
             header("Location: ../Webcontent/login.php");
         }
         return;
-    }
-    else if($command == 'submitPost') {
+    } else if ($command == 'submitPost') {
         luuBaiDang();
         return;
-    }
-    else if(isset($_REQUEST["single-post"])) {
+    } else if (isset($_REQUEST["single-post"])) {
         xemBaiDang($_REQUEST["single-post"], $_REQUEST['phong-tro']);
         return;
     }
@@ -43,8 +43,8 @@ function doGet() {
 
 function xemBaiDang($maBaiDang, $maPhong) {
     $baiDangDao = new BaiDangDao();
-    $baiDangDao->capNhatLuotXem((int)$maBaiDang);
-    
+    $baiDangDao->capNhatLuotXem((int) $maBaiDang);
+
     $_SESSION['maBaiDang'] = $maBaiDang;
     $_SESSION['maPhong'] = $maPhong;
     header("Location: ../Webcontent/single-post.php");
@@ -53,27 +53,29 @@ function xemBaiDang($maBaiDang, $maPhong) {
 /*
  * Luu bai
  */
+
 function luuBaiDang() {
-    
+
     $TenTaiKhoan = $_SESSION['TenTaiKhoan'];
     $TieuDe = $_REQUEST['tieuDe'];
     $MoTa = $_REQUEST['moTa'];
     $ThoiGianDang = date("Y-m-d");
     
-    luuHinhAnh();
-//    $phongTroDao = new PhongTroDao();    
-//    $baiDangDao = new BaiDangDao();
-//    
-//    $baiDangDao->luuBaiDang($TieuDe, $ThoiGianDang, $MoTa, $TenTaiKhoan);
-//    
-//    $MaBaiDang = $baiDangDao->getMaxMaBaiDang($TenTaiKhoan);
-//    luuPhongTro($MaBaiDang);
-//    
-//    $MaPhong = $phongTroDao->getMaPhong($MaBaiDang);
-//    luuTienNghi($MaPhong);
-//    luuMoiTruong($MaPhong);
-//    
-//    xemBaiDang($MaBaiDang, $MaPhong);
+    $phongTroDao = new PhongTroDao();    
+    $baiDangDao = new BaiDangDao();
+    
+    $baiDangDao->luuBaiDang($TieuDe, $ThoiGianDang, $MoTa, $TenTaiKhoan);
+    
+    $MaBaiDang = $baiDangDao->getMaxMaBaiDang($TenTaiKhoan);
+    luuPhongTro($MaBaiDang);
+    
+    uploadAnh($MaBaiDang);
+    
+    $MaPhong = $phongTroDao->getMaPhong($MaBaiDang);
+    luuTienNghi($MaPhong);
+    luuMoiTruong($MaPhong);
+    
+    xemBaiDang($MaBaiDang, $MaPhong);
 }
 
 function luuPhongTro($MaBaiDang) {
@@ -86,18 +88,15 @@ function luuPhongTro($MaBaiDang) {
     $MaLoaiPhong = $_REQUEST['loaiPhong'];
     $MaKhuVuc = $_REQUEST['khuVuc'];
     $MaQuanHuyen = $_REQUEST['quanHuyen'];
-    
+
     $phongTroDao = new PhongTroDao();
     return $phongTroDao->luuThongTin(
-            $SoLuongPhong, $SoPhongTrong, $SoNguoiToiDa, 
-            $GiaPhong, $DienTich, $ChoTuQuan, 
-            $MaLoaiPhong, $MaKhuVuc, $MaQuanHuyen, 
-            $MaBaiDang);
+                    $SoLuongPhong, $SoPhongTrong, $SoNguoiToiDa, $GiaPhong, $DienTich, $ChoTuQuan, $MaLoaiPhong, $MaKhuVuc, $MaQuanHuyen, $MaBaiDang);
 }
 
 function luuTienNghi($MaPhong) {
     $result = 0;
-    if(isset($_POST['tienNghiList']) && is_array($_POST['tienNghiList'])) {
+    if (isset($_POST['tienNghiList']) && is_array($_POST['tienNghiList'])) {
         $tienNghiDao = new TienNghiDao();
         $tienNghiList = $_POST['tienNghiList'];
         foreach ($tienNghiList as $maTienNghi) {
@@ -109,7 +108,7 @@ function luuTienNghi($MaPhong) {
 
 function luuMoiTruong($MaPhong) {
     $result = 0;
-    if(isset($_POST['moiTruongList']) && is_array($_POST['moiTruongList'])) {
+    if (isset($_POST['moiTruongList']) && is_array($_POST['moiTruongList'])) {
         $moiTruongDao = new MoiTruongDao();
         $moiTruongList = $_POST['moiTruongList'];
         foreach ($moiTruongList as $maMoiTruong) {
@@ -119,22 +118,36 @@ function luuMoiTruong($MaPhong) {
     return $result;
 }
 
-function luuHinhAnh() {
-    $HinhAnh = $_FILES['hinhAnh'];
-//    var_dump($HinhAnh);
+function uploadAnh($MaBaiDang) {
+    $files = $_FILES['hinhAnh'];
+    $soLuongAnh = count($files['name']);
     
-    foreach ($HinhAnh as $anh) {
-        if(isset($anh)) {
-            
-            if($anh['error'] == 0) {
-                echo 'File loi';
-            }
-            else {
-                $temp = explode(".", implode('|',$anh['name']));
-                $newfilename = round(microtime(true)) . '.' . end($temp);
-                move_uploaded_file(implode('|',$anh['tmp_name']), '../Webcontent/img/'.$newfilename);
-                echo 'Up thanh cong';
-            }
+    $attr = array('name', 'type', 'tmp_name', 'error', 'size');
+    $attrCount = count($attr);
+    
+    $hinhAnh = array('');
+    
+    $j = 0;
+    while ($j < $soLuongAnh) {
+        for($i = 0 ; $i < $attrCount ; $i++) {
+            $hinhAnh[$i] = $files[$attr[$i]];
         }
+        luuHinhAnh($hinhAnh, $MaBaiDang);
+        $j++;
+    }
+}
+
+function luuHinhAnh($hinhAnh, $MaBaiDang) {
+    if ($hinhAnh[3] == 0) {
+        echo 'File loi';
+    } else {
+        $temp = explode(".", implode('|', $hinhAnh[0]));
+        $newfilename = round(microtime(true)) . '.' . end($temp);
+        $result = move_uploaded_file(implode('|', $hinhAnh[2]), '../Webcontent/img/' . $newfilename);
+        if($result) {
+            $hinhAnhDao = new HinhAnhDao();
+            $hinhAnhDao->luuHinhAnh('img/bg-img/'.$newfilename, $MaBaiDang);
+        }
+        echo 'Up thanh cong';
     }
 }

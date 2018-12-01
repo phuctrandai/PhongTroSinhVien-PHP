@@ -19,7 +19,8 @@
                     <!-- Blog Thumbnail -->
                     <div class="blog-thumbnail">
                         <a href="../Controller/BaiDangController.php?single-post=<?php echo($baiDang->MaBaiDang); ?>&phong-tro=<?php echo($baiDang->MaPhong); ?>">
-                            <img src="img/bg-img/4.jpg" alt="">
+                            <img src="<?php echo($baiDang->HinhAnh); ?>" 
+                                 accesskey=""alt="<?php echo($baiDang->TieuDe); ?>">
                         </a>
                     </div>
 
