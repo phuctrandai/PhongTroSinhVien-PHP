@@ -82,4 +82,35 @@ class PhongTroDao {
         $connect->close();
         return $result;
     }
+    
+    public function LocDK($MaLoaiPhong, $ChoTuQuan, $MaQuanHuyen, $MaKhuVuc){
+        $rs = array();
+        $i = 0;
+        $connect = mysqli_connect('localhost', 'root', '', 'PhongTroSinhVien');
+        mysqli_set_charset($connect, 'utf8');
+        $sql = "SELECT ThongTinTaiKhoan.HoTen, BaiDang.TieuDe, BaiDang.ThoiGianDang,"
+                . " HinhAnh.DuongDan, PhongTro.GiaPhong, BaiDang.MaBaiDang, PhongTro.MaPhong "
+                . "FROM PhongTro JOIN BaiDang ON PhongTro.MaBaiDang = BaiDang.MaBaiDang "
+                . "JOIN TaiKhoan ON BaiDang.TenTaiKhoan = TaiKhoan.TenTaiKhoan "
+                . "JOIN ThongTinTaiKhoan ON ThongTinTaiKhoan.TenTaiKhoan = TaiKhoan.TenTaiKhoan "
+                . "JOIN HinhAnh ON HinhAnh.MaBaiDang = BaiDang.MaBaiDang "
+                . "WHERE PhongTro.MaLoaiPhong = {$MaLoaiPhong }AND PhongTro.ChoTuQuan = {$ChoTuQuan} "
+                . "AND PhongTro.MaQuanHuyen = {$MaQuanHuyen} AND PhongTro.MaKhuVuc = {$MaKhuVuc} ";
+        $result = $connect->query($sql);
+        if ($result->num_rows > 0) {
+            while ($row = mysqli_fetch_array($result)) {
+                $p = new BaiDang($row['HoTen'], 
+                        $row['TieuDe'], 
+                        $row['ThoiGiagDang'], 
+                        $row['HinhAnh'], 
+                        $row['GiaPhong'],
+                        $row['MaBaiDang'],
+                        $row['MaPhong']);
+                $rs[$i] = $p;
+                $i++;
+            } $result->close();
+            return $rs;    
+        } 
+        return null;
+    }
 }
