@@ -20,10 +20,9 @@ class BaiDang {
     var $MaBaiDang;
     var $MaPhong;
     
-    function __construct($HoTen, $TieuDe, $ThoiGiagDang, $HinhAnh) {
+    function __construct($HoTen, $TieuDe, $ThoiGiagDang) {
         $this->HoTen = $HoTen;
         $this->TieuDe = $TieuDe;
         $this->ThoiGiagDang = $ThoiGiagDang;
-        $this->HinhAnh = $HinhAnh;
     }
 }
