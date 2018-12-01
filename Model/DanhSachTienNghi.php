@@ -14,22 +14,6 @@
 class DanhSachTienNghi {
     var $MaTienNghi;
     var $MaPhong;
-    function getMaTienNghi() {
-        return $this->MaTienNghi;
-    }
-
-    function getMaPhong() {
-        return $this->MaPhong;
-    }
-
-    function setMaTienNghi($MaTienNghi) {
-        $this->MaTienNghi = $MaTienNghi;
-    }
-
-    function setMaPhong($MaPhong) {
-        $this->MaPhong = $MaPhong;
-    }
-
     function __construct($MaTienNghi, $MaPhong) {
         $this->MaTienNghi = $MaTienNghi;
         $this->MaPhong = $MaPhong;
