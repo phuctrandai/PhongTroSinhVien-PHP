@@ -29,9 +29,11 @@ class TienNghiDao {
     }
     
     function getDanhSachTheoPhong($maPhong) {
-        $sql = "SELECT TienNghi.* FROM DanhSachTienNghi "
-                . "JOIN TienNghi ON DanhSachTienNghi.MaTienNghi = TienNghi.MaTienNghi "
-                . "WHERE DanhSachTienNghi.MaPhong = {$maPhong}";
+        $sql = "SELECT TienNghi.* FROM DanhSachTienNghi\n"
+
+    . "                JOIN TienNghi ON DanhSachTienNghi.MaTienNghi = TienNghi.MaTienNghi\n"
+
+    . "                WHERE DanhSachTienNghi.MaPhong = {$maPhong}";
         
         $connect = mysqli_connect('localhost', 'root', '', 'PhongTroSinhVien');
         mysqli_set_charset($connect, 'utf8');
@@ -49,5 +51,18 @@ class TienNghiDao {
         }
         $querry->close();
         return $rs;
+    }
+    
+    public function luuTienNghi($MaPhong, $MaTienNghi) {
+        $link = mysqli_connect('localhost', 'root', '', 'PhongTroSinhVien');
+        mysqli_set_charset($link, 'utf8');
+        
+        $sql = "INSERT INTO `DanhSachTienNghi`(`MaTienNghi`, `MaPhong`) "
+                . "VALUES ({$MaTienNghi}, {$MaPhong})";
+        $stmt = $link->prepare($sql);
+        $result = $stmt->execute();
+        $stmt->close();
+        $link->close();
+        return $result;
     }
 }

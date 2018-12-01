@@ -47,5 +47,18 @@ class MoiTruongDao {
         $querry->close();
         return $rs;
     }
+    
+    public function luuMoiTruong($MaPhong, $MaMoiTruong) {
+        $link = mysqli_connect('localhost', 'root', '', 'PhongTroSinhVien');
+        mysqli_set_charset($link, 'utf8');
+        
+        $sql = "INSERT INTO `DanhSachMoiTruong`(`MaMoiTruong`, `MaPhong`) "
+                . "VALUES ({$MaMoiTruong}, {$MaPhong})";
+        $stmt = $link->prepare($sql);
+        $result = $stmt->execute();
+        $stmt->close();
+        $link->close();
+        return $result;
+    }
 }
 

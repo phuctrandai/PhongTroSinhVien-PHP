@@ -34,7 +34,15 @@ class BaiDangDao {
 
         $list = array();
         $i = 0;
-        $sql = "SELECT ViewBaiDang.MaPhong, ViewBaiDang.MaBaiDang, ViewBaiDang.HoTen, ViewBaiDang.TieuDe, ViewBaiDang.ThoiGianDang, ViewBaiDang.DuongDan, PhongTro.GiaPhong FROM ViewBaiDang JOIN PhongTro ON ViewBaiDang.TenTaiKhoan = PhongTro.TenTaiKhoan ORDER BY PhongTro.GiaPhong";
+        $sql = "SELECT ViewBaiDang.MaPhong, "
+                . "ViewBaiDang.MaBaiDang, "
+                . "ViewBaiDang.HoTen, "
+                . "ViewBaiDang.TieuDe, "
+                . "ViewBaiDang.ThoiGianDang, "
+                . "ViewBaiDang.DuongDan, "
+                . "ViewBaiDang.GiaPhong "
+                . "FROM ViewBaiDang "
+                . "ORDER BY ViewBaiDang.GiaPhong";
 
         $result = mysqli_query($connect, $sql);
         $num = mysqli_num_rows($result);
@@ -57,7 +65,8 @@ class BaiDangDao {
 
         $rs = array();
         $i = 0;
-        $sql = "SELECT * FROM ViewBaiDang WHERE MONTH(ViewBaiDang.ThoiGianDang) = MONTH(CURRENT_DATE) LIMIT 6";
+        $sql = "SELECT * FROM ViewBaiDang "
+                . "WHERE MONTH(ViewBaiDang.ThoiGianDang) = MONTH(CURRENT_DATE) LIMIT 6";
 
         $result = mysqli_query($connect, $sql);
         $num = mysqli_num_rows($result);
@@ -105,20 +114,35 @@ class BaiDangDao {
     }
 
     function luuBaiDang($TieuDe, $ThoiGianDang, $MoTa, $TenTaiKhoan) {
-        /*@var $link mysqli*/
         $link = mysqli_connect('localhost', 'root', '', 'PhongTroSinhVien');
         mysqli_set_charset($link, 'utf8');
         
         $sql = "INSERT INTO `BaiDang`(`TieuDe`, `ThoiGianDang`, `MoTa`, `LuotXem`, `TenTaiKhoan`) "
                 . "VALUES (?, '{$ThoiGianDang}', ?, 0, '{$TenTaiKhoan}')";
-        /*@var $stmt mysqli_stmt*/
         $stmt = $link->prepare($sql);
         $stmt->bind_param("ss", $TieuDe, $MoTa);
-        $stmt->execute();
+        $result = $stmt->execute();
+        
         $stmt->close();
         mysqli_close($link);
-        echo 'Luu hoan tat';
-        return 0;
+        return $result;
     }
-
+    
+    function getMaxMaBaiDang($TenTaiKhoan) {
+        /* @var $stmt mysqli_stmt*/
+        /* @var $result mysqli_result*/
+        $connect = mysqli_connect('localhost', 'root', '', 'PhongTroSinhVien');
+        mysqli_set_charset($connect, 'utf8');
+        
+        $sql = "SELECT MAX(BaiDang.MaBaiDang) FROM BaiDang WHERE TenTaiKhoan = '{$TenTaiKhoan}'";
+        $stmt = $connect->prepare($sql);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        if($result->num_rows > 0) {
+            return $result->fetch_row()[0];
+        }
+        $stmt->close();
+        $connect->close();
+        return $result;
+    }
 }
