@@ -19,6 +19,8 @@ class BaiDang {
     var $GiaPhong;
     var $MaBaiDang;
     var $MaPhong;
+    var $MoTa;
+    var $LuotXem;
     
     function __construct($HoTen, $TieuDe, $ThoiGiagDang) {
         $this->HoTen = $HoTen;

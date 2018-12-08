@@ -1,6 +1,6 @@
 
 <!--  Tin trong thang  -->
-<div class="top-news-area section-padding-100">
+<div class="top-news-area section-padding-100" style="padding-top: 30px">
     <div class="container">
         <div class="row">
             <div class="col-12">
@@ -26,10 +26,19 @@
 
                     <!-- Blog Content -->
                     <div class="blog-content">
-                        <span class="post-date"><?php echo($baiDang->ThoiGiagDang); ?></span>
+                        <span class="post-date">
+                            <?php echo($baiDang->ThoiGiagDang); ?>
+                        </span>
+                        <span class="post-view-rate">
+                            <?php echo($baiDang->LuotXem); ?> lượt xem
+                        </span>
                         <a href="../Controller/BaiDangController.php?single-post=<?php echo($baiDang->MaBaiDang); ?>&phong-tro=<?php echo($baiDang->MaPhong); ?>"
                            class="post-title"><?php echo($baiDang->TieuDe); ?></a>
-                        <a href="#" class="post-author"><?php echo($baiDang->HoTen); ?></a>
+                        <span class="post-author">Đăng bởi: <?php echo($baiDang->HoTen); ?></span>
+                        <span class="post-date">
+                            <b><?php echo(money_format("%.0n", $baiDang->GiaPhong)); ?> </b>
+                            / tháng
+                        </span>
                     </div>
                 </div>
             </div>

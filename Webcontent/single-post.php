@@ -173,9 +173,25 @@ $choTuQuan = $phongTro->ChoTuQuan == 1 ? ' - tự quản' : '';
                                 </div>
                             </div>
                             <hr>
+                            <!-- Mo ta -->
+                            <h5 class="mb-30 mt-30">Mô tả</h5>
+                            <div class="mb-30">
+                                <div class="">
+                                    <?php
+                                    $moTa = preg_split('/\r\n|\r|\n/', $baiDang->MoTa);
+                                    foreach ($moTa as $line) { ?>
+                                        <label class="text-dark">
+                                        <?php echo($line); ?>
+                                        </label><br>
+                                    <?php } ?>
+                                </div>
+                            </div>
+                            <hr>
                             <!-- Vi tri -->
-                            <h5>Vị trí</h5>
-                            <div id="googleMap" style="width:100%; height:400px;"></div>
+                            <div class="mb-30 mt-30">
+                                <h5>Vị trí</h5>
+                                <div id="googleMap" style="width:100%; height:400px;"></div>
+                            </div>
                         </div>
                     </div>
 

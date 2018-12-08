@@ -14,7 +14,9 @@ class BaiDangDao {
         mysqli_set_charset($connect, 'utf8');
         $rs = array();
         $i = 0;
-        $sql = "SELECT * FROM ViewBaiDang ORDER BY ViewBaiDang.ThoiGianDang DESC LIMIT 8";
+        $sql = "SELECT ViewBaiDang.*, BaiDang.LuotXem "
+                . "FROM ViewBaiDang JOIN BaiDang ON ViewBaiDang.MaBaiDang = BaiDang.MaBaiDang "
+                . "ORDER BY ViewBaiDang.ThoiGianDang DESC LIMIT 10";
         $result = mysqli_query($connect, $sql);
         $num = mysqli_num_rows($result);
         $hinhAnh = new HinhAnhDao();
@@ -22,10 +24,11 @@ class BaiDangDao {
         if ($num > 0) {
             while ($row = mysqli_fetch_array($result)) {
                 $rs[$i] = new BaiDang($row['HoTen'], $row['TieuDe'], $row['ThoiGianDang']);
-                //var_dump($hinhAnh->getAnhDaiDien($row['MaBaiDang'])); echo '<br>';
                 $rs[$i]->MaBaiDang = $row['MaBaiDang'];
                 $rs[$i]->MaPhong = $row['MaPhong'];
-                $rs[$i]->HinhAnh= $hinhAnh->getAnhDaiDien($row['MaBaiDang']);
+                $rs[$i]->HinhAnh = $hinhAnh->getAnhDaiDien($row['MaBaiDang']);
+                $rs[$i]->GiaPhong = $row['GiaPhong'];
+                $rs[$i]->LuotXem = $row['LuotXem'];
                 $i++;
             }
         } $result->close();
@@ -36,19 +39,11 @@ class BaiDangDao {
     function topGiaReNhat() {
         $connect = mysqli_connect('localhost', 'root', '', 'PhongTroSinhVien');
         mysqli_set_charset($connect, 'utf8');
-        
-        $list = array();
-        $i = 0;
-        $hinhAnh = new HinhAnhDao();
-        $sql = "SELECT ViewBaiDang.MaPhong, "
-                . "ViewBaiDang.MaBaiDang, "
-                . "ViewBaiDang.HoTen, "
-                . "ViewBaiDang.TieuDe, "
-                . "ViewBaiDang.ThoiGianDang, "
-                . "ViewBaiDang.GiaPhong "
-                . "FROM ViewBaiDang "
-                . "ORDER BY ViewBaiDang.GiaPhong";
-
+        $list = array(); $i = 0; $hinhAnhDao = new HinhAnhDao();
+        $sql = "SELECT ViewBaiDang.MaPhong, ViewBaiDang.MaBaiDang, ViewBaiDang.HoTen,
+                ViewBaiDang.TieuDe, ViewBaiDang.ThoiGianDang, ViewBaiDang.GiaPhong, BaiDang.LuotXem
+                FROM ViewBaiDang JOIN BaiDang ON ViewBaiDang.MaBaiDang = BaiDang.MaBaiDang
+                ORDER BY ViewBaiDang.GiaPhong LIMIT 10";
         $result = mysqli_query($connect, $sql);
         $num = mysqli_num_rows($result);
         if ($num > 0) {
@@ -57,11 +52,32 @@ class BaiDangDao {
                 $list[$i]->GiaPhong = $row['GiaPhong'];
                 $list[$i]->MaBaiDang = $row['MaBaiDang'];
                 $list[$i]->MaPhong = $row['MaPhong'];
-                $list[$i]->HinhAnh= $hinhAnh->getAnhDaiDien($row['MaBaiDang']);
+                $list[$i]->HinhAnh = $hinhAnhDao->getAnhDaiDien($row['MaBaiDang']);
+                $list[$i]->LuotXem = $row['LuotXem'];
                 $i++;
             }
-        } $result->close();
-        mysqli_close($connect);
+        } $result->close(); mysqli_close($connect); return $list;
+    }
+    
+    function topXemNhieuNhat() {
+        $connect = mysqli_connect('localhost', 'root', '', 'PhongTroSinhVien');
+        mysqli_set_charset($connect, 'utf8');
+        $list = array(); $i = 0; $hinhAnhDao = new HinhAnhDao();
+        $sql = "  SELECT ViewBaiDang.*, BaiDang.LuotXem "
+                . "FROM ViewBaiDang JOIN BaiDang ON BaiDang.MaBaiDang = ViewBaiDang.MaBaiDang "
+                . "ORDER BY BaiDang.LuotXem DESC LIMIT 10";
+        $result = mysqli_query($connect, $sql);
+        if(mysqli_num_rows($result) > 0) {
+            while($row = mysqli_fetch_array($result)) {
+                $list[$i] = new BaiDang($row['HoTen'], $row['TieuDe'], $row['ThoiGianDang']);
+                $list[$i]->GiaPhong = $row['GiaPhong'];
+                $list[$i]->MaBaiDang = $row['MaBaiDang'];
+                $list[$i]->MaPhong = $row['MaPhong'];
+                $list[$i]->HinhAnh = $hinhAnhDao->getAnhDaiDien($row['MaBaiDang']);
+                $list[$i]->LuotXem = $row['LuotXem'];
+                $i++;
+            }
+        } $result->close();        mysqli_close($connect);
         return $list;
     }
 
@@ -72,22 +88,22 @@ class BaiDangDao {
         $rs = array();
         $i = 0;
         $hinhAnh = new HinhAnhDao();
-        $sql = "SELECT * FROM ViewBaiDang "
-                . "WHERE MONTH(ViewBaiDang.ThoiGianDang) = MONTH(CURRENT_DATE) LIMIT 6";
-
+        $sql = "  SELECT ViewBaiDang.*, BaiDang.LuotXem "
+                . "FROM ViewBaiDang JOIN BaiDang ON BaiDang.MaBaiDang = ViewBaiDang.MaBaiDang "
+                . "WHERE MONTH(ViewBaiDang.ThoiGianDang) = MONTH(CURRENT_DATE) LIMIT 12";
         $result = mysqli_query($connect, $sql);
         $num = mysqli_num_rows($result);
         if ($num > 0) {
             while ($row = mysqli_fetch_array($result)) {
                 $rs[$i] = new BaiDang($row['HoTen'], $row['TieuDe'], $row['ThoiGianDang']);
+                $rs[$i]->GiaPhong = $row['GiaPhong'];
                 $rs[$i]->MaBaiDang = $row['MaBaiDang'];
                 $rs[$i]->MaPhong = $row['MaPhong'];
-                $rs[$i]->HinhAnh= $hinhAnh->getAnhDaiDien($row['MaBaiDang']);
+                $rs[$i]->HinhAnh = $hinhAnh->getAnhDaiDien($row['MaBaiDang']);
+                $rs[$i]->LuotXem = $row['LuotXem'];
                 $i++;
             }
-        } $result->close();
-        mysqli_close($connect);
-        return $rs;
+        } $result->close(); mysqli_close($connect); return $rs;
     }
 
     function capNhatLuotXem($maBaiDang) {
@@ -106,8 +122,10 @@ class BaiDangDao {
         $connect = mysqli_connect('localhost', 'root', '', 'PhongTroSinhVien');
         mysqli_set_charset($connect, 'utf8');
         $hinhAnh = new HinhAnhDao();
-        $sql = "SELECT * FROM ViewBaiDang WHERE MaBaiDang = {$maBaiDang}";
-        
+        $sql = "SELECT ViewBaiDang.*, BaiDang.MoTa "
+                . "FROM ViewBaiDang JOIN BaiDang ON ViewBaiDang.MaBaiDang = BaiDang.MaBaiDang "
+                . "WHERE ViewBaiDang.MaBaiDang = {$maBaiDang}";
+
         $result = $connect->query($sql);
         if ($result->num_rows > 0) {
             while ($row = mysqli_fetch_array($result)) {
@@ -115,6 +133,7 @@ class BaiDangDao {
                 $rs->MaBaiDang = $row['MaBaiDang'];
                 $rs->MaPhong = $row['MaPhong'];
                 $rs->HinhAnh = $hinhAnh->getAnhDaiDien($row['MaBaiDang']);
+                $rs->MoTa = $row['MoTa'];
                 return $rs;
             }
             $result->close();

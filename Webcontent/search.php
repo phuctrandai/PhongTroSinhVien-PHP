@@ -120,7 +120,7 @@ $listLoaiPhong = $loaiPhongDao->getLoaiPhong();
                                                 $listTienNghiCount = count($listTienNghi);
                                                 for ($i_TienNghi = 0; $i_TienNghi < $listTienNghiCount;) {
                                                     ?>
-                                                    <div class="col-lg-4">
+                                                    <div class="col-lg-4 col-md-6 col-sm-6">
                                                         <?php if ($i_TienNghi < $listTienNghiCount) { ?>
                                                             <label class="my-container"><?php
                                                                 echo($listTienNghi[$i_TienNghi]->TenTienNghi);
@@ -172,7 +172,7 @@ $listLoaiPhong = $loaiPhongDao->getLoaiPhong();
                                                 $listMoiTruongCount = count($listMoiTruong);
                                                 for ($i_MoiTruong = 0; $i_MoiTruong < $listMoiTruongCount;) {
                                                     ?>
-                                                    <div class="col-lg-4">
+                                                    <div class="col-lg-4 col-md-6 col-sm-6">
                                                         <?php if ($i_MoiTruong < $listMoiTruongCount) { ?>
                                                             <label class="my-container"><?php
                                                                 echo($listMoiTruong[$i_MoiTruong]->TenMoiTruong);

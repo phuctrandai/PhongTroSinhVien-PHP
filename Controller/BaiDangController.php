@@ -60,21 +60,20 @@ function luuBaiDang() {
     $TieuDe = $_REQUEST['tieuDe'];
     $MoTa = $_REQUEST['moTa'];
     $ThoiGianDang = date("Y-m-d");
-    
-    $phongTroDao = new PhongTroDao();    
+
+    $phongTroDao = new PhongTroDao();
     $baiDangDao = new BaiDangDao();
-    
+
     $baiDangDao->luuBaiDang($TieuDe, $ThoiGianDang, $MoTa, $TenTaiKhoan);
-    
+
     $MaBaiDang = $baiDangDao->getMaxMaBaiDang($TenTaiKhoan);
     luuPhongTro($MaBaiDang);
-    
+
     uploadAnh($MaBaiDang);
     
     $MaPhong = $phongTroDao->getMaPhong($MaBaiDang);
     luuTienNghi($MaPhong);
     luuMoiTruong($MaPhong);
-    
     xemBaiDang($MaBaiDang, $MaPhong);
 }
 
@@ -121,33 +120,37 @@ function luuMoiTruong($MaPhong) {
 function uploadAnh($MaBaiDang) {
     $files = $_FILES['hinhAnh'];
     $soLuongAnh = count($files['name']);
-    
+
     $attr = array('name', 'type', 'tmp_name', 'error', 'size');
     $attrCount = count($attr);
-    
+
     $hinhAnh = array('');
-    
-    $j = 0;
-    while ($j < $soLuongAnh) {
-        for($i = 0 ; $i < $attrCount ; $i++) {
-            $hinhAnh[$i] = $files[$attr[$i]];
+
+    $i = 0;
+    while ($i < $soLuongAnh) {
+        for ($j = 0; $j < $attrCount; $j++) {
+            $hinhAnh[$j] = $files[$attr[$j]][$i];
         }
         luuHinhAnh($hinhAnh, $MaBaiDang);
-        $j++;
+        $i++;
     }
 }
 
 function luuHinhAnh($hinhAnh, $MaBaiDang) {
-    if ($hinhAnh[3] == 0) {
+    var_dump($hinhAnh[0]);
+    if ($hinhAnh[3] > 0) {
         echo 'File loi';
     } else {
-        $temp = explode(".", implode('|', $hinhAnh[0]));
-        $newfilename = round(microtime(true)) . '.' . end($temp);
-        $result = move_uploaded_file(implode('|', $hinhAnh[2]), '../Webcontent/img/' . $newfilename);
-        if($result) {
-            $hinhAnhDao = new HinhAnhDao();
-            $hinhAnhDao->luuHinhAnh('img/bg-img/'.$newfilename, $MaBaiDang);
+        $hinhAnhDao = new HinhAnhDao();
+
+        $temp = explode(".", $hinhAnh[0]);
+        $maHinhAnh = $hinhAnhDao->maxMaHinhAnh();
+        $newfilename = ($maHinhAnh + 1) . '.' . end($temp);
+
+        $result = move_uploaded_file($hinhAnh[2], '../Webcontent/img/phong-tro/' . $newfilename);
+        if ($result) {
+            $hinhAnhDao->luuHinhAnh('img/phong-tro/' . $newfilename, $MaBaiDang);
+            echo 'Up thanh cong';
         }
-        echo 'Up thanh cong';
     }
 }

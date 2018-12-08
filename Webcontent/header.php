@@ -44,9 +44,6 @@ require_once '../Model/TaiKhoan.php';
                                     <a href="../Controller/BaiDangController.php?command=post">Đăng tin</a>
                                 </li>
                                 <li>
-                                    <a href="#">Tin tức</a>
-                                </li>
-                                <li>
                                     <a href="sign-up.php">Đăng ký</a>
                                 </li>
                                 <li>
@@ -73,9 +70,6 @@ require_once '../Model/TaiKhoan.php';
                                 
                                 <!-- Dang nhap voi vai tro nguoi tim tro -->
                                 <?php } else if($loaiTaiKhoan == 2) {?>
-                                <li>
-                                    <a href="#">Tin tức</a>
-                                </li>
                                 <li>
                                     <a href="">Tài khoản</a>
                                 </li>

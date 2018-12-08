@@ -287,14 +287,15 @@ $listLoaiPhong = $loaiPhongDao->getLoaiPhong();
                     <div class="col-12">
                         <div class="form-group">
                             <label for="moTa">Mô tả</label>
-                            <textarea name="moTa" class="form-control" id="moTa" cols="50" rows="10" placeholder="Mô tả"></textarea>
+                            <textarea name="moTa" class="form-control" id="moTa" 
+                                      cols="50" rows="10" placeholder="Mô tả"></textarea>
                         </div>
                     </div>
                     
                     <!-- Upload image -->
                     <div class="col-12">
                         <div class="form-group custom-file">
-                            <input id="fileUpload" type="file" multiple
+                            <input id="fileUpload" type="file" multiple required
                                    enctype="multipart/form-data"
                                    accept="image/*" name="hinhAnh[]"
                                    class="custom-file-input"/>

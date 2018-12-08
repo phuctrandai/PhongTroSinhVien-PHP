@@ -11,7 +11,8 @@ and open the template in the editor.
 body {
     font-family: "Roboto", sans-serif !important;
 }
-
+/*
+   Customize checkbox
 /* Customize the label (the container) */
 .my-container {
     display: block;
@@ -24,7 +25,6 @@ body {
     -ms-user-select: none;
     user-select: none;
 }
-
 /* Hide the browser's default checkbox */
 .my-container input {
     position: absolute;
@@ -33,7 +33,6 @@ body {
     height: 0;
     width: 0;
 }
-
 /* Create a custom checkbox */
 .my-checkmark {
     position: absolute;
@@ -45,29 +44,24 @@ body {
     border: solid #2196F3 thin;
     transition: 0.3s;
 }
-
 /* On mouse-over, add a grey background color */
 .my-container:hover input ~ .my-checkmark {
     box-shadow: 0px 0px 10px #2196F3;
 }
-
 /* When the checkbox is checked, add a blue background */
 .my-container input:checked ~ .my-checkmark {
     background-color: #2196F3;
 }
-
 /* Create the checkmark/indicator (hidden when not checked) */
 .my-checkmark:after {
     content: "";
     position: absolute;
     display: none;
 }
-
 /* Show the checkmark when checked */
 .my-container input:checked ~ .my-checkmark:after {
     display: block;
 }
-
 /* Style the checkmark/indicator */
 .my-container .my-checkmark:after {
     left: 9px;
@@ -81,12 +75,14 @@ body {
     transform: rotate(45deg);
 }
 
+
 /* Search menu */
 #bg-search {
     width: 100%; 
     height: 450px; 
-    background: url(../img/bg-img/10.jpg) no-repeat center; 
-    background-size: cover; position: relative
+    background: url(../img/bg-img/search-bg.jpg) no-repeat center;
+    background-size: cover; 
+    position: relative
 }
 #menu-search {
     width: 100%; 
@@ -103,31 +99,6 @@ body {
 #form-search .card-header {
     background-color: #fff;
 }
-.my-select {
-    height: calc(2.25rem + 2px);
-    padding: .375rem .75rem;
-    line-height: 1.5;
-    background-color: #fff;
-    background-clip: padding-box;
-    border: 1px solid #fff;
-    transition: border-color .5s ease-in-out;
-}
-.my-item {
-    cursor: pointer;
-    width: 100%;
-}
-.my-item:not(:last-child) {
-    border-right: solid 2px #000;
-}
-.item-left {
-    border-radius: .25rem 0 0 .25rem;
-}
-.item-center {
-
-}
-.item-right {
-    border-radius: 0 .25rem .25rem 0;
-}
 
 @media (max-width: 768px) {
     #bg-search {
@@ -141,13 +112,53 @@ body {
     }
 }
 
-/* Make the image fully responsive */
+/* Customize post */
+.single-blog-post.style-2 .blog-content .post-title {
+    margin-bottom: 0px;
+}
+.single-blog-post.style-2 .blog-content .post-author, .post-date {
+    font-size: 11px !important;
+}
+.single-blog-post.style-2 .blog-thumbnail {
+    height: 200px;
+}
+.single-blog-post.style-2 .blog-thumbnail img {
+    height: 100%;
+}
+
+.single-blog-post.style-4 .blog-content .post-author {
+    display: block;
+    font-size: 11px;
+    color: #636363;
+    font-weight: 500;
+}
+.single-blog-post.style-4 .blog-thumbnail {
+    height: 120px;
+}
+.single-blog-post.style-4 .blog-thumbnail img {
+    height: 100%;
+}
+.post-view-rate {
+    font-size: 11px;
+    color: #636363;
+    margin-bottom: 10px;
+    float: right;
+}
+
+.carousel-item {
+    height: 450px;
+    text-align: center;
+    background-color: black;
+}
 .carousel-inner img {
-    width: 100%;
+    width: auto;
     height: 100%;
 }
 
 @media (max-width: 568px) {
+    .carousel-item {
+        height: 250px;
+    }
     .text-choice {
         font-size: 0.7rem !important;
         margin-top: 8px !important;

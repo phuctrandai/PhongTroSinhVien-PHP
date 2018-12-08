@@ -1,17 +1,15 @@
 <?php
 
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 
 require_once '../Model/PhongTro.php';
 
 class PhongTroDao {
+
     public function __construct() {
+        
     }
-    
+
     public function getThongTin($maPhong) {
         $connect = mysqli_connect('localhost', 'root', '', 'PhongTroSinhVien');
         mysqli_set_charset($connect, 'utf8');
@@ -24,28 +22,17 @@ class PhongTroDao {
         $result = $connect->query($sql);
         if ($result->num_rows > 0) {
             while ($row = mysqli_fetch_array($result)) {
-                $p = new PhongTro($row['MaPhong'], 
-                        $row['SoLuongPhong'], 
-                        $row['SoPhongTrong'], 
-                        $row['SoNguoiToiDa'], 
-                        $row['GiaPhong'],
-                        $row['DienTich'],
-                        $row['ChoTuQuan'],
-                        $row['TenLoaiPhong'],
-                        $row['TenKhuVuc'],
-                        $row['TenQuanHuyen'],
-                        $row['MaBaiDang']);
+                $p = new PhongTro($row['MaPhong'], $row['SoLuongPhong'], $row['SoPhongTrong'], $row['SoNguoiToiDa'], $row['GiaPhong'], $row['DienTich'], $row['ChoTuQuan'], $row['TenLoaiPhong'], $row['TenKhuVuc'], $row['TenQuanHuyen'], $row['MaBaiDang']);
                 return $p;
             } $result->close();
         } return null;
     }
-    
-    public function luuThongTin($SoLuongPhong, $SoPhongTrong, $SoNguoiToiDa, $GiaPhong, 
-        $DienTich, $ChoTuQuan, $MaLoaiPhong, $MaKhuVuc, $MaQuanHuyen, $MaBaiDang) {
-        
+
+    public function luuThongTin($SoLuongPhong, $SoPhongTrong, $SoNguoiToiDa, $GiaPhong, $DienTich, $ChoTuQuan, $MaLoaiPhong, $MaKhuVuc, $MaQuanHuyen, $MaBaiDang) {
+
         $connect = mysqli_connect('localhost', 'root', '', 'PhongTroSinhVien');
         mysqli_set_charset($connect, 'utf8');
-        
+
         $sql = "INSERT INTO `PhongTro`"
                 . "(`SoLuongPhong`, `SoPhongTrong`, "
                 . "`SoNguoiToiDa`, `GiaPhong`, "
@@ -64,53 +51,58 @@ class PhongTroDao {
         $connect->close();
         return $result;
     }
-    
-    public function getMaPhong($MaBaiDang){
-        /* @var $stmt mysqli_stmt*/
-        /* @var $result mysqli_result*/
+
+    public function getMaPhong($MaBaiDang) {
+        /* @var $stmt mysqli_stmt */
+        /* @var $result mysqli_result */
         $connect = mysqli_connect('localhost', 'root', '', 'PhongTroSinhVien');
         mysqli_set_charset($connect, 'utf8');
-        
+
         $sql = "SELECT PhongTro.MaPhong FROM `PhongTro` WHERE MaBaiDang = {$MaBaiDang}";
         $stmt = $connect->prepare($sql);
         $stmt->execute();
         $result = $stmt->get_result();
-        if($result->num_rows > 0) {
+        if ($result->num_rows > 0) {
             return $result->fetch_row()[0];
         }
         $stmt->close();
         $connect->close();
         return $result;
     }
-    
-    public function LocDK($MaLoaiPhong, $ChoTuQuan, $MaQuanHuyen, $MaKhuVuc){
+
+    public static function TimKiem($MaLoaiPhong, $ChoTuQuan, $MaQuanHuyen, $MaKhuVuc, $TuKhoa) {
         $rs = array();
-        $i = 0;
         $connect = mysqli_connect('localhost', 'root', '', 'PhongTroSinhVien');
         mysqli_set_charset($connect, 'utf8');
         $sql = "SELECT ThongTinTaiKhoan.HoTen, BaiDang.TieuDe, BaiDang.ThoiGianDang,"
-                . " HinhAnh.DuongDan, PhongTro.GiaPhong, BaiDang.MaBaiDang, PhongTro.MaPhong "
-                . "FROM PhongTro JOIN BaiDang ON PhongTro.MaBaiDang = BaiDang.MaBaiDang "
+                . "BaiDang.MaBaiDang, HinhAnh.DuongDan, "
+                . "PhongTro.GiaPhong, PhongTro.MaPhong "
+                . "FROM PhongTro "
+                . "JOIN BaiDang ON PhongTro.MaBaiDang = BaiDang.MaBaiDang "
                 . "JOIN TaiKhoan ON BaiDang.TenTaiKhoan = TaiKhoan.TenTaiKhoan "
                 . "JOIN ThongTinTaiKhoan ON ThongTinTaiKhoan.TenTaiKhoan = TaiKhoan.TenTaiKhoan "
                 . "JOIN HinhAnh ON HinhAnh.MaBaiDang = BaiDang.MaBaiDang "
-                . "WHERE PhongTro.MaLoaiPhong = {$MaLoaiPhong }AND PhongTro.ChoTuQuan = {$ChoTuQuan} "
-                . "AND PhongTro.MaQuanHuyen = {$MaQuanHuyen} AND PhongTro.MaKhuVuc = {$MaKhuVuc} ";
+                . "WHERE PhongTro.MaLoaiPhong = {$MaLoaiPhong }"
+                . "AND PhongTro.ChoTuQuan = {$ChoTuQuan} "
+                . "AND PhongTro.MaQuanHuyen = {$MaQuanHuyen} "
+                . "AND PhongTro.MaKhuVuc = {$MaKhuVuc} "
+                . "AND BaiDang.TieuDe LIKE '%{$TuKhoa}%'";
         $result = $connect->query($sql);
         if ($result->num_rows > 0) {
+            $i = 0;
             while ($row = mysqli_fetch_array($result)) {
-                $p = new BaiDang($row['HoTen'], 
+                $rs[$i] = new BaiDang(
+                        $row['HoTen'], 
                         $row['TieuDe'], 
-                        $row['ThoiGiagDang'], 
+                        $row['ThoiGianDang'], 
                         $row['HinhAnh'], 
                         $row['GiaPhong'],
-                        $row['MaBaiDang'],
+                        $row['MaBaiDang'], 
                         $row['MaPhong']);
-                $rs[$i] = $p;
                 $i++;
             } $result->close();
-            return $rs;    
-        } 
+            return $rs;
+        }
         return null;
     }
 }
