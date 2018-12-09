@@ -10,6 +10,9 @@ $baiDangDao = new BaiDangDao();
 $listMoiNhat = $baiDangDao->topMoiNhat();
 $listReNhat = $baiDangDao->topGiaReNhat();
 $listTrongThang = $baiDangDao->tinTrongThang();
+$listXemNhieuNhat = $baiDangDao->topXemNhieuNhat();
+
+setlocale(LC_MONETARY, "vie");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -69,7 +72,7 @@ $listTrongThang = $baiDangDao->tinTrongThang();
                         </div>
                     </div>
                     
-          it          <!-- Danh ky -->
+                    <!-- Danh ky -->
                     <div class="col-12 col-sm-9 col-md-6 col-lg-4">
                         <div class="sidebar-area">
 
@@ -104,8 +107,8 @@ $listTrongThang = $baiDangDao->tinTrongThang();
         <script src="js/plugins/plugins.js"></script>
         <!-- Active js -->
         <script src="js/active.js"></script>
-        <!-- My js -->
-        <script src="js/my-script.js"></script>
+        <!-- My js 
+        <script src="js/my-script.js"></script>-->
     </body>
 
 </html>

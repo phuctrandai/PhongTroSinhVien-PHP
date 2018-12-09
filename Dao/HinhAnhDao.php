@@ -22,7 +22,7 @@ class HinhAnhDao {
         }
         $stmt->close();
         $connect->close();
-        return $result;
+        return null;
     }
 
     function getListAnh($maBaiDang) {
@@ -48,11 +48,25 @@ class HinhAnhDao {
         $link = mysqli_connect('localhost', 'root', '', 'PhongTroSinhVien');
         mysqli_set_charset($link, 'utf8');
         
-        $sql = NSERT INTO `HinhAnh`(`DuongDan`, `MaBaiDang`) VALUES(?,?)';
+        $sql = 'INSERT INTO `HinhAnh`(`DuongDan`, `MaBaiDang`) VALUES(?,?)';
         $stmt = $link->prepare($sql);
         $stmt->bind_param("ss", $DuongDan, $MaBaiDang);
         $stmt->execute();
         $link->close();
     }
-
+    
+    public function maxMaHinhAnh() {
+        $link = mysqli_connect('localhost', 'root', '', 'PhongTroSinhVien');
+        mysqli_set_charset($link, 'utf8');
+        
+        $sql = 'SELECT MAX(MaHinhAnh) FROM HinhAnh';
+        $result = mysqli_query($link, $sql) or die($link);
+        if(mysqli_num_rows($result) > 0) {
+            $maHinhAnh = mysqli_fetch_row($result)[0];
+            return $maHinhAnh;
+        }
+        $result->close();
+        mysqli_close($link);
+        return null;
+    }
 }

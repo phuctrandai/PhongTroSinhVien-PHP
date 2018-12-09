@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Dec 01, 2018 at 03:07 AM
+-- Generation Time: Dec 09, 2018 at 04:20 AM
 -- Server version: 10.1.36-MariaDB
 -- PHP Version: 7.2.10
 
@@ -42,16 +42,21 @@ CREATE TABLE `BaiDang` (
 --
 
 INSERT INTO `BaiDang` (`MaBaiDang`, `TieuDe`, `ThoiGianDang`, `MoTa`, `LuotXem`, `TenTaiKhoan`) VALUES
-(1, 'Phòng trọ cho thuê', '2018-11-16', 'Phòng trọ cho sinh viên thuê diện tích rộng, thoáng mát, đầy đủ tiện nghi...', 8, 'phuc'),
-(2, 'Cần thuê phòng trọ giá rẻ', '2018-11-16', 'Cần thuê phòng giá rẻ từ 400k-500k/tháng', 14, 'tam'),
-(4, 'Cho thuê nhà nguyên căn 4 người ở', '2018-11-10', 'Nhà nguyên căn đủ cho 4 người ở', 9, 'phuc'),
-(5, 'Cho thuê phòng trọ cho sinh viên', '2018-12-10', 'Chỉ dành cho sinh viên', 15, 'quang'),
-(6, 'Cho thuê nhà nguyên căn thoáng mát', '2018-11-05', 'Nhà thoáng mát,sạch sẽ', 1, 'phuc'),
-(7, 'Còn 2 phòng trống tại cư xá Thanh Lịch', '2018-11-14', 'Còn trống 2 phòng đầy đủ tiện nghi', 5, 'tam'),
-(8, 'Cho thuê nhà nguyên căn đầy đủ tiện nghi', '2018-11-10', 'Nhà nguyên căn đầy đủ tiện nghi', 5, 'phuc'),
-(9, 'Cho thuê phòng trọ tại trung tâm thành phố', '2018-11-12', 'Còn 1 phòng tại trung tâm thành phố', 2, 'tam'),
-(19, 'Còn 2 phòng trống gần BigC', '2018-11-13', 'Phòng rộng rãi, đầy đủ tiện nghi', 0, 'tam'),
-(22, 'Test luu bai dang', '2018-11-29', '', 1, 'phuc');
+(73, 'Cư xá thanh lịch Trường Đại học Khoa học', '2018-12-01', '+Phòng rộng rãi, có nhà vệ sinh trong, quạt điện, có bếp chung với đầy đủ thiết bị, tủ lạnh, ban công thoáng mát, wifi free, có cửa sổ, có bãi để xe riêng,... \r\n+Nằm trong khu vực yên tĩnh, an ninh tốt, có camera an ninh.\r\n+Có vệ sinh phòng ít nhất 1 lần/ tuần.', 5, 'phuc'),
+(74, 'Cư xá 215 Trần Phú - Huế', '2018-12-02', '+Phòng rộng rãi, có nhà vệ sinh trong, quạt điện, có bếp chung với đầy đủ thiết bị, tủ lạnh, wifi free, có cửa sổ, có bãi để xe riêng,... \r\n+Nằm trong khu vực yên tĩnh, an ninh tốt, có camera an ninh.', 1, 'phuc'),
+(75, 'Cho thuê nhà nguyên căn 4 người ở', '2018-12-03', '+Phòng rộng rãi, có nhà vệ sinh trong, quạt điện, có bếp chung với đầy đủ thiết bị, tủ lạnh, ban công thoáng mát, có bãi để xe riêng,... \r\n+Nằm trong khu vực yên tĩnh, an ninh tốt.', 2, 'phuc'),
+(76, 'Cho thuê phòng trọ cho sinh viên', '2018-12-04', 'Phòng sạch sẽ, thoáng mát, có gác lửng, vệ sinh trong, trọ tự quản.\r\nCó phòng rộng 40m2 tính cả gác lửng thích hợp hộ gia đình thuê\r\nĐiện nước tính theo đồng hồ riêng.\r\nLiên hệ trực tiếp: 01208063038 (C. Châu)\r\n0935176776 (A. Thanh)', 4, 'tam'),
+(77, 'Còn 2 phòng trống gần BigC', '2018-12-05', '- Cho thuê phòng trọ mới xây ở gần các trường đại học ,Công trình phụ khép kín,sạch sẽ ,cao ráo ,yên tĩnh thoáng mát.\r\n- Diện tích 15m2 .\r\n- Điện + Nước, wifi :Trả theo mức sử dụng(có đồng hồ điện, nuoc riêng từng phòng)\r\n- Phòng trang bị :Gường ngủ đẹp rộng\r\n- Có chổ để xe an toàn, camera\r\n- Giá: 1-1tr2\r\nAi có nhu cầu liên hệ 0906404505\r\nĐc:1A/56 An Dương Vương - tp huế', 2, 'tam'),
+(78, 'Phòng trọ cho nữ thuê', '2018-12-06', 'Phòng trọ cho nữ thuê, chủ nhà vui tính, hòa đồng, an ninh tốt, vệ sinh trong 450k/tháng.', 3, 'tam'),
+(79, 'Cho thuê phòng trọ gần Đại học sư phạm', '2018-12-04', '- Phòng trọ giá rẻ, thoáng mát, an ninh tốt, đầy đủ tiện nghi\r\n- Môi trường gần chợ, siêu thị, trường học, ...\r\n- Liên hệ: A. Quang\r\n- Địa chỉ: 69 Phạm Ngũ Lão\r\n- ĐT: 0123456789', 1, 'quang'),
+(80, 'Cho thuê nhà nguyên căn gần chợ An Cựu', '2018-12-05', '- Phòng trọ rộng rãi, đầy đủ tiện nghi, chất lượng tốt\r\n- Môi trường thoáng đãng, an ninh tốt\r\n- Địa chỉ: 105 Hùng Vương\r\n- Liên hệ: Chị Dung - 0364971566', 2, 'quang'),
+(81, 'Cư xá Fullhouse', '2018-12-06', '- Phòng rộng rãi, ban công thoáng mát\r\n- An ninh tốt\r\n- Liên hệ: Bác Xuân - 1335975451\r\n- Địa chỉ: 35 Bùi Thị Xuân', 1, 'quang'),
+(82, 'Ký túc xá Đặng Huy Trứ', '2018-12-06', '- An ninh cao\r\n- Môi trường thoáng đãng\r\n- Liên hệ: A. Tùng\r\n- ĐT: 1315681215\r\n- Địa chỉ: 15 Đặng Huy Trứ', 1, 'tung'),
+(83, 'Ký túc xá Nông Lâm', '2018-12-06', '- Phòng rộng, đầy đủ tiện nghi: giường, vệ sinh trong, ...\r\n- Điện nước đã tính vào tiền thuê.\r\n- An ninh cao\r\n- Địa chỉ: 35 Trần Quý Cáp', 1, 'tung'),
+(84, 'Ký túc xá Việt Mỹ', '2018-12-08', '- Liên hệ: A. Tùng\r\n- Điện thoai: 123456789\r\n- Địa chỉ: 15 Vĩ Dạ', 1, 'tung'),
+(85, 'Cho thuê nhà nguyên căn 4 người ở', '2018-12-07', '- Nhà nguyên căn rộng rãi, thoáng mát \r\n- An ninh tốt\r\n- Liên hệ: A. Tùng đẹp trai\r\n- ĐT: 15489511\r\n- Địa chỉ: 98/8 Bùi Thị Xuân', 2, 'lam'),
+(86, 'Nhà nguyên căn gần Chợ Đông Ba', '2018-12-08', '- Nhà nguyên căn 2 tầng, cao ráo, thoáng đãng.\r\n- An ninh tốt.\r\n- Địa chỉ: 100 Trần Hưng Đạo\r\n- Liên hệ: Mr.Lâm - 9222920292', 3, 'lam'),
+(87, 'Cho thuê nhà nguyên căn gần Bênh viện TW', '2018-12-08', '- Nhà nguyên căn cao ráo, sạch sẽ\r\n- Môi trường thoáng đãng, an ninh tốt\r\n- Liên hệ: Mr.Lâm tiên sinh\r\n- Địa chỉ: 200 Ngô Quyền\r\n- Điện thoại: 1548913223', 1, 'lam');
 
 -- --------------------------------------------------------
 
@@ -69,11 +74,78 @@ CREATE TABLE `DanhSachMoiTruong` (
 --
 
 INSERT INTO `DanhSachMoiTruong` (`MaMoiTruong`, `MaPhong`) VALUES
-(1, 1),
-(1, 6),
-(1, 12),
-(3, 2),
-(3, 6);
+(1, 39),
+(1, 40),
+(1, 41),
+(1, 43),
+(1, 44),
+(1, 45),
+(1, 46),
+(1, 47),
+(1, 48),
+(1, 49),
+(1, 50),
+(1, 51),
+(1, 52),
+(2, 39),
+(2, 40),
+(2, 42),
+(2, 44),
+(2, 45),
+(2, 46),
+(2, 49),
+(2, 50),
+(2, 51),
+(2, 52),
+(3, 39),
+(3, 40),
+(3, 41),
+(3, 42),
+(3, 43),
+(3, 44),
+(3, 45),
+(3, 46),
+(3, 47),
+(3, 48),
+(3, 49),
+(3, 50),
+(3, 51),
+(4, 45),
+(4, 47),
+(4, 51),
+(4, 53),
+(5, 45),
+(5, 52),
+(5, 53),
+(6, 45),
+(6, 48),
+(6, 52),
+(6, 53),
+(7, 40),
+(7, 44),
+(7, 45),
+(7, 49),
+(7, 51),
+(8, 39),
+(8, 40),
+(8, 41),
+(8, 42),
+(8, 43),
+(8, 44),
+(8, 45),
+(8, 46),
+(8, 47),
+(8, 48),
+(8, 49),
+(8, 50),
+(8, 51),
+(8, 52),
+(8, 53),
+(9, 41),
+(9, 47),
+(9, 48),
+(9, 50),
+(9, 51);
 
 -- --------------------------------------------------------
 
@@ -91,11 +163,80 @@ CREATE TABLE `DanhSachTienNghi` (
 --
 
 INSERT INTO `DanhSachTienNghi` (`MaTienNghi`, `MaPhong`) VALUES
-(1, 2),
-(1, 12),
-(2, 1),
-(3, 6),
-(4, 6);
+(1, 39),
+(1, 40),
+(1, 42),
+(1, 43),
+(1, 45),
+(1, 47),
+(1, 50),
+(2, 39),
+(2, 40),
+(2, 41),
+(2, 42),
+(2, 43),
+(2, 45),
+(2, 46),
+(2, 47),
+(2, 48),
+(2, 49),
+(2, 50),
+(2, 51),
+(2, 52),
+(2, 53),
+(4, 43),
+(4, 47),
+(4, 48),
+(4, 49),
+(4, 50),
+(4, 51),
+(5, 39),
+(5, 40),
+(5, 42),
+(5, 46),
+(6, 39),
+(6, 40),
+(6, 41),
+(6, 42),
+(6, 44),
+(6, 45),
+(6, 46),
+(6, 48),
+(6, 51),
+(6, 52),
+(6, 53),
+(7, 39),
+(7, 47),
+(7, 48),
+(7, 49),
+(7, 52),
+(7, 53),
+(8, 39),
+(8, 40),
+(8, 43),
+(8, 44),
+(8, 45),
+(8, 47),
+(8, 48),
+(8, 49),
+(8, 50),
+(9, 39),
+(9, 41),
+(9, 43),
+(9, 44),
+(9, 46),
+(9, 48),
+(9, 49),
+(9, 50),
+(9, 51),
+(9, 52),
+(9, 53),
+(10, 41),
+(10, 44),
+(10, 46),
+(10, 51),
+(10, 52),
+(10, 53);
 
 -- --------------------------------------------------------
 
@@ -114,15 +255,57 @@ CREATE TABLE `HinhAnh` (
 --
 
 INSERT INTO `HinhAnh` (`MaHinhAnh`, `DuongDan`, `MaBaiDang`) VALUES
-(1, 'img/bg-img/1.jpg', 1),
-(2, 'img/bg-img/2.jpg', 2),
-(3, 'img/bg-img/3.jpg', 4),
-(4, 'img/bg-img/4.jpg', 6),
-(5, 'img/bg-img/5.jpg', 8),
-(6, 'img/bg-img/6.jpg', 5),
-(7, 'img/bg-img/7.jpg', 9),
-(8, 'img/bg-img/8.jpg', 19),
-(9, 'img/bg-img/9.jpg', 7);
+(61, 'img/phong-tro/1.jpg', 73),
+(62, 'img/phong-tro/62.jpg', 73),
+(63, 'img/phong-tro/63.jpg', 73),
+(64, 'img/phong-tro/64.jpg', 73),
+(65, 'img/phong-tro/65.jpg', 74),
+(66, 'img/phong-tro/66.jpg', 74),
+(67, 'img/phong-tro/67.jpg', 74),
+(68, 'img/phong-tro/68.jpg', 74),
+(69, 'img/phong-tro/69.jpg', 75),
+(70, 'img/phong-tro/70.jpg', 75),
+(71, 'img/phong-tro/71.jpg', 75),
+(72, 'img/phong-tro/72.jpg', 75),
+(73, 'img/phong-tro/73.jpg', 75),
+(74, 'img/phong-tro/74.jpg', 76),
+(75, 'img/phong-tro/75.jpg', 76),
+(76, 'img/phong-tro/76.jpg', 76),
+(77, 'img/phong-tro/77.jpg', 76),
+(78, 'img/phong-tro/78.jpg', 77),
+(79, 'img/phong-tro/79.jpg', 77),
+(80, 'img/phong-tro/80.jpg', 77),
+(81, 'img/phong-tro/81.jpg', 77),
+(82, 'img/phong-tro/82.jpg', 77),
+(83, 'img/phong-tro/83.jpg', 78),
+(84, 'img/phong-tro/84.jpg', 78),
+(85, 'img/phong-tro/85.jpg', 78),
+(86, 'img/phong-tro/86.jpg', 78),
+(87, 'img/phong-tro/87.png', 79),
+(88, 'img/phong-tro/88.jpg', 79),
+(89, 'img/phong-tro/89.png', 79),
+(90, 'img/phong-tro/90.jpg', 80),
+(91, 'img/phong-tro/91.jpg', 80),
+(92, 'img/phong-tro/92.jpg', 80),
+(93, 'img/phong-tro/93.jpg', 81),
+(94, 'img/phong-tro/94.jpg', 81),
+(95, 'img/phong-tro/95.jpg', 81),
+(96, 'img/phong-tro/96.jpg', 82),
+(97, 'img/phong-tro/97.jpg', 82),
+(98, 'img/phong-tro/98.jpg', 82),
+(99, 'img/phong-tro/99.jpg', 82),
+(100, 'img/phong-tro/100.jpg', 83),
+(101, 'img/phong-tro/101.jpg', 83),
+(102, 'img/phong-tro/102.jpg', 83),
+(103, 'img/phong-tro/103.jpg', 84),
+(104, 'img/phong-tro/104.jpg', 84),
+(105, 'img/phong-tro/105.jpg', 84),
+(106, 'img/phong-tro/106.jpg', 85),
+(107, 'img/phong-tro/107.jpg', 86),
+(108, 'img/phong-tro/108.jpg', 87),
+(109, 'img/phong-tro/109.jpg', 87),
+(110, 'img/phong-tro/110.jpg', 87),
+(111, 'img/phong-tro/111.jpg', 87);
 
 -- --------------------------------------------------------
 
@@ -170,7 +353,9 @@ CREATE TABLE `LoaiPhong` (
 
 INSERT INTO `LoaiPhong` (`MaLoaiPhong`, `TenLoaiPhong`) VALUES
 (1, 'Căn hộ'),
-(2, 'Phòng trọ');
+(2, 'Phòng trọ'),
+(3, 'Cư xá'),
+(4, 'Ký túc xá');
 
 -- --------------------------------------------------------
 
@@ -189,7 +374,7 @@ CREATE TABLE `LoaiTaiKhoan` (
 
 INSERT INTO `LoaiTaiKhoan` (`MaLoaiTaiKhoan`, `TenLoaiTaiKhoan`) VALUES
 (1, 'Chủ trọ'),
-(2, 'Người dùng');
+(2, 'Người tìm trọ');
 
 -- --------------------------------------------------------
 
@@ -209,7 +394,13 @@ CREATE TABLE `MoiTruong` (
 INSERT INTO `MoiTruong` (`MaMoiTruong`, `TenMoiTruong`) VALUES
 (1, 'Chợ'),
 (2, 'Siêu thị'),
-(3, 'Trường học');
+(3, 'Trường học'),
+(4, 'Bệnh viện'),
+(5, 'Công viên'),
+(6, 'Sông hồ'),
+(7, 'Khu giải trí'),
+(8, 'Bến xe Bus'),
+(9, 'Trung tâm thể dục thể thao');
 
 -- --------------------------------------------------------
 
@@ -236,15 +427,21 @@ CREATE TABLE `PhongTro` (
 --
 
 INSERT INTO `PhongTro` (`MaPhong`, `SoLuongPhong`, `SoPhongTrong`, `SoNguoiToiDa`, `GiaPhong`, `DienTich`, `ChoTuQuan`, `MaLoaiPhong`, `MaKhuVuc`, `MaQuanHuyen`, `MaBaiDang`) VALUES
-(1, 10, 9, 3, 3500000, 30, 1, 1, 1, 1, 1),
-(2, 5, 5, 2, 4500000, 10, 0, 2, 3, 4, 2),
-(3, 3, 2, 4, 4500000, 50, 1, 2, 9, 6, 4),
-(4, 6, 6, 1, 1000000, 10, 1, 1, 1, 1, 5),
-(5, 5, 2, 2, 1000000, 15, 1, 1, 1, 7, 6),
-(6, 5, 4, 2, 1000000, 15, 1, 1, 11, 2, 7),
-(7, 5, 4, 2, 1000000, 15, 1, 1, 11, 2, 8),
-(9, 15, 10, 2, 1000000, 12, 1, 2, 9, 3, 9),
-(12, 1, 1, 1, 10000, 1, 1, 1, 1, 1, 22);
+(39, 50, 45, 2, 700000, 10, 1, 3, 3, 2, 73),
+(40, 60, 60, 3, 800000, 10, 1, 3, 3, 2, 74),
+(41, 3, 3, 4, 1500000, 20, 1, 1, 1, 1, 75),
+(42, 100, 89, 4, 650000, 40, 1, 2, 10, 6, 76),
+(43, 30, 15, 3, 1500000, 15, 1, 2, 12, 3, 77),
+(44, 10, 10, 2, 450000, 12, 1, 2, 8, 5, 78),
+(45, 30, 25, 2, 450000, 11, 1, 2, 5, 7, 79),
+(46, 30, 20, 4, 550000, 15, 1, 2, 1, 1, 80),
+(47, 15, 10, 3, 800000, 13, 1, 3, 4, 8, 81),
+(48, 100, 100, 3, 950000, 15, 1, 4, 12, 2, 82),
+(49, 100, 100, 8, 750000, 20, 1, 4, 11, 6, 83),
+(50, 100, 100, 10, 150000, 50, 1, 4, 7, 7, 84),
+(51, 1, 1, 4, 2000000, 30, 1, 1, 4, 8, 85),
+(52, 1, 1, 5, 250000, 75, 1, 1, 8, 5, 86),
+(53, 1, 1, 5, 3000000, 85, 1, 1, 2, 3, 87);
 
 -- --------------------------------------------------------
 
@@ -288,9 +485,11 @@ CREATE TABLE `TaiKhoan` (
 --
 
 INSERT INTO `TaiKhoan` (`TenTaiKhoan`, `MatKhau`, `MaLoaiTaiKhoan`) VALUES
+('lam', '123', 1),
 ('phuc', '123', 1),
-('quang', '123', 2),
-('tam', '123', 1);
+('quang', '123', 1),
+('tam', '123', 1),
+('tung', '123', 1);
 
 -- --------------------------------------------------------
 
@@ -312,7 +511,9 @@ CREATE TABLE `ThongTinTaiKhoan` (
 INSERT INTO `ThongTinTaiKhoan` (`TenTaiKhoan`, `HoTen`, `GioiTinh`, `SoDienThoai`) VALUES
 ('phuc', 'Trần Đại Phúc', 1, ''),
 ('quang', 'Lê Đình Quang', 1, ''),
-('tam', 'TTT', 1, '');
+('tam', 'Trương Tấn Tâm', 1, ''),
+('tung', 'Văn Phước Hãi Tùng', 1, ''),
+('lam', 'Nguyễn Văn Lâm', 1, '');
 
 -- --------------------------------------------------------
 
@@ -333,7 +534,13 @@ INSERT INTO `TienNghi` (`MaTienNghi`, `TenTienNghi`) VALUES
 (1, 'Wifi'),
 (2, 'Vệ sinh trong'),
 (3, 'Điều hòa'),
-(4, 'Giường nệm');
+(4, 'Giường nệm'),
+(5, 'Gác lửng'),
+(6, 'Kệ bếp'),
+(7, 'Ban công/sân thượng'),
+(8, 'Camera an ninh'),
+(9, 'Bãi đỗ xe riêng'),
+(10, 'Sân vườn');
 
 -- --------------------------------------------------------
 
@@ -346,7 +553,6 @@ CREATE TABLE `ViewBaiDang` (
 ,`TieuDe` varchar(50)
 ,`ThoiGianDang` date
 ,`GiaPhong` bigint(20)
-,`DuongDan` varchar(200)
 ,`MaPhong` int(11)
 ,`MaBaiDang` int(11)
 );
@@ -358,7 +564,7 @@ CREATE TABLE `ViewBaiDang` (
 --
 DROP TABLE IF EXISTS `ViewBaiDang`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `ViewBaiDang`  AS  select `ThongTinTaiKhoan`.`HoTen` AS `HoTen`,`BaiDang`.`TieuDe` AS `TieuDe`,`BaiDang`.`ThoiGianDang` AS `ThoiGianDang`,`PhongTro`.`GiaPhong` AS `GiaPhong`,`HinhAnh`.`DuongDan` AS `DuongDan`,`PhongTro`.`MaPhong` AS `MaPhong`,`BaiDang`.`MaBaiDang` AS `MaBaiDang` from ((((`PhongTro` join `BaiDang` on((`PhongTro`.`MaBaiDang` = `BaiDang`.`MaBaiDang`))) left join `HinhAnh` on((`BaiDang`.`MaBaiDang` = `HinhAnh`.`MaBaiDang`))) join `TaiKhoan` on((`BaiDang`.`TenTaiKhoan` = `TaiKhoan`.`TenTaiKhoan`))) join `ThongTinTaiKhoan` on((`TaiKhoan`.`TenTaiKhoan` = `ThongTinTaiKhoan`.`TenTaiKhoan`))) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `ViewBaiDang`  AS  select `ThongTinTaiKhoan`.`HoTen` AS `HoTen`,`BaiDang`.`TieuDe` AS `TieuDe`,`BaiDang`.`ThoiGianDang` AS `ThoiGianDang`,`PhongTro`.`GiaPhong` AS `GiaPhong`,`PhongTro`.`MaPhong` AS `MaPhong`,`BaiDang`.`MaBaiDang` AS `MaBaiDang` from (((`PhongTro` join `BaiDang` on((`PhongTro`.`MaBaiDang` = `BaiDang`.`MaBaiDang`))) join `TaiKhoan` on((`BaiDang`.`TenTaiKhoan` = `TaiKhoan`.`TenTaiKhoan`))) join `ThongTinTaiKhoan` on((`TaiKhoan`.`TenTaiKhoan` = `ThongTinTaiKhoan`.`TenTaiKhoan`))) ;
 
 --
 -- Indexes for dumped tables
@@ -460,13 +666,13 @@ ALTER TABLE `TienNghi`
 -- AUTO_INCREMENT for table `BaiDang`
 --
 ALTER TABLE `BaiDang`
-  MODIFY `MaBaiDang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `MaBaiDang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
 
 --
 -- AUTO_INCREMENT for table `HinhAnh`
 --
 ALTER TABLE `HinhAnh`
-  MODIFY `MaHinhAnh` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `MaHinhAnh` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=112;
 
 --
 -- AUTO_INCREMENT for table `KhuVuc`
@@ -478,7 +684,7 @@ ALTER TABLE `KhuVuc`
 -- AUTO_INCREMENT for table `LoaiPhong`
 --
 ALTER TABLE `LoaiPhong`
-  MODIFY `MaLoaiPhong` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `MaLoaiPhong` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `LoaiTaiKhoan`
@@ -490,13 +696,13 @@ ALTER TABLE `LoaiTaiKhoan`
 -- AUTO_INCREMENT for table `MoiTruong`
 --
 ALTER TABLE `MoiTruong`
-  MODIFY `MaMoiTruong` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `MaMoiTruong` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `PhongTro`
 --
 ALTER TABLE `PhongTro`
-  MODIFY `MaPhong` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `MaPhong` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 
 --
 -- AUTO_INCREMENT for table `QuanHuyen`
@@ -508,7 +714,7 @@ ALTER TABLE `QuanHuyen`
 -- AUTO_INCREMENT for table `TienNghi`
 --
 ALTER TABLE `TienNghi`
-  MODIFY `MaTienNghi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `MaTienNghi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- Constraints for dumped tables

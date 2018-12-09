@@ -24,8 +24,7 @@
             $index = 0;
             $totalShow = count($listMoiNhat);
             $smallPost = $totalShow / 2;
-
-            /* @var $baiDang BaiDang */
+            
             for ($index = 0; $index < $smallPost; $index++) {
                 ?>
                 <!-- Single News Area -->
@@ -40,11 +39,24 @@
 
                     <!-- Blog Content -->
                     <div class="blog-content">
-                        <span class="post-date"><?php echo($listMoiNhat[$index]->ThoiGiagDang); ?></span>
+                        <span class="post-date">
+                            <?php echo($listMoiNhat[$index]->ThoiGiagDang); ?>
+                        </span>
                         <a href="../Controller/BaiDangController.php?single-post=<?php echo($listMoiNhat[$index]->MaBaiDang); ?>&phong-tro=<?php echo($listMoiNhat[$index]->MaPhong); ?>"
                            class="post-title">
                                <?php echo($listMoiNhat[$index]->TieuDe); ?>
                         </a>
+                        <span class="post-date">
+                            <b><?php echo(money_format("%.0n", $listMoiNhat[$index]->GiaPhong)); ?></b>
+                            / tháng
+                        </span>
+                        <br>
+                        <span class="post-author">Đăng bởi: 
+                            <?php echo($listMoiNhat[$index]->HoTen); ?>
+                        </span>
+                        <span class="post-view-rate" style="float: none">
+                            <?php echo($listMoiNhat[$index]->LuotXem); ?> lượt xem
+                        </span>
                     </div>
                 </div>
 
@@ -61,9 +73,7 @@
                 <div class="single-blog-post style-2 mb-5">
                     <!-- Blog Thumbnail -->
                     <div class="blog-thumbnail">
-                        <a href="../Controller/BaiDangController.php?single-post=
-                           <?php echo($listMoiNhat[$index]->MaBaiDang); ?>
-                           &phong-tro=<?php echo($listMoiNhat[$index]->MaPhong); ?>">
+                        <a href="../Controller/BaiDangController.php?single-post=<?php echo($listMoiNhat[$index]->MaBaiDang); ?>&phong-tro=<?php echo($listMoiNhat[$index]->MaPhong); ?>">
                             <img src="<?php echo($listMoiNhat[$index]->HinhAnh); ?>" 
                                  alt="<?php echo($listMoiNhat[$index]->TieuDe); ?>">
                         </a>
@@ -71,16 +81,24 @@
 
                     <!-- Blog Content -->
                     <div class="blog-content">
-                        <span class="post-date">June 20, 2018</span>
-                        <a href="../Controller/BaiDangController.php?single-post=
-                            <?php echo($listMoiNhat[$index]->MaBaiDang); ?>
-                           &phong-tro=<?php echo($listMoiNhat[$index]->MaPhong); ?>"
+                        <span class="post-date">
+                            <?php echo($listMoiNhat[$index]->ThoiGiagDang); ?>
+                        </span>
+                        <span class="post-view-rate">
+                            <?php echo($listMoiNhat[$index]->LuotXem); ?> lượt xem
+                        </span>
+                        <a href="../Controller/BaiDangController.php?single-post=<?php echo($listMoiNhat[$index]->MaBaiDang); ?>&phong-tro=<?php echo($listMoiNhat[$index]->MaPhong); ?>"
                            class="post-title">
                                <?php echo($listMoiNhat[$index]->TieuDe); ?>
                         </a>
-                        <a href="#" class="post-author">
+                        <span class="post-date">
+                            <b><?php echo(money_format("%.0n", $listMoiNhat[$index]->GiaPhong)); ?></b>
+                            / tháng
+                        </span>
+                        <br>
+                        <span class="post-author">Đăng bởi: 
                             <?php echo($listMoiNhat[$index]->HoTen); ?>
-                        </a>
+                        </span>
                     </div>
                 </div>
         <?php } ?>

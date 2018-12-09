@@ -1,6 +1,0 @@
-INSERT INTO `BaiDang` (`MaBaiDang`, `TieuDe`, `ThoiGianDang`, `MoTa`, `TenTaiKhoan`) VALUES (NULL, 'Cho thuê nhà nguyên căn 4 người ở', '2018-11-10', 'Nhà nguyên căn đủ cho 4 người ở' , 'phuc');
-INSERT INTO `BaiDang` (`MaBaiDang`, `TieuDe`, `ThoiGianDang`, `MoTa`, `TenTaiKhoan`) VALUES (NULL, 'Cho thuê phòng trọ cho sinh viên', '2018-12-10', 'Chỉ dành cho sinh viên', 'quang');
-INSERT INTO `BaiDang` (`MaBaiDang`, `TieuDe`, `ThoiGianDang`, `MoTa`, `TenTaiKhoan`) VALUES (NULL, 'Cho thuê nhà nguyên căn thoáng mát', '2018-13-10', 'Nhà thoáng mát,sạch sẽ', 'phuc');
-INSERT INTO `BaiDang` (`MaBaiDang`, `TieuDe`, `ThoiGianDang`, `MoTa`, `TenTaiKhoan`) VALUES (NULL, 'Còn 2 phòng trống tại cư xá Thanh Lịch', '2018-14-10', 'Còn trống 2 phòng đầy đủ tiện nghi', 'quang');
-INSERT INTO `BaiDang` (`MaBaiDang`, `TieuDe`, `ThoiGianDang`, `MoTa`, `TenTaiKhoan`) VALUES (NULL, 'Cho thuê nhà nguyên căn đầy đủ tiện nghi', '2018-15-10', 'Nhà nguyên căn đầy đủ tiện nghi', 'phuc');
-INSERT INTO `BaiDang` (`MaBaiDang`, `TieuDe`, `ThoiGianDang`, `MoTa`, `TenTaiKhoan`) VALUES (NULL, 'Cho thuê phòng trọ tại trung tâm thành phố', '2018-16-10', 'Còn 1 phòng tại trung tâm thành phố', 'quang');

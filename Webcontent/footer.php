@@ -10,14 +10,6 @@
         <div class="row">
             <div class="col-12">
                 <div class="footer-content text-center">
-                    <!-- Footer Nav -->
-                    <div class="footer-nav">
-                        <ul>
-                            <li><a href="#">Contact Us</a></li>
-                            <li><a href="#">Closed Captioning</a></li>
-                            <li><a href="#">Site Map</a></li>
-                        </ul>
-                    </div>
                     <!-- Social Info -->
                     <div class="footer-social-info">
                         <a href="https://www.facebook.com/groups/815656545285365/" data-toggle="tooltip" data-placement="top" title="Facebook nhóm">Fb</a>

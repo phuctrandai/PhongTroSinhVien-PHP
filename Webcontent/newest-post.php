@@ -10,7 +10,6 @@
                 ?>
 
                 <!-- Single News Area -->
-
                 <div class="col-12 col-sm-6">
                     <div class="single-blog-post style-2 mb-5">
                         <!-- Blog Thumbnail -->
@@ -23,19 +22,28 @@
 
                         <!-- Blog Content -->
                         <div class="blog-content">
-                            <span class="post-date"><?php echo($baiDang->ThoiGiagDang); ?></span>
+                            <span class="post-date">
+                                <?php echo($baiDang->ThoiGiagDang); ?>
+                            </span>
+                            <span class="post-view-rate">
+                                <?php echo($baiDang->LuotXem); ?> lượt xem
+                            </span>
                             <a href="../Controller/BaiDangController.php?single-post=<?php echo($baiDang->MaBaiDang); ?>&phong-tro=<?php echo($baiDang->MaPhong); ?>"
                                class="post-title">
-                                <?php echo($baiDang->TieuDe); ?>
+                                   <?php echo($baiDang->TieuDe); ?>
                             </a>
-                            <a href="single-post.php?" class="post-author">
-                                <?php echo($baiDang->HoTen); ?>
-                            </a>
+                            <span class="post-date">
+                                <b><?php echo(money_format("%.0n", $baiDang->GiaPhong)); ?></b>
+                                / tháng
+                            </span>
+                            <br>
+                            <span class="post-author">Đăng bởi: <?php echo($baiDang->HoTen); ?></span>
                         </div>
                     </div>
                 </div>
-            <?php } else { ?>
                 
+    <?php } else { ?>
+
                 <!-- Single News Area -->
                 <div class="col-12 col-sm-6">
                     <div class="single-blog-post d-flex style-4 mb-30">
@@ -56,10 +64,19 @@
                                class="post-title">
                                 <?php echo($baiDang->TieuDe); ?>
                             </a>
+                            <span class="post-date">
+                                <b><?php echo(money_format("%.0n", $baiDang->GiaPhong)); ?></b>
+                                / tháng
+                            </span> <br>
+                            <span class="post-view-rate">
+                                <?php echo($baiDang->LuotXem); ?> lượt xem
+                            </span>
+                            <br>
+                            <span class="post-author">Đăng bởi: <?php echo($baiDang->HoTen); ?></span>
                         </div>
                     </div>
                 </div>
-            <?php
+                <?php
             } $i = $i + 1;
         }
         ?>
