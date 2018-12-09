@@ -137,7 +137,7 @@ function uploadAnh($MaBaiDang) {
 }
 
 function luuHinhAnh($hinhAnh, $MaBaiDang) {
-    var_dump($hinhAnh[0]);
+
     if ($hinhAnh[3] > 0) {
         echo 'File loi';
     } else {
@@ -154,3 +154,4 @@ function luuHinhAnh($hinhAnh, $MaBaiDang) {
         }
     }
 }
+

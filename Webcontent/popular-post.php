@@ -66,7 +66,7 @@
                             <span class="post-date">
                                 <b><?php echo(money_format("%.0n", $baiDang->GiaPhong)); ?></b>
                                 / tháng
-                            </span>
+                            </span> <br>
                             <span class="post-view-rate">
                                 <?php echo($baiDang->LuotXem); ?> lượt xem
                             </span>

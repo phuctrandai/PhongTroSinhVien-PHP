@@ -1,7 +1,5 @@
 <?php
 
-
-
 require_once '../Model/PhongTro.php';
 
 class PhongTroDao {
@@ -68,41 +66,5 @@ class PhongTroDao {
         $stmt->close();
         $connect->close();
         return $result;
-    }
-
-    public static function TimKiem($MaLoaiPhong, $ChoTuQuan, $MaQuanHuyen, $MaKhuVuc, $TuKhoa) {
-        $rs = array();
-        $connect = mysqli_connect('localhost', 'root', '', 'PhongTroSinhVien');
-        mysqli_set_charset($connect, 'utf8');
-        $sql = "SELECT ThongTinTaiKhoan.HoTen, BaiDang.TieuDe, BaiDang.ThoiGianDang,"
-                . "BaiDang.MaBaiDang, HinhAnh.DuongDan, "
-                . "PhongTro.GiaPhong, PhongTro.MaPhong "
-                . "FROM PhongTro "
-                . "JOIN BaiDang ON PhongTro.MaBaiDang = BaiDang.MaBaiDang "
-                . "JOIN TaiKhoan ON BaiDang.TenTaiKhoan = TaiKhoan.TenTaiKhoan "
-                . "JOIN ThongTinTaiKhoan ON ThongTinTaiKhoan.TenTaiKhoan = TaiKhoan.TenTaiKhoan "
-                . "JOIN HinhAnh ON HinhAnh.MaBaiDang = BaiDang.MaBaiDang "
-                . "WHERE PhongTro.MaLoaiPhong = {$MaLoaiPhong }"
-                . "AND PhongTro.ChoTuQuan = {$ChoTuQuan} "
-                . "AND PhongTro.MaQuanHuyen = {$MaQuanHuyen} "
-                . "AND PhongTro.MaKhuVuc = {$MaKhuVuc} "
-                . "AND BaiDang.TieuDe LIKE '%{$TuKhoa}%'";
-        $result = $connect->query($sql);
-        if ($result->num_rows > 0) {
-            $i = 0;
-            while ($row = mysqli_fetch_array($result)) {
-                $rs[$i] = new BaiDang(
-                        $row['HoTen'], 
-                        $row['TieuDe'], 
-                        $row['ThoiGianDang'], 
-                        $row['HinhAnh'], 
-                        $row['GiaPhong'],
-                        $row['MaBaiDang'], 
-                        $row['MaPhong']);
-                $i++;
-            } $result->close();
-            return $rs;
-        }
-        return null;
     }
 }

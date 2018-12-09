@@ -173,5 +173,41 @@ class BaiDangDao {
         $connect->close();
         return $result;
     }
-
+    
+    public function TimKiem($MaLoaiPhong, $ChoTuQuan, $MaQuanHuyen, $MaKhuVuc, $TuKhoa) {
+        $rs = array();
+        $connect = mysqli_connect('localhost', 'root', '', 'PhongTroSinhVien');
+        mysqli_set_charset($connect, 'utf8');
+        $sql = "SELECT ViewBaiDang.*, BaiDang.LuotXem, BaiDang.MoTa FROM ViewBaiDang
+            JOIN PhongTro ON ViewBaiDang.MaBaiDang = PhongTro.MaBaiDang
+            JOIN BaiDang ON ViewBaiDang.MaBaiDang = BaiDang.MaBaiDang
+            WHERE ViewBaiDang.TieuDe LIKE '%{$TuKhoa}%'";
+        if(isset($MaLoaiPhong) && $MaLoaiPhong != -1) {
+            $sql = $sql . " AND PhongTro.MaLoaiPhong = {$MaLoaiPhong}";
+        }
+        if(isset($MaKhuVuc) && $MaKhuVuc != -1) {
+            $sql = $sql . " AND PhongTro.MaKhuVuc = {$MaKhuVuc}";
+        }
+        if(isset($MaQuanHuyen) && $MaQuanHuyen != -1) {
+            $sql = $sql . " AND PhongTro.MaQuanHuyen = {$MaQuanHuyen}";
+        }
+        if(isset($ChoTuQuan) && $ChoTuQuan != -1) {
+            $sql = $sql . " AND PhongTro.ChoTuQuan = {$ChoTuQuan}";
+        }
+        $result = $connect->query($sql);
+        if ($result->num_rows > 0) {
+            $i = 0; $hinhAnh = new HinhAnhDao();
+            while ($row = mysqli_fetch_array($result)) {
+                $rs[$i] = new BaiDang($row['HoTen'],$row['TieuDe'],$row['ThoiGianDang']);
+                $rs[$i]->HinhAnh = $hinhAnh->getAnhDaiDien($row['MaBaiDang']);
+                $rs[$i]->GiaPhong = $row['GiaPhong'];
+                $rs[$i]->MaBaiDang = $row['MaBaiDang'];
+                $rs[$i]->MaPhong = $row['MaPhong'];
+                $rs[$i]->LuotXem = $row['LuotXem'];
+                $rs[$i]->MoTa = $row['MoTa'];
+                $i++;
+            } $result->close();     return $rs;
+        }
+        return null;
+    }
 }

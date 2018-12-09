@@ -107,7 +107,7 @@ setlocale(LC_MONETARY, "vie");
         <script src="js/plugins/plugins.js"></script>
         <!-- Active js -->
         <script src="js/active.js"></script>
-<!--         My js 
+        <!-- My js 
         <script src="js/my-script.js"></script>-->
     </body>
 

@@ -99,7 +99,15 @@ body {
 #form-search .card-header {
     background-color: #fff;
 }
-
+.advance-search-checkmark {
+    position: absolute;
+    top: 2px;
+    left: 0;
+    height: 15px;
+    width: 15px;
+    background-color: #fff;
+    border: solid #2196F3 thin;
+}
 @media (max-width: 768px) {
     #bg-search {
         height: 350px;
@@ -119,6 +127,9 @@ body {
 .single-blog-post.style-2 .blog-content .post-author, .post-date {
     font-size: 11px !important;
 }
+.single-blog-post.style-2 .blog-content .post-view-rate {
+    float: right;
+}
 .single-blog-post.style-2 .blog-thumbnail {
     height: 200px;
 }
@@ -133,16 +144,48 @@ body {
     font-weight: 500;
 }
 .single-blog-post.style-4 .blog-thumbnail {
-    height: 120px;
+    height: 130px;
 }
 .single-blog-post.style-4 .blog-thumbnail img {
     height: 100%;
 }
+
+.single-blog-post.style-5 .blog-content .show-more-link {
+    font-size: 11px;
+    color: #636363;
+    font-weight: 500;
+}
+.single-blog-post.style-5 .blog-content .post-view-rate {
+    margin-left: 30px;
+}
+.single-blog-post.style-5 .blog-thumbnail {
+    height: 275px;
+}
+.single-blog-post.style-5 .blog-thumbnail img {
+    height: 100%;
+}
+.single-blog-post.style-5 .blog-content .post-author {
+    margin-bottom: 10px !important;
+}
+
+.single-blog-post.style-6 .blog-content .post-author {
+    font-size: 11px;
+    color: #636363;
+    font-weight: 500;
+}
+.single-blog-post.style-6 .blog-content .post-view-rate {
+    float: right;
+}
+.single-blog-post.style-6 .blog-thumbnail {
+    height: 150px;
+}
+.single-blog-post.style-6 .blog-thumbnail img {
+    height: 100%;
+}
+
 .post-view-rate {
     font-size: 11px;
     color: #636363;
-    margin-bottom: 10px;
-    float: right;
 }
 
 .carousel-item {
